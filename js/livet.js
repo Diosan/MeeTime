@@ -1,8 +1,14 @@
 
 $(document).bind("mobileinit", function() {
-        $.support.cors = true;
-        $.mobile.allowCrossDomainPages = true;
-        alert('alert fires');
-        $( "#popupBasic" ).popup();
-		$( "#popupBasic" ).popup( "open" );
+		        $.support.cors = true;
+		        $.mobile.allowCrossDomainPages = true;
 });
+
+document.addEventListener("deviceready", onDeviceReady, false);
+
+function onDeviceReady() {
+	alert('Device ready...');
+	$( "#tour" ).popup();
+	$( "#tour" ).popup( "open" );	
+}
+
