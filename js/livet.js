@@ -4,7 +4,11 @@ $(document).bind("mobileinit", function() {
 		        $.mobile.allowCrossDomainPages = true;
 });
 
-document.addEventListener("deviceready", onDeviceReady, false);
+$(function() {
+
+	document.addEventListener("deviceready", onDeviceReady, false);
+
+});
 
 function onDeviceReady() {
 	alert('Device ready...');
