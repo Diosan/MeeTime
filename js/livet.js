@@ -33,6 +33,6 @@ $.when(gapReady, jqmReady).then(livet);
 // App Logic
 function livet()
 {
-	$( "#tour" ).popup();
-	$( "#tour" ).popup( "open" );
+	$( "#tips" ).popup();
+	$( "#tips" ).popup( "open" );
 }
