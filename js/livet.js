@@ -28,11 +28,12 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(livet);
+$.when(gapReady, jqmReady).then(myAppLogic);
 
 // App Logic
-function livet()
+function myAppLogic()
 {
+	alert( 'hurray' );
 	$( "#tour" ).popup();
 	$( "#tour" ).popup( "open" );
 }
