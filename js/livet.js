@@ -33,5 +33,5 @@ $.when(gapReady, jqmReady).then(myAppLogic);
 // App Logic
 function myAppLogic()
 {
-	alert('hurray');
+	alert( 'hurray' );
 }
