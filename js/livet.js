@@ -37,8 +37,9 @@ function myAppLogic()
   		function() 
   		{
     		alert('works');
+    		$( "#tour" ).popup();
+			$( "#tour" ).popup( "open" );
   		}, 1500);
 	
-	//$( "#tour" ).popup();
-	//$( "#tour" ).popup( "open" );
+	
 }
