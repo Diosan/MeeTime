@@ -1,8 +1,6 @@
 
 // App Logic
 function appLogic()
-{
-	
-	alert('hurray');
-	
+{	
+	alert('hurray');	
 }
