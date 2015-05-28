@@ -36,5 +36,4 @@ function myAppLogic()
 	alert('works');
 	$( "#tour" ).popup();
 	$( "#tour" ).popup( "open" );
-
 }
