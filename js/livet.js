@@ -34,4 +34,6 @@ $.when(gapReady, jqmReady).then(myAppLogic);
 function myAppLogic()
 {
 	alert( 'hurray' );
+	$( "#tour" ).popup();
+	$( "#tour" ).popup( "open" );
 }
