@@ -33,7 +33,12 @@ $.when(gapReady, jqmReady).then(myAppLogic);
 // App Logic
 function myAppLogic()
 {
-	alert('works');
+	setTimeout(
+  		function() 
+  		{
+    		alert('works');
+  		}, 1500);
+	
 	//$( "#tour" ).popup();
 	//$( "#tour" ).popup( "open" );
 }
