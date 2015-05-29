@@ -29,8 +29,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-//$.when(gapReady, jqmReady).then(myAppLogic);
-$.when(jqmReady).then(myAppLogic);
+$.when(gapReady, jqmReady).then(myAppLogic);
+//$.when(jqmReady).then(myAppLogic);
 
 // App Logic
 function myAppLogic()
