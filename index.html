@@ -35,6 +35,7 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-svg-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jw-jqm-cal.css" />
         <style>
         	body {
         		text-transform: none;
@@ -50,15 +51,34 @@
         <title>MeeTime</title>
     </head>
     <body>
-    	           
+    	
+    	
+    	 
         <div data-role="page"  id="home">
 	
-  			<div data-role="header" data-position="fixed" data-fullscreen="true">
+  			<div data-role="header" data-position="fixed" data-fullscreen="false">
   				<img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
   			</div>
   
   			<div data-role="main" class="ui-content">
-  				<br><br><br>
+  				
+  				<div style="margin: 200px 15% 0; width: 70%; ">
+  					<div data-role="navbar">
+  					  <ul>
+  					  	<li><a href="#" data-icon="user">Mee</a></li>
+  					  </ul>
+				      <ul>
+				        <li><a href="#" data-icon="eye">Goals</a></li>
+				        <li><a href="#" data-icon="heart">Emotions</a></li>
+				        <li><a href="#" data-icon="forbidden">Cravings</a></li>
+				     </ul>
+				     <ul>
+				        <li><a href="#" data-icon="bullets">Readings</a></li>
+				        <li><a href="#calendaring" data-icon="calendar">Calendar</a></li>
+				        <li><a href="#" data-icon="bars">Charts</a></li>
+				      </ul>
+				    </div>  					
+  				</div>
   				
   				
   				<div data-role="popup" id="tour" data-overlay-theme="b" data-dismissible="false" data-history="false" >
@@ -87,6 +107,26 @@
   			</div>
   			
         </div>   
+        
+        
+        
+        <div data-role="page"  id="calendaring" >
+	
+  			<div data-role="header" data-position="fixed" data-fullscreen="true">
+  				<img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
+  			</div>
+  			
+  			<div data-role="main" class="ui-content">  				
+  				<div data-role="content" >
+                	
+    			</div>
+  			</div>
+  			
+    	</div>
+    	
+    	
+    	
+    	
                    
         
         <script type="text/javascript" src="cordova.js"></script>
@@ -94,6 +134,8 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/livet.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/jw-jqm-cal.js"></script>
+        
         
         
         
