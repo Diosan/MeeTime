@@ -39,6 +39,14 @@
         	body {
         		text-transform: none;
         	} 
+        	
+        	#tour {
+        		width: 100%;
+        	}
+        	
+        	#home {
+        		width: 100%;
+        	}
         </style>
         <title>MeeTime</title>
     </head>
@@ -54,17 +62,18 @@
   				<br><br><br><br><br>
   				<a href="#tour" data-rel="popup">Open Popup</a>
   				
-  				<div data-role="popup" id="tour" data-overlay-theme="b" data-dismissible="false" data-history="false">
+  				<div data-role="popup" id="tour" data-overlay-theme="b" data-dismissible="false" data-history="false" >
 			      <div data-role="header">
 			        <h1>Welcome to MeeTime!</h1>
 			      </div>
 
 			      <div data-role="main" class="ui-content" style="text-align: center;" >
-			        <img src="img/livet1.jpg" align="left" style="width: 30%;">
-			        <div style="text-transform: none; text-align:justify; height: 400px; width: 100%;">
+			        <img id="tour_image" src="img/livet1.jpg" align="left" style="max-height: 400px; width: 30%;">
+			        <div id="tour_text" style="text-transform: none; text-align:justify; height: 400px; width: 65%;">
 			        	Livet MEE Time was inspired and designed by wellness professionals and a scientist with over 40 years of collective research and experience. The App features tools to inspire employees to plan, track, chart and perfect a healthier lifestyle. Users can track Stress levels vs. Food cravings and relate it graphically via a chart to Weight, Blood sugar, Blood pressure, and get recommendations and tips to make better choices and find alternative solutions to achieve their health goals. Users will be empowered with Health tips, natural proven herbal remedies, optimal water consumptions, daily reminders, stress reduction techniques along with many other key insights on achieving optimal health.
 			        </div>
-			        <a href="#tour2" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Skip Tour</a>
+			        <a id="skip_tour" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Skip Tour</a>
+			        <a id="next_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Next</a>
 			      </div>
   				
   				</div>
