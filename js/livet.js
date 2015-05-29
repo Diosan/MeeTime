@@ -29,11 +29,11 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(myAppLogic);
-//$.when(jqmReady).then(myAppLogic);
+$.when(gapReady, jqmReady).then(meeTime);
+//$.when(jqmReady).then(meeTime);
 
 // App Logic
-function myAppLogic()
+function meeTime()
 {
 	setTimeout(
   		function() 
@@ -43,7 +43,21 @@ function myAppLogic()
   		}, 1000);
   		
   	$('#next_tourstep').click(function(){
-  		$("#tour_text").html('Step 2 Tour Text');
+		$.get( 'tour.csv', function( data ) {
+			var lines = data.split('\n');
+			$('#previous_tourstep').show();
+  			$('#tour_text').html( lines[tourstep + 1] );
+  			tourstep++;		
+		}, "text");  		
+  	});
+  	
+  	$('#previous_tourstep').click(function(){
+		$.get( 'tour.csv', function( data ) {
+			var lines = data.split('\n');
+			$('#previous_tourstep').show();
+  			$('#tour_text').html( lines[tourstep - 1] );
+  			tourstep--;		
+		}, "text");  		
   	});
 	
 	
