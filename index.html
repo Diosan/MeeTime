@@ -45,6 +45,12 @@
     			width: 80%;
     			left: 10%;
     			right: 10%;
+			}
+			
+			#setup-popup {
+    			width: 80%;
+    			left: 10%;
+    			right: 10%;
 			} 
         	
         </style>
@@ -88,7 +94,7 @@
 
 			      <div data-role="main" class="ui-content" style="text-align: center;" >
 			        <img id="tour_image" src="img/livet1.jpg" align="left" style="max-height: 400px; width: 30%;">
-			        <div id="tour_text" style="text-transform: none; text-align:justify; min-height: 400px; width: 65%;">
+			        <div id="tour_text" style="text-transform: none; text-align:justify; min-height: 400px; ">
 			        	Livet MEE Time was inspired and designed by wellness professionals and a scientist with over 40 years of collective research and experience. The App features tools to inspire employees to plan, track, chart and perfect a healthier lifestyle. Users can track Stress levels vs. Food cravings and relate it graphically via a chart to Weight, Blood sugar, Blood pressure, and get recommendations and tips to make better choices and find alternative solutions to achieve their health goals. Users will be empowered with Health tips, natural proven herbal remedies, optimal water consumptions, daily reminders, stress reduction techniques along with many other key insights on achieving optimal health.
 			        </div>
 			        
@@ -96,13 +102,53 @@
 			      
 			      <div data-role="footer">
 			      	<center>
-			        	<a id="skip_tour" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left" data-rel="back">Skip Tour</a>
+			        	<a id="skip_tour" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Skip Tour</a>
 			        	<a id="previous_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
 			        	<a id="next_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
+						<a id="get_started" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right" style="display: none;">Get Started</a>
 			     	</center>
 			      </div>
   				
   				</div>
+  				
+  				
+  				<div data-role="popup" id="setup" data-overlay-theme="b" data-dismissible="false" data-history="false" >
+			      <div data-role="header">
+			        <h1>Setup Profile</h1>
+			      </div>
+
+			      <div data-role="main" class="ui-content" style="text-align: center;" >
+			        <div style="text-transform: none; text-align:justify; min-height: 400px; ">
+			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
+          				 <input type="text" name="profile_name" id="profile_name" placeholder="Name">
+          				 <label for="profile_gender">Profile Picture</label>
+          				 <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
+          				 <button onclick="capturePhoto();">Capture Photo</button>
+          				 <label for="profile_gender">Gender</label>
+          				 <select name="profile_gender" id="profile_gender">
+          					<option value="male">Male</option>
+          					<option value="female">Female</option>
+          				 </select>
+          				 <label for="profile_age">Age:</label>
+      	  				 <input type="range" name="profile_age" id="profile_age" value="50" min="0" max="100">
+      	  				 <label for="profile_height">Height(cm):</label>
+      	  				 <input type="text" name="profile_height" id="profile_height" value="170" min="100" max="250" data-popup-enabled="true" >
+      	  				 <p id="profile_height_inches">5 feet 7 inches</p>	  	  				 
+	  	  				 
+			        </div>
+			        
+			      </div>
+			      
+			      <div data-role="footer">
+			      	<center>
+			        	<a id="previous_setup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
+			        	<a id="next_setup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
+			     	</center>
+			      </div>
+  				
+  				</div>
+  				
+  				
   			
   			</div>
   			
