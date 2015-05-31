@@ -37,8 +37,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(meeTime);
-//$.when(jqmReady).then(meeTime);
+//$.when(gapReady, jqmReady).then(meeTime);
+$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -91,6 +91,15 @@ function meeTime()
   	$('#get_started').click(function() {  		
   		openSetup();
   	});
+  	
+  	$( '#profile_height' ).slider({
+    	create: function (event, ui) {
+        	$(this).bind( 'change', function () {
+        		//alert($( '#profile_height' ).val());
+				$('#profile_height_inches').html( cm2inches( $( '#profile_height' ).val() ) );
+        	});
+    	}
+	});
   	
   	reading = { 'summary' : '<center><b>Today<b></center>', 'begin' : new Date(y, m, d), 'end' : new Date(y, m, d) };
 	readingsArray.push(reading);
@@ -168,7 +177,11 @@ function onPhotoDataSuccess(imageData) {
 }
 
 
-
+// Called if something bad happens.
+//
+function onFail(message) {
+   alert('Failed because: ' + message);
+}
 
 
 // device APIs are available
@@ -179,5 +192,27 @@ function capturePhoto() {
    alert('Capturing Photos');
    // Take picture using device camera and retrieve image as base64-encoded string
    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL });
+}
+
+function cm2inches(cm) {
+	
+	var inches = 0;
+	var feetHeight = 0;
+	var inchesHeight = 0;
+	var height = '';
+	
+	//alert(cm);
+	
+	inches = parseFloat('0.393700787') * parseFloat(cm);
+	feetHeight = Math.floor(Math.round( inches )/12);
+	inchesHeight = Math.round( inches ) % 12;
+	height = feetHeight.toString() + ' feet ';
+	
+	if(inchesHeight != 0) {
+		height += inchesHeight + ' inches';
+	}	
+	
+	return height;
+	
 }
 
