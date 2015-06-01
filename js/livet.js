@@ -50,8 +50,8 @@ function meeTime()
   		function() 
   		{
     		
-    		pictureSource=navigator.camera.PictureSourceType;
-    		destinationType=navigator.camera.DestinationType;  	
+    		//pictureSource=navigator.camera.PictureSourceType;
+    		//destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
@@ -84,6 +84,11 @@ function meeTime()
 		previousTourStep();	  		
   	});
   	
+  	//Change content of tour popup to content for next step	
+  	$('#next_setupstep').click(function() {
+		nextSetupStep(); 		
+  	});
+  	
   	//open setup modal when 'Skip Tour' or "Get Started' is clicked
   	$('#skip_tour').click(function() {
   		openSetup();  		
@@ -97,6 +102,15 @@ function meeTime()
         	$(this).bind( 'change', function () {
         		//alert($( '#profile_height' ).val());
 				$('#profile_height_inches').html( cm2inches( $( '#profile_height' ).val() ) );
+        	});
+    	}
+	});
+	
+	$( '#profile_weight' ).slider({
+    	create: function (event, ui) {
+        	$(this).bind( 'change', function () {
+        		//alert($( '#profile_height' ).val());
+				$('#profile_weight_pounds').html( kgs2lbs( $( '#profile_weight' ).val() ) );
         	});
     	}
 	});
@@ -155,6 +169,16 @@ function previousTourStep() {
 		
 }
 
+function nextSetupStep() {
+	var weight = parseFloat($('#profile_weight').val());
+	var height = parseFloat($('#profile_height').val()) / 100;
+	var bmi = ( weight / ( height * height ) );
+	$('#bmi').html(Math.round(parseFloat(bmi)));
+	//alert($('#profile_height').val());
+	$('#setup').popup('close');
+	$.mobile.changePage('#mee', 'none');	
+}
+
 // Called when a photo is successfully retrieved
 //
 function onPhotoDataSuccess(imageData) {
@@ -164,15 +188,18 @@ function onPhotoDataSuccess(imageData) {
       // Get image handle
       //
       var smallImage = document.getElementById('smallImage');
+      var profileImage = document.getElementById('profileImage');
       
       // Unhide image elements
       //
       smallImage.style.display = 'block';
+      profileImage.style.display = 'block';
       
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
+      profileImage.src = "data:image/jpeg;base64," + imageData;
 
 }
 
@@ -213,6 +240,14 @@ function cm2inches(cm) {
 	}	
 	
 	return height;
+	
+}
+
+function kgs2lbs(kg) {
+	
+	var pounds = Math.round(parseFloat('2.20462') * parseFloat(kg));
+	pounds += ' pounds';
+	return pounds;
 	
 }
 

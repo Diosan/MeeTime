@@ -134,15 +134,17 @@
       	  				 <label for="profile_height">Height(cm):</label>
       	  				 <input type="text" name="profile_height" id="profile_height" value="170" min="100" max="250" data-popup-enabled="true" >
       	  				 <p id="profile_height_inches">5 feet 7 inches</p>	  	  				 
-	  	  				 
+	  	  				 <label for="profile_weight">Weight(kg):</label>
+      	  				 <input type="text" name="profile_weight" id="profile_weight" value="170" min="80" max="300" data-popup-enabled="true" >
+      	  				 <p id="profile_weight_pounds">170 pounds</p>
 			        </div>
 			        
 			      </div>
 			      
 			      <div data-role="footer">
 			      	<center>
-			        	<a id="previous_setup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
-			        	<a id="next_setup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
+			        	<a id="previous_setupstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
+			        	<a id="next_setupstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
 			     	</center>
 			      </div>
   				
@@ -154,7 +156,20 @@
   			
         </div>   
         
-        
+        <div data-role="page"  id="mee" >
+	
+  			<div data-role="header" data-position="fixed" data-fullscreen="true">
+  				<img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
+  			</div>
+  			
+  			<div data-role="main" class="ui-content">
+  				<div style="margin: 200px 10% 0; width: 80%; ">
+  				 	<img style="width:200px;height:300px;" id="profileImage" src="img/avatar.jpg" /><br><br>
+  				 	BMI: <p id="bmi"></p>
+  				</div>				
+  			</div>
+  			
+  		</div>
         
         <div data-role="page"  id="calendaring" >
 	
