@@ -114,6 +114,8 @@ function meeTime()
         	});
     	}
 	});
+	
+	setProfilePic();
   	
   	reading = { 'summary' : '<center><b>Today<b></center>', 'begin' : new Date(y, m, d), 'end' : new Date(y, m, d) };
 	readingsArray.push(reading);
@@ -122,6 +124,32 @@ function meeTime()
 	reading = { 'summary' : '<center><b>Tomorrow<b></center>', 'begin' : new Date(y, m, d + 1), 'end' : new Date(y, m, d + 1) };
 	readingsArray.push(reading);
 				
+}
+
+function setProfilePic() {
+	  // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+      var profileImage = document.getElementById('profileImage');
+      var imageURI = '';
+      
+      if (localStorage.getItem('profilePhoto') == null) {
+      		imageURI = 'img/avatar.jpg';
+      } else {
+      		imageURI = localStorage.getItem('profilePhoto');
+      }
+      
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+      profileImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = imageURI;
+      profileImage.src = imageURI;
+	
 }
 
 
@@ -151,6 +179,7 @@ function nextTourStep() {
   					
 		}, "text"); 
 }
+
 
 //Change content of tour popup to content for previous step and adjust buttons as necessary
 function previousTourStep() {
@@ -200,12 +229,12 @@ function onPhotoDataSuccess(imageData) {
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
       profileImage.src = "data:image/jpeg;base64," + imageData;
-
+	  localStorage.setItem('profilePhoto', "data:image/jpeg;base64," + imageData);
 }
 
 // Called when a photo is successfully retrieved
-    //
-    function onPhotoURISuccess(imageURI) {
+//
+function onPhotoURISuccess(imageURI) {
       // Uncomment to view the base64-encoded image data
       // console.log(imageData);
 
@@ -224,7 +253,9 @@ function onPhotoDataSuccess(imageData) {
       //
       smallImage.src = imageURI;
       profileImage.src = imageURI;
-    }
+      localStorage.setItem('profilePhoto', imageURI);
+	  
+}
 
 
 
