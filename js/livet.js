@@ -37,8 +37,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-//$.when(gapReady, jqmReady).then(meeTime);
-$.when(jqmReady).then(meeTime);
+$.when(gapReady, jqmReady).then(meeTime);
+//$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -50,8 +50,8 @@ function meeTime()
   		function() 
   		{
     		
-    		//pictureSource=navigator.camera.PictureSourceType;
-    		//destinationType=navigator.camera.DestinationType;  	
+    		pictureSource=navigator.camera.PictureSourceType;
+    		destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
@@ -203,6 +203,30 @@ function onPhotoDataSuccess(imageData) {
 
 }
 
+// Called when a photo is successfully retrieved
+    //
+    function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
+
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+      var profileImage = document.getElementById('profileImage');
+      
+      // Unhide image elements
+      //
+      smallImage.style.display = 'block';
+      profileImage.style.display = 'block';
+
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      smallImage.src = imageURI;
+      profileImage.src = imageURI;
+    }
+
+
 
 // Called if something bad happens.
 //
@@ -219,6 +243,12 @@ function capturePhoto() {
    alert('Capturing Photos');
    // Take picture using device camera and retrieve image as base64-encoded string
    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL });
+}
+function getPhoto() {
+  // Retrieve image file location from specified source
+  navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+    destinationType: destinationType.FILE_URI,
+    sourceType: pictureSource.PHOTOLIBRARY});
 }
 
 function cm2inches(cm) {
