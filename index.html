@@ -35,6 +35,7 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-svg-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.4.5.min.css" />
+        <link type="text/css" rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.css" />
         <link rel="stylesheet" type="text/css" href="css/jw-jqm-cal.css" />
         <style>
         	body {
@@ -51,6 +52,11 @@
     			width: 80%;
     			left: 10%;
     			right: 10%;
+			}
+			
+			.qtip-meetime {
+				font-size: 1em;
+				line-height: 1.5em;
 			} 
         	
         </style>
@@ -71,15 +77,14 @@
   				<div style="margin: 200px 15% 0; width: 70%; ">
   					<div data-role="navbar">
   					  <ul>
-  					  	<li><a href="#" data-icon="user">Mee</a></li>
-  					  </ul>
-				      <ul>
 				        <li><a href="#" data-icon="eye">Goals</a></li>
 				        <li><a href="#" data-icon="heart">Emotions</a></li>
-				        <li><a href="#" data-icon="forbidden">Cravings</a></li>
 				     </ul>
 				     <ul>
-				        <li><a href="#" data-icon="bullets">Readings</a></li>
+				        <li><a href="#" data-icon="forbidden">Cravings</a></li>
+				        <li><a href="#" data-icon="bullets">Readings</a></li>				        
+				     </ul>
+				     <ul>
 				        <li><a href="#calendaring" data-icon="calendar">Calendar</a></li>
 				        <li><a href="#" data-icon="bars">Charts</a></li>
 				      </ul>
@@ -96,8 +101,7 @@
 			        <img id="tour_image" src="img/livet1.jpg" align="left" style="max-height: 400px; width: 30%;">
 			        <div id="tour_text" style="text-transform: none; text-align:justify; min-height: 400px; ">
 			        	Livet MEE Time was inspired and designed by wellness professionals and a scientist with over 40 years of collective research and experience. The App features tools to inspire employees to plan, track, chart and perfect a healthier lifestyle. Users can track Stress levels vs. Food cravings and relate it graphically via a chart to Weight, Blood sugar, Blood pressure, and get recommendations and tips to make better choices and find alternative solutions to achieve their health goals. Users will be empowered with Health tips, natural proven herbal remedies, optimal water consumptions, daily reminders, stress reduction techniques along with many other key insights on achieving optimal health.
-			        </div>
-			        
+			        </div>			        
 			      </div>
 			      
 			      <div data-role="footer">
@@ -130,14 +134,21 @@
           					<option value="male">Male</option>
           					<option value="female">Female</option>
           				 </select>
-          				 <label for="profile_age">Age:</label>
+          				 <label for="profile_age" title="How much excercise do you get ?">Age:</label>
       	  				 <input type="range" name="profile_age" id="profile_age" value="50" min="0" max="100">
+      	  				 <label for="profile_activity">Activity Level (Excercise)</label>
+      	  				  <select name="profile_actvity" id="profile_activty">
+          					<option value="0">None</option>
+          					<option value="33">Low (30 minutes 3 times a week)</option>
+          					<option value="66">Medium (1 hour 3 times a week)</option>
+          					<option value="100">High (1 hour 5 times a day)</option>
+          				 </select>
       	  				 <label for="profile_height">Height(cm):</label>
       	  				 <input type="text" name="profile_height" id="profile_height" value="170" min="100" max="250" data-popup-enabled="true" >
       	  				 <p id="profile_height_inches">5 feet 7 inches</p>	  	  				 
 	  	  				 <label for="profile_weight">Weight(kg):</label>
-      	  				 <input type="text" name="profile_weight" id="profile_weight" value="170" min="80" max="300" data-popup-enabled="true" >
-      	  				 <p id="profile_weight_pounds">170 pounds</p>
+      	  				 <input type="text" name="profile_weight" id="profile_weight" value="82" min="40" max="150" data-popup-enabled="true" >
+      	  				 <p id="profile_weight_pounds">180 pounds</p>
 			        </div>
 			        
 			      </div>
@@ -145,7 +156,7 @@
 			      <div data-role="footer">
 			      	<center>
 			        	<a id="previous_setupstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
-			        	<a id="next_setupstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
+			        	<a href="#" onclick="nextSetupStep();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
 			     	</center>
 			      </div>
   				
@@ -166,9 +177,18 @@
   			<div data-role="main" class="ui-content">
   				<div style="margin: 200px 10% 0; width: 80%; ">
   				 	<img style="width:200px;height:300px;" id="profileImage" src="img/avatar.jpg" /><br><br>
-  				 	BMI: <p id="bmi"></p>
+  				 	<p id="bmi"></p><br>
+  				 	<p id="overweight"></p>
   				</div>				
   			</div>
+  			
+  			<div data-role="footer" data-position="fixed">
+  				<div data-role="navbar">
+      				<ul>
+      					<li><a href="#home" data-icon="heart"></a></li>
+  					</ul>
+  				</div>    
+   			</div>
   			
   		</div>
         
@@ -193,6 +213,10 @@
         
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <!-- Include either the minifed or production version, NOT both!! -->
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
+		<!-- Optional: imagesLoaded script to better support images inside your tooltips -->
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.imagesloaded.pkg.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/livet.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>

@@ -37,8 +37,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(meeTime);
-//$.when(jqmReady).then(meeTime);
+//$.when(gapReady, jqmReady).then(meeTime);
+$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -50,8 +50,8 @@ function meeTime()
   		function() 
   		{
     		
-    		pictureSource=navigator.camera.PictureSourceType;
-    		destinationType=navigator.camera.DestinationType;  	
+    		//pictureSource=navigator.camera.PictureSourceType;
+    		//destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
@@ -84,11 +84,6 @@ function meeTime()
 		previousTourStep();	  		
   	});
   	
-  	//Change content of tour popup to content for next step	
-  	$('#next_setupstep').click(function() {
-		nextSetupStep(); 		
-  	});
-  	
   	//open setup modal when 'Skip Tour' or "Get Started' is clicked
   	$('#skip_tour').click(function() {
   		openSetup();  		
@@ -96,6 +91,8 @@ function meeTime()
   	$('#get_started').click(function() {  		
   		openSetup();
   	});
+  	
+  	 	
   	
   	$( '#profile_height' ).slider({
     	create: function (event, ui) {
@@ -114,6 +111,25 @@ function meeTime()
         	});
     	}
 	});
+	
+	$("label[for='profile_activity']").qtip({
+    	content: {
+        	text: 'How much excercise do you get ?'
+    	},
+    	position: {
+        	my: 'bottom center',  // Position my top left...
+        	at: 'top center', // at the bottom right of...
+        	target: $("label[for='profile_activity']") // my target
+    	},
+    	style: {
+        	classes: 'qtip-green qtip-shadow qtip-meetime'
+    	}
+	});
+	
+	//Change content of tour popup to content for next step	
+  	$('#next_setupstep').click(function() {
+		nextSetupStep(); 		
+  	});
 	
 	setProfilePic();
   	
@@ -198,14 +214,25 @@ function previousTourStep() {
 		
 }
 
-function nextSetupStep() {
-	var weight = parseFloat($('#profile_weight').val());
-	var height = parseFloat($('#profile_height').val()) / 100;
-	var bmi = ( weight / ( height * height ) );
-	$('#bmi').html(Math.round(parseFloat(bmi)));
-	//alert($('#profile_height').val());
+function nextSetupStep() {	
+	BMI($('#profile_weight').val(), $('#profile_height').val());
 	$('#setup').popup('close');
 	$.mobile.changePage('#mee', 'none');	
+}
+
+function BMI(profile_weight, profile_height) {
+		
+	var weight = parseFloat(profile_weight);
+	var height = parseFloat(profile_height) / 100;
+	var bmi = ( weight / ( height * height ) );
+	var bmiDifference = bmi - 25;
+	var overweight = Math.round(bmiDifference * (height * height));
+	//alert(bmi * height * height);
+	
+	$('#bmi').html('BMI: ' + Math.round(parseFloat(bmi)));
+	$('#overweight').html('Overweight By: ' + overweight + ' Kg / ' + Math.round(overweight * 2.20462) + ' Pounds');
+	//$('#overweight_pounds').html(Math.round(overweight * 2.20462)); 
+	
 }
 
 // Called when a photo is successfully retrieved
@@ -265,7 +292,6 @@ function onFail(message) {
    alert('Failed because: ' + message);
 }
 
-
 // device APIs are available
 //
 // A button will call this function
@@ -276,8 +302,8 @@ function capturePhoto() {
    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL });
 }
 function getPhoto() {
-  // Retrieve image file location from specified source
-  navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
     destinationType: destinationType.FILE_URI,
     sourceType: pictureSource.PHOTOLIBRARY});
 }
