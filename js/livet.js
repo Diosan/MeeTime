@@ -216,8 +216,17 @@ function previousTourStep() {
 
 function nextSetupStep() {	
 	BMI($('#profile_weight').val(), $('#profile_height').val());
+	//alert($('#profile_activity').val());
+	water($('#profile_weight').val(), $('#profile_activity').val());
 	$('#setup').popup('close');
 	$.mobile.changePage('#mee', 'none');	
+}
+
+function water(profile_weight, profile_activity) {
+  water = Math.round(((parseFloat(profile_weight) * 2.20462) * (2/3)) + parseFloat(profile_activity));
+  //alert(profile_activity);
+  //water = Math.round(((profile_weight * 2.20462) * (2/3)) + profile_activity);
+  $('#water').html('Water Requirement: ' + water + ' Ounces');	
 }
 
 function BMI(profile_weight, profile_height) {
