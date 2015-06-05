@@ -38,8 +38,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-//$.when(gapReady, jqmReady).then(meeTime);
-$.when(jqmReady).then(meeTime);
+$.when(gapReady, jqmReady).then(meeTime);
+//$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -51,8 +51,8 @@ function meeTime()
   		function() 
   		{
     		
-    		//pictureSource=navigator.camera.PictureSourceType;
-    		//destinationType=navigator.camera.DestinationType;  	
+    		pictureSource=navigator.camera.PictureSourceType;
+    		destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
