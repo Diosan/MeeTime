@@ -16,6 +16,7 @@ var reading = [];
 var readingsArray = [];
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
+var setupStep = 1;
 
 //Catch "deviceready" event which is fired when PhoneGap is ready
 document.addEventListener("deviceReady", deviceReady, false);
@@ -37,8 +38,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(meeTime);
-//$.when(jqmReady).then(meeTime);
+//$.when(gapReady, jqmReady).then(meeTime);
+$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -50,8 +51,8 @@ function meeTime()
   		function() 
   		{
     		
-    		pictureSource=navigator.camera.PictureSourceType;
-    		destinationType=navigator.camera.DestinationType;  	
+    		//pictureSource=navigator.camera.PictureSourceType;
+    		//destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
@@ -214,12 +215,40 @@ function previousTourStep() {
 		
 }
 
-function nextSetupStep() {	
+function nextSetupStep() {
+	switch (setupStep) {
+		case 1:
+			gotoGoals();
+		break;
+		case 2:
+			gotoCravings();
+		break;
+	}	
+		
+}
+
+function gotoGoals() {
+	
 	BMI($('#profile_weight').val(), $('#profile_height').val());
-	//alert($('#profile_activity').val());
 	water($('#profile_weight').val(), $('#profile_activity').val());
-	$('#setup').popup('close');
-	$.mobile.changePage('#mee', 'none');	
+	$('#setup_header').html('<h1>Health Goals</h1>');
+	
+	$('#setup_main').load("goals.html", function(){
+      $('#goals_overweight').html($('#overweight').html());
+      $('#goals_water').html($('#water').html());
+	});
+	
+	//if ($("#goals_overweight").length != 0) {
+  	//	alert('this record already exists');
+	//}
+
+	//alert($('#profile_activity').val());
+	//$('#setup').popup('close');
+	//$.mobile.changePage('#mee', 'none');	
+}
+
+function gotoCravings() {
+	
 }
 
 function water(profile_weight, profile_activity) {
@@ -240,7 +269,6 @@ function BMI(profile_weight, profile_height) {
 	
 	$('#bmi').html('BMI: ' + Math.round(parseFloat(bmi)));
 	$('#overweight').html('Overweight By: ' + overweight + ' Kg / ' + Math.round(overweight * 2.20462) + ' Pounds');
-	//$('#overweight_pounds').html(Math.round(overweight * 2.20462)); 
 	
 }
 

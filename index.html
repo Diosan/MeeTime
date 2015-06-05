@@ -120,14 +120,14 @@
   				
   				
   				<div data-role="popup" id="setup" data-overlay-theme="b" data-dismissible="false" data-history="false" >
-			      <div data-role="header">
+			      <div id="setup_header" data-role="header">
 			        <h1>Setup Profile</h1>
 			      </div>
 
-			      <div data-role="main" class="ui-content" style="text-align: center;" >
+			      <div data-role="main" id="setup_main" class="ui-content" style="text-align: center;" >
 			        <div style="text-transform: none; text-align:justify; min-height: 400px; ">
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
-          				 <input type="text" name="profile_name" id="profile_name" placeholder="Name">
+          				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" required >
           				 <label for="profile_gender">Profile Picture</label>
           				 <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
           				 <button onclick="capturePhoto();">Capture Photo</button>
