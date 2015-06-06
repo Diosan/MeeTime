@@ -57,6 +57,14 @@
 			.qtip-meetime {
 				font-size: 1em;
 				line-height: 1.5em;
+			}
+			
+			label.error { 
+				float: left; 
+				color: red; 
+				padding-top: .5em; 
+				vertical-align: top; 
+				font-weight:bold
 			} 
         	
         </style>
@@ -124,10 +132,12 @@
 			        <h1>Setup Profile</h1>
 			      </div>
 
+				  
 			      <div data-role="main" id="setup_main" class="ui-content" style="text-align: center;" >
-			        <div style="text-transform: none; text-align:justify; min-height: 400px; ">
+			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 10%; ">
+			           <form id="profile_form">	
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
-          				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" required >
+          				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
           				 <label for="profile_gender">Profile Picture</label>
           				 <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
           				 <button onclick="capturePhoto();">Capture Photo</button>
@@ -152,6 +162,9 @@
 	  	  				 <label for="profile_weight">Weight(kg):</label>
       	  				 <input type="text" name="profile_weight" id="profile_weight" value="82" min="40" max="150" data-popup-enabled="true" >
       	  				 <p id="profile_weight_pounds">180 pounds</p>
+      	  				 
+      	  			  </form>
+      	  			  
 			        </div>
 			        
 			      </div>
@@ -217,6 +230,7 @@
         
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
         <!-- Include either the minifed or production version, NOT both!! -->
 		<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
 		<!-- Optional: imagesLoaded script to better support images inside your tooltips -->
