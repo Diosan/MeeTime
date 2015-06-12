@@ -38,8 +38,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-//$.when(gapReady, jqmReady).then(meeTime);
-$.when(jqmReady).then(meeTime);
+$.when(gapReady, jqmReady).then(meeTime);
+//$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
