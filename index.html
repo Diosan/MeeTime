@@ -65,7 +65,37 @@
 				padding-top: .5em; 
 				vertical-align: top; 
 				font-weight:bold
-			} 
+			}
+			
+			#scrollNav ul {
+				width: 500px;
+				overflow-x: scroll;
+				overflow-y: hidden;
+				
+			}
+			
+			.deg0 { transform: translate(12em); }
+			
+			.deg180 { 
+				transform: rotate(180deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+			 
+			.deg360 { 
+				transform: rotate(360deg) translate(12em);
+			 }
+			 
+			 a.swipe { 
+				background: #ffffff;
+				border-top: dashed 1px;
+				width: 100%;
+				top:59%;
+				left: 0;
+				height: 12em;
+				position: absolute;
+				border-radius: 0;
+				z-index: 12; 
+			 } 
         	
         </style>
         <title>MeeTime</title>
@@ -136,6 +166,11 @@
 			      <div data-role="main" id="setup_main" class="ui-content" style="text-align: center;" >
 			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 10%; ">
 			           <form id="profile_form">	
+			           	 <div class='circle-container'>
+							<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
+							<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg")'></a>
+							<a href='#' class='swipe'><img src="img/finger_swipe.png"></a>
+						</div>
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
           				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
           				 <label for="profile_gender">Profile Picture</label>
@@ -162,6 +197,10 @@
 	  	  				 <label for="profile_weight">Weight(kg):</label>
       	  				 <input type="text" name="profile_weight" id="profile_weight" value="82" min="40" max="150" data-popup-enabled="true" >
       	  				 <p id="profile_weight_pounds">180 pounds</p>
+      	  				 
+      	  				 	
+									
+      	  				 
       	  				 
       	  			  </form>
       	  			  

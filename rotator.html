@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />        
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.external-png-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-png-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-svg-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.4.5.min.css" />
+        <link type="text/css" rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.css" />
+        <link rel="stylesheet" type="text/css" href="css/jw-jqm-cal.css" />
+		
+		<style>
+		
+			/**
+ 			* Position icons into circle (SO)
+ 			* http://stackoverflow.com/q/12813573/1397351 
+ 			*/
+ 			
+			.circle-container {
+				position: relative;
+				width: 24em;
+				height: 24em;
+				padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
+				border: dashed 1px;
+				border-top-right-radius: 50%;
+				border-top-left-radius: 50%; 
+				margin: 1.75em auto 0;
+			}
+			
+			/* this is for showing the circle on which the images are placed */
+			.circle-container:after {
+				position: absolute;
+				top: 2.8em; left: 2.8em;
+				width: 24em; height: 24em;
+				border: dashed 1px deeppink;
+				border-radius: 50%;
+				opacity: .3;
+				pointer-events: none;
+				content: '';
+			}
+			
+			.circle-container a {
+				display: block;
+				overflow: hidden;
+				position: absolute;
+				top: 41.666666667%; left: 41.666666667%;
+				width: 16.666666667%; height: 16.666666667%;
+				border-radius: 50%;
+			}
+			
+			.circle-container a.center {
+				display: block;
+				overflow: hidden;
+				position: absolute;
+				top: 35%; left: 35%;
+				width: 30%; height: 30%;
+				border-radius: 50%;
+				z-index: 15;
+				 /* 2em = 4em/2 */ /* half the width */
+			}
+			
+			.deg0 { transform: translate(12em); }
+			.deg180 { 
+				transform: rotate(180deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+			.deg360 { 
+				transform: rotate(360deg) translate(12em);
+			 }
+			 a.swipe { 
+				background: #ffffff;
+				border-top: dashed 1px;
+				width: 100%;
+				top:59%;
+				left: 0;
+				height: 12em;
+				position: absolute;
+				border-radius: 0;
+				z-index: 12; 
+			 }
+				
+		</style>
+		
+		
+		
+	</head>
+
+	<body>
+		
+			
+
+			<div>
+				<center>
+				<br><br>
+				<br><br>
+				</center>
+				<!-- content to be placed inside <body>…</body> -->
+				<div class='circle-container'>
+					<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
+					<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg")'></a>
+					<a href='#' class='swipe'><img src="img/finger_swipe.png"></a>
+				</div>
+
+			</div>
+			
+			<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+			
+			
+			<script>
+			
+				$(function(){
+  					//Code..
+  					$(".swipe").on("swipe",function(){
+  						rotate();
+					});
+				});
+				
+				function rotate() {
+					$('.deg180').addClass('deg360');					    									  
+				}
+				
+				function nextNotice()
+				{
+					 
+					setTimeout(nextNotice, 100);
+				}
+			</script>
+
+			
+		
+	</body>
+</html>

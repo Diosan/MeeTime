@@ -140,7 +140,15 @@ function meeTime()
 	readingsArray.push(reading);
 	reading = { 'summary' : '<center><b>Tomorrow<b></center>', 'begin' : new Date(y, m, d + 1), 'end' : new Date(y, m, d + 1) };
 	readingsArray.push(reading);
+	
+	$(".swipe").on("swipe",function(){
+  		rotate();
+	});
 				
+}
+
+function rotate() {
+	$('.deg180').addClass('deg360');					    									  
 }
 
 function setProfilePic() {
@@ -240,6 +248,7 @@ function gotoGoals() {
 	$('#setup_main').load("goals.html", function(){
       $('#goals_overweight').html($('#overweight').html());
       $('#goals_water').html($('#water').html());
+      $(this).enhanceWithin();
 	});
 	
 	//if ($("#goals_overweight").length != 0) {
