@@ -74,6 +74,49 @@
 				
 			}
 			
+			.circle-container {
+				position: relative;
+				width: 24em;
+				height: 24em;
+				padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
+				border: dashed 1px;
+				border-top-right-radius: 50%;
+				border-top-left-radius: 50%; 
+				margin: 1.75em auto 0;
+			}
+			
+			/* this is for showing the circle on which the images are placed */
+			.circle-container:after {
+				position: absolute;
+				top: 2.8em; left: 2.8em;
+				width: 24em; height: 24em;
+				border: dashed 1px deeppink;
+				border-radius: 50%;
+				opacity: .3;
+				pointer-events: none;
+				content: '';
+			}
+			
+			.circle-container a {
+				display: block;
+				overflow: hidden;
+				position: absolute;
+				top: 41.666666667%; left: 41.666666667%;
+				width: 16.666666667%; height: 16.666666667%;
+				border-radius: 50%;
+			}
+			
+			.circle-container a.center {
+				display: block;
+				overflow: hidden;
+				position: absolute;
+				top: 35%; left: 35%;
+				width: 30%; height: 30%;
+				border-radius: 50%;
+				z-index: 15;
+				 /* 2em = 4em/2 */ /* half the width */
+			}
+			
 			.deg0 { transform: translate(12em); }
 			
 			.deg180 { 
@@ -164,13 +207,14 @@
 
 				  
 			      <div data-role="main" id="setup_main" class="ui-content" style="text-align: center;" >
+			      	
 			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 10%; ">
-			           <form id="profile_form">	
+			           <form id="profile_form">
 			           	 <div class='circle-container'>
-							<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
-							<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg")'></a>
-							<a href='#' class='swipe'><img src="img/finger_swipe.png"></a>
-						</div>
+					<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
+					<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg")'></a>
+					<a href='#' class='swipe'><img src="img/finger_swipe.png"></a>
+				</div>
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
           				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
           				 <label for="profile_gender">Profile Picture</label>
