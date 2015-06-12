@@ -120,12 +120,12 @@
 			.deg0 { transform: translate(12em); }
 			
 			.deg180 { 
-				transform: rotate(180deg) translate(12em);
+				-webkit-transform: rotate(180deg) translate(12em);
 				-webkit-transition: -webkit-transform 2s ease-in-out;
 			 }
 			 
 			.deg360 { 
-				transform: rotate(360deg) translate(12em);
+				-webkit-transform: rotate(360deg) translate(12em);
 			 }
 			 
 			 a.swipe { 
@@ -210,11 +210,13 @@
 			      	
 			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 10%; ">
 			           <form id="profile_form">
+			           	
 			           	 <div class='circle-container'>
-					<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
-					<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg")'></a>
-					<a href='#' class='swipe'><img src="img/finger_swipe.png"></a>
-				</div>
+							<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
+							<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg")'></a>
+							<a href='#' class='swipe'><img src="img/finger_swipe.png"></a>
+						</div>
+						
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
           				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
           				 <label for="profile_gender">Profile Picture</label>
