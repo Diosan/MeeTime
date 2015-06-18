@@ -31,9 +31,9 @@
 				height: 24em;
 				padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
 				border: dashed 1px;
-				border-top-right-radius: 50%;
-				border-top-left-radius: 50%; 
+				border-radius: 50%;
 				margin: 1.75em auto 0;
+				z-index: 25;
 			}
 			
 			/* this is for showing the circle on which the images are placed */
@@ -57,25 +57,63 @@
 				border-radius: 50%;
 			}
 			
-			.circle-container a.center {
+			a.center {
 				display: block;
 				overflow: hidden;
-				position: absolute;
-				top: 35%; left: 35%;
-				width: 30%; height: 30%;
+				position: relative;
+				margin: -26em auto 0 auto;
+				width: 10em; height: 10em;
 				border-radius: 50%;
-				z-index: 15;
+				z-index: 33;
 				 /* 2em = 4em/2 */ /* half the width */
 			}
 			
-			.deg0 { transform: translate(12em); }
-			.deg180 { 
-				transform: rotate(180deg) translate(12em);
+			
+			.deg0 { 
+				transform: translate(12em);
+				-webkit-transform: translate(12em);
 				-webkit-transition: -webkit-transform 2s ease-in-out;
 			 }
-			.deg360 { 
-				transform: rotate(360deg) translate(12em);
+			.deg45 { 
+				transform:  rotate(45deg) translate(12em);
+				-webkit-transform:  rotate(45deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
 			 }
+			 .deg90 { 
+				transform: rotate(90deg) translate(12em);
+				-webkit-transform: rotate(90deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+			 .deg135 { 
+				transform: rotate(135deg) translate(12em);
+				-webkit-transform: rotate(135deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+			.deg180 { 
+				transform: rotate(180deg) translate(12em);
+				-webkit-transform: rotate(180deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+			.deg225 { 
+				transform: rotate(225deg) translate(12em);
+				-webkit-transform: rotate(225deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+			 .deg270 { 
+				transform: rotate(270deg) translate(12em);
+				-webkit-transform: rotate(270deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+			 .deg315 { 
+				transform: rotate(315deg) translate(12em);
+				-webkit-transform: rotate(315deg) translate(12em);
+				-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+			 .circle180 {
+			 	-webkit-transform: rotate(315deg);
+			 	-webkit-transition: -webkit-transform 2s ease-in-out;
+			 }
+
 			 a.swipe { 
 				background: #ffffff;
 				border-top: dashed 1px;
@@ -87,12 +125,25 @@
 				border-radius: 0;
 				z-index: 12; 
 			 }
+
+			 .hider {
+			 	position: relative;
+			 	text-align: center;
+			 	background: #ffffff;
+			 	width: 30em;
+			 	z-index: 30;
+			 	margin: -12em auto 0 auto;
+			 }
+
+			 
 				
+
 		</style>
 		
 		
 		
 	</head>
+
 
 	<body>
 		
@@ -104,34 +155,71 @@
 				<br><br>
 				</center>
 				<!-- content to be placed inside <body>…</body> -->
-				<div class='circle-container'>
+				<div href="#" class="swipe">
+					
+					<div class='circle-container'>
+						<a href='#' class='deg0' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg");'></a>
+						<a href='#' class='deg45' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-32-d-thumb.jpg");'></a>
+						<a href='#' class='deg90' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2005-37-a-thumb.jpg");'></a>
+						<a href='#' class='deg135' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2010-26-a-thumb.jpg");'></a>
+						<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-27-a-thumb.jpg");'></a>											
+						<a href='#' class='deg225' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1992-17-a-thumb.jpg");'></a>
+						<a href='#' class='deg270' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-32-d-thumb.jpg");'></a>
+						<a href='#' class='deg315' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2005-37-a-thumb.jpg");'></a>											
+					</div>
+
+					
+					<div class='hider'><img src="img/finger_swipe.png"></div>
 					<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
-					<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg")'></a>
-					<a href='#' class='swipe'><img src="img/finger_swipe.png"></a>
 				</div>
+				
 
 			</div>
 			
 			<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+			<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
 			
 			
 			<script>
 			
+				var snd = new Audio("sounds/click.wav"); // buffers automatically when created
+				var clickCount = 0;
+				var toggle = 1;
+			
 				$(function(){
   					//Code..
-  					$(".swipe").on("swipe",function(){
+  					$(".swipe").on("click",function(){
   						rotate();
 					});
 				});
 				
 				function rotate() {
-					$('.deg180').addClass('deg360');					    									  
+					clicky();
+					if (toggle = 1) {
+						$('.circle-container').addClass('circle180');
+						toggle = 0;
+					} else {
+						alert('continue rotating');
+						$('.circle-container').addClass('circle360');
+						toggle = 1;
+					}
+					
+					//for (i=1; i<=12; i++) {
+					//	if (i<=7) {
+					//		$('.deg' + (i * 30).toString()).addClass('deg' + ((i + 6) * 30).toString());
+					//	} else {
+					//		$('.deg' + (i * 30).toString()).addClass('deg' + ((i + 6) * 30).toString());
+					//	}					
+					//}					    									  
 				}
 				
-				function nextNotice()
+				function clicky()
 				{
-					 
-					setTimeout(nextNotice, 100);
+					if (clickCount < 3) {
+						snd.play(); 
+						setTimeout(clicky, 1000);
+						clickCount++;
+					}
 				}
 			</script>
 
