@@ -162,7 +162,7 @@
 						<a href='#' class='deg45' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-32-d-thumb.jpg");'></a>
 						<a href='#' class='deg90' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2005-37-a-thumb.jpg");'></a>
 						<a href='#' class='deg135' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2010-26-a-thumb.jpg");'></a>
-						<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-27-a-thumb.jpg");'></a>											
+						<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-27-a-thumb.jpg");'></a>
 						<a href='#' class='deg225' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1992-17-a-thumb.jpg");'></a>
 						<a href='#' class='deg270' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2004-32-d-thumb.jpg");'></a>
 						<a href='#' class='deg315' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2005-37-a-thumb.jpg");'></a>											
@@ -173,11 +173,18 @@
 					<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
 				</div>
 				
+				<center>
+					<div id="test" style="width: 400px; height: 400px; background: #ffffff; border: 1px #000 solid z-index: 40; margin: 100px;">
+
+					</div>
+				</center>
+				
 
 			</div>
 			
 			<script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
 			<script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+			<script type="text/javascript" src="js/jquery.touchSwipe.min.js"></script>
 			
 			
 			<script>
@@ -188,9 +195,47 @@
 			
 				$(function(){
   					//Code..
-  					$(".swipe").on("click",function(){
-  						rotate();
-					});
+  					$(".swipe").swipe({
+						swipeStatus:function(event, phase, direction, distance, duration, fingers)
+				        {
+          					var str = "<h4>Swipe Phase : " + phase + "<br/>";
+          					str += "Direction from inital touch: " + direction + "<br/>";
+          					str += "Distance from inital touch: " + distance + "<br/>";
+          					str += "Duration of swipe: " + duration + "<br/>";
+          					str += "Fingers used: " + fingers + "<br/></h4>";
+
+          					//Here we can check the:
+          					//phase : 'start', 'move', 'end', 'cancel'
+          					//direction : 'left', 'right', 'up', 'down'
+         					//distance : Distance finger is from initial touch point in px
+          					//duration : Length of swipe in MS 
+          					//fingerCount : the number of fingers used
+          					if (phase!="cancel" && phase!="end") {
+            					if (duration<5000)
+              						str +="Under maxTimeThreshold.<h3>Swipe handler will be triggered if you release at this point.</h3>"
+            					else
+              						str +="Over maxTimeThreshold. <h3>Swipe handler will be canceled if you release at this point.</h3>"
+          
+            					if (distance<200)
+              						str +="Not yet reached threshold.  <h3>Swipe will be canceled if you release at this point.</h3>"
+            					else
+              						str +="Threshold reached <h3>Swipe handler will be triggered if you release at this point.</h3>"
+          					}
+          
+          					if (phase=="cancel")
+            						str +="<br/>Handler not triggered. <br/> One or both of the thresholds was not met "
+          					if (phase=="end")
+            						str +="<br/>Handler was triggered."  
+          
+          					$("#test").html(str);
+        				},
+						threshold:200,
+       					maxTimeThreshold:5000,
+						fingers:'all'
+  					})
+  					//.on("swipe",function(){
+  					//	rotate();
+					//});
 				});
 				
 				function rotate() {
