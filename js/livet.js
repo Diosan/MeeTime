@@ -60,9 +60,9 @@ function meeTime()
     			$('#tour_text').html( lines[tourstep] );
     		});
     		$( "#tour" ).popup();
-        $( "#tour" ).popup( "open" );
+			  $( "#tour" ).popup( "open" );
 			
-			//initiate calendar widget
+			  //initiate calendar widget
 		  	//$("#calendar").jqmCalendar({
 		    //    events: readingsArray,
 		    //    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -97,23 +97,23 @@ function meeTime()
   	
   	$( '#profile_height' ).slider({
     	create: function (event, ui) {
-        $(this).bind( 'change', function () {
-        	//alert($( '#profile_height' ).val());
-				  $('#profile_height_inches').html( cm2inches( $( '#profile_height' ).val() ) );
-        });
+        	$(this).bind( 'change', function () {
+        		//alert($( '#profile_height' ).val());
+				$('#profile_height_inches').html( cm2inches( $( '#profile_height' ).val() ) );
+        	});
     	}
-	  });
+	});
 	
-	  $( '#profile_weight' ).slider({
+	$( '#profile_weight' ).slider({
     	create: function (event, ui) {
         	$(this).bind( 'change', function () {
         		//alert($( '#profile_height' ).val());
-				    $('#profile_weight_pounds').html( kgs2lbs( $( '#profile_weight' ).val() ) );
+				$('#profile_weight_pounds').html( kgs2lbs( $( '#profile_weight' ).val() ) );
         	});
     	}
-	  });
+	});
 	
-	  $("label[for='profile_activity']").qtip({
+	$("label[for='profile_activity']").qtip({
     	content: {
         	text: 'How much excercise do you get ?'
     	},
@@ -125,25 +125,25 @@ function meeTime()
     	style: {
         	classes: 'qtip-green qtip-shadow qtip-meetime'
     	}
-	  });
+	});
 	
-	  //Change content of tour popup to content for next step	
-    $('#next_setupstep').click(function() {
-		  nextSetupStep(); 		
-    });
+	//Change content of tour popup to content for next step	
+  	$('#next_setupstep').click(function() {
+		nextSetupStep(); 		
+  	});
 	
-	  setProfilePic();
+	setProfilePic();
   	
-    reading = { 'summary' : '<center><b>Today<b></center>', 'begin' : new Date(y, m, d), 'end' : new Date(y, m, d) };
-	  readingsArray.push(reading);
-	  reading = { 'summary' : '<center><b>Yesterday<b></center>', 'begin' : new Date(y, m, d - 1), 'end' : new Date(y, m, d - 1) };
-	  readingsArray.push(reading);
-	  reading = { 'summary' : '<center><b>Tomorrow<b></center>', 'begin' : new Date(y, m, d + 1), 'end' : new Date(y, m, d + 1) };
-	  readingsArray.push(reading);
+  	reading = { 'summary' : '<center><b>Today<b></center>', 'begin' : new Date(y, m, d), 'end' : new Date(y, m, d) };
+	readingsArray.push(reading);
+	reading = { 'summary' : '<center><b>Yesterday<b></center>', 'begin' : new Date(y, m, d - 1), 'end' : new Date(y, m, d - 1) };
+	readingsArray.push(reading);
+	reading = { 'summary' : '<center><b>Tomorrow<b></center>', 'begin' : new Date(y, m, d + 1), 'end' : new Date(y, m, d + 1) };
+	readingsArray.push(reading);
 	
-	  $(".swipe").on("swipe",function(){
+	$(".swipe").on("swipe",function(){
   		rotate();
-	  });
+	});
 				
 }
 
@@ -224,8 +224,10 @@ function previousTourStep() {
 }
 
 function nextSetupStep() {
+
 	switch (setupStep) {
 		case 1:
+      //alert('case 1');
 			if ($("#profile_form").valid()) {
 			  //$("#profile_form").validate();
 		    //if($("#profile_form").validate()) {
@@ -233,9 +235,12 @@ function nextSetupStep() {
 		  }			
 		break;
 		case 2:
+      //alert('case 2');
 			gotoCravings();
 		break;
-	}	
+	}
+
+  setupStep++;
 		
 }
 
@@ -261,7 +266,7 @@ function gotoGoals() {
 }
 
 function gotoCravings() {
-  $( "#setup" ).popup( "close" );
+	 $( "#setup" ).popup( "close" );
 }
 
 function water(profile_weight, profile_activity) {
@@ -306,7 +311,7 @@ function onPhotoDataSuccess(imageData) {
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
       profileImage.src = "data:image/jpeg;base64," + imageData;
-	    localStorage.setItem('profilePhoto', "data:image/jpeg;base64," + imageData);
+	  localStorage.setItem('profilePhoto', "data:image/jpeg;base64," + imageData);
 }
 
 // Called when a photo is successfully retrieved
