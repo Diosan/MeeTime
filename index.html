@@ -73,6 +73,39 @@
 				overflow-y: hidden;
 				
 			}
+
+      .home-circle {
+        position: relative;
+        width: 24em;
+        height: 24em;
+        padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
+        border-radius: 50%;
+        margin: 1.75em auto 0;
+      }
+
+      .home-circle:after {
+        position: absolute;
+        top: 2.8em; left: 2.8em;
+        width: 24em; height: 24em;
+        border: dashed 1px;
+        border-radius: 50%;
+        opacity: .3;
+        pointer-events: none;
+        content: '';
+      }
+
+      .home-circle a {
+        display: block;
+        overflow: hidden;
+        position: absolute;
+        top: 41.666666667%; left: 41.666666667%;
+        width: 16.666666667%; height: 16.666666667%;
+        border-radius: 50%;
+        background:#fff;
+        background-size: 50% 50%;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
 			
 			.circle-container {
 				position: relative;
@@ -117,63 +150,103 @@
 				 /* 2em = 4em/2 */ /* half the width */
 			}
 			
-			.deg0 { transform: translate(12em); }
-			
-			.deg180 { 
-				-webkit-transform: rotate(180deg) translate(12em);
-				-webkit-transition: -webkit-transform 2s ease-in-out;
-			 }
+			.deg0 { 
+        transform: translate(12em);
+        -webkit-transform: translate(12em);
+        -webkit-transition: -webkit-transform 2s ease-in-out;
+       }
+      .deg45 { 
+        transform:  rotate(45deg) translate(12em);
+        -webkit-transform:  rotate(45deg) translate(12em);
+        -webkit-transition: -webkit-transform 2s ease-in-out;
+       }
+       .deg90 { 
+        transform: rotate(90deg) translate(12em);
+        -webkit-transform: rotate(90deg) translate(12em);
+        -webkit-transition: -webkit-transform 2s ease-in-out;
+       }
+       .deg135 { 
+        transform: rotate(135deg) translate(12em);
+        -webkit-transform: rotate(135deg) translate(12em);
+        -webkit-transition: -webkit-transform 2s ease-in-out;
+       }
+      .deg180 { 
+        transform: rotate(180deg) translate(12em);
+        -webkit-transform: rotate(180deg) translate(12em);
+        -webkit-transition: -webkit-transform 2s ease-in-out;
+       }
+      .deg225 { 
+        transform: rotate(225deg) translate(12em);
+        -webkit-transform: rotate(225deg) translate(12em);
+        -webkit-transition: -webkit-transform 2s ease-in-out;
+       }
+       .deg270 { 
+        transform: rotate(270deg) translate(12em);
+        -webkit-transform: rotate(270deg) translate(12em);
+        -webkit-transition: -webkit-transform 2s ease-in-out;
+       }
+       .deg315 { 
+        transform: rotate(315deg) translate(12em);
+        -webkit-transform: rotate(315deg) translate(12em);
+        -webkit-transition: -webkit-transform 2s ease-in-out;
+       }
 			 
-			.deg360 { 
-				-webkit-transform: rotate(360deg) translate(12em);
-			 }
-			 
-			 a.swipe { 
-				background: #ffffff;
-				border-top: dashed 1px;
-				width: 100%;
-				top:59%;
-				left: 0;
-				height: 12em;
-				position: absolute;
-				border-radius: 0;
-				z-index: 12; 
-			 } 
+       a.center {
+        display: block;
+        overflow: hidden;
+        position: relative;
+        margin: -20em auto 52em auto;
+        width: 10em; height: 10em;
+        border-radius: 50%;
+        z-index: 33;
+        background:#fff;
+        background-size: 100% 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+         /* 2em = 4em/2 */ /* half the width */
+      }
+
+	   a.swipe { 
+		 background: #ffffff;
+		 border-top: dashed 1px;
+		 width: 100%;
+		 top:59%;
+		 left: 0;
+		 height: 12em;
+		 position: absolute;
+		 border-radius: 0;
+		 z-index: 12; 
+	   } 
         	
         </style>
         <title>MeeTime</title>
     </head>
     <body>
-    	
+
+        
     	
     	 
         <div data-role="page"  id="home">
 	
-  			<div data-role="header" data-position="fixed" data-fullscreen="false">
-  				<img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
-  			</div>
+  			  <div data-role="header" data-position="fixed" data-fullscreen="false">
+  				  <img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
+  			  </div>
   
-  			<div data-role="main" class="ui-content">
+  			  <div data-role="main" class="ui-content">
+
+          
   				
-  				<div style="margin: 200px 15% 0; width: 70%; ">
-  					<div data-role="navbar">
-  					  <ul>
-  					  	<li><a href="#" data-icon="user">Mee</a></li>
-  					  </ul>	
-  					  <ul>
-				        <li><a href="#" data-icon="eye">Goals</a></li>
-				        <li><a href="#" data-icon="heart">Emotions</a></li>
-				     </ul>
-				     <ul>
-				        <li><a href="#" data-icon="forbidden">Cravings</a></li>
-				        <li><a href="#" data-icon="bullets">Readings</a></li>				        
-				     </ul>
-				     <ul>
-				        <li><a href="#calendaring" data-icon="calendar">Calendar</a></li>
-				        <li><a href="#" data-icon="bars">Charts</a></li>
-				      </ul>
-				    </div>  					
-  				</div>
+  				
+
+  				<div class='home-circle'>
+            <a href='#mood' class='deg315' style='background-image: url("images/icons-svg/heart-black.svg");'></a>
+            <a href='#' class='deg225' style='background-image: url("images/icons-svg/calendar-black.svg");'></a>
+            <a href='#' class='deg135' style='background-image: url("images/icons-svg/bullets-black.svg");'></a>
+            <a href='#' class='deg45' style='background-image: url("images/icons-svg/eye-black.svg");'></a>
+          </div>
+
+          <a href='#' id='profileImage' class='center' style='background-image: url("img/avatar.jpg")'></a>  					
+  				
   				
   				
   				<div data-role="popup" id="tour" data-overlay-theme="b" data-dismissible="false" data-history="false" >
@@ -193,8 +266,8 @@
 			        	<a id="skip_tour" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Skip Tour</a>
 			        	<a id="previous_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
 			        	<a id="next_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
-						<a id="get_started" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right" style="display: none;">Get Started</a>
-			     	</center>
+						    <a id="get_started" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right" style="display: none;">Get Started</a>
+			     	  </center>
 			      </div>
   				
   				</div>
@@ -210,12 +283,6 @@
 			      	
 			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 10%; ">
 			           <form id="profile_form">
-			           	
-			           	 <div class='circle-container'>
-							<a href='#' class='center' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-2003-28-a-thumb.jpg")'></a>
-							<a href='#' class='deg180' style='background-image: url("http://imgsrc.hubblesite.org/hu/db/images/hs-1994-02-c-thumb.jpg")'></a>
-							<a href='#' class='swipe'><img src="img/finger_swipe.png"></a>
-						</div>
 						
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
           				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
@@ -269,46 +336,26 @@
   			
         </div>   
         
-        <div data-role="page"  id="mee" >
-	
-  			<div data-role="header" data-position="fixed" data-fullscreen="true">
-  				<img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
-  			</div>
-  			
-  			<div data-role="main" class="ui-content">
-  				<div style="margin: 150px 10% 0; width: 80%; ">
-  				 	<img style="width:150px;height:200px;" id="profileImage" src="img/avatar.jpg" /><br><br>
-  				 	<p id="bmi"></p>
-  				 	<p id="overweight"></p>
-  				 	<p id="water"></p>
-  				</div>				
-  			</div>
-  			
-  			<div data-role="footer" data-position="fixed">
-  				<div data-role="navbar">
-      				<ul>
-      					<li><a href="#home" data-icon="heart"></a></li>
-  					</ul>
-  				</div>    
-   			</div>
-  			
-  		</div>
         
-        <div data-role="page"  id="calendaring" >
-	
-  			<div data-role="header" data-position="fixed" data-fullscreen="true">
-  				<img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
-  			</div>
-  			
-  			<div data-role="main" class="ui-content">  				
-  				<div data-role="content" >
-                	
-    			</div>
-  			</div>
-  			
-    	</div>
+        
     	
-    	
+
+      <div data-role="page" id="mood">
+          <div data-role="header" data-position="fixed" data-fullscreen="false">
+            <img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
+          </div>
+
+          <div data-role="main" class="ui-content">
+
+          </div>
+
+          <div data-role="footer">
+            <center>
+               <a href="#">Epic!</a>
+            </center>
+          </div>          
+
+      </div>
     	
     	
                    
