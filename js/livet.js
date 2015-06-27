@@ -51,8 +51,8 @@ function meeTime()
   		function() 
   		{
     		
-    		pictureSource=navigator.camera.PictureSourceType;
-    		destinationType=navigator.camera.DestinationType;  	
+    		//pictureSource=navigator.camera.PictureSourceType;
+    		//destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
@@ -298,19 +298,20 @@ function onPhotoDataSuccess(imageData) {
 
       // Get image handle
       //
-      var smallImage = document.getElementById('smallImage');
-      var profileImage = document.getElementById('profileImage');
+      //var smallImage = document.getElementById('smallImage');
+      //var profileImage = document.getElementById('profileImage');
       
       // Unhide image elements
       //
-      smallImage.style.display = 'block';
-      profileImage.style.display = 'block';
+      //smallImage.style.display = 'block';
+      //profileImage.style.display = 'block';
       
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
-      profileImage.src = "data:image/jpeg;base64," + imageData;
+      //smallImage.src = "data:image/jpeg;base64," + imageData;
+      //profileImage.src = "data:image/jpeg;base64," + imageData;
+      $('profileImage').css('background-image', 'url(data:image/jpeg;base64,' + imageData + ')');
 	  localStorage.setItem('profilePhoto', "data:image/jpeg;base64," + imageData);
 }
 

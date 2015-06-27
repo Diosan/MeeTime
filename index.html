@@ -87,7 +87,7 @@
         position: absolute;
         top: 2.8em; left: 2.8em;
         width: 24em; height: 24em;
-        border: dashed 1px;
+        border: none;
         border-radius: 50%;
         opacity: .3;
         pointer-events: none;
@@ -105,6 +105,7 @@
         background-size: 50% 50%;
         background-position: center;
         background-repeat: no-repeat;
+        z-index: 50;
       }
 			
 			.circle-container {
@@ -150,7 +151,7 @@
 				 /* 2em = 4em/2 */ /* half the width */
 			}
 			
-			.deg0 { 
+	.deg0 { 
         transform: translate(12em);
         -webkit-transform: translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
@@ -239,10 +240,30 @@
   				
 
   				<div class='home-circle'>
-            <a href='#mood' class='deg315' style='background-image: url("images/icons-svg/heart-black.svg");'></a>
-            <a href='#' class='deg225' style='background-image: url("images/icons-svg/calendar-black.svg");'></a>
-            <a href='#' class='deg135' style='background-image: url("images/icons-svg/bullets-black.svg");'></a>
-            <a href='#' class='deg45' style='background-image: url("images/icons-svg/eye-black.svg");'></a>
+            <a href='#mood' class='deg315' style=''>
+               <img src="images/icons-svg/medical.svg" style="width: 100%; height: 100%; transform: rotate(45deg); -webkit-transform: rotate(45deg);">        	
+            </a>
+            <a href='#' class='deg270' style=''>
+               <img src="images/icons-svg/water.svg" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	
+            </a>            
+            <a href='#' class='deg225' style=''>
+            	<img src="images/icons-svg/food.svg" style="width: 100%; height: 100%; transform: rotate(135deg); -webkit-transform: rotate(135deg);">
+            </a>
+            <a href='#' class='deg180' style=''>
+            	<img src="images/icons-svg/insight.svg" style="width: 100%; height: 100%; transform: rotate(180deg); -webkit-transform: rotate(180deg);">	
+            </a>
+            <a href='#' class='deg135' style=''>
+            	<img src="images/icons-svg/moods.svg" style="width: 100%; height: 100%; transform: rotate(215deg); -webkit-transform: rotate(215deg);">	
+            </a>
+            <a href='#' class='deg90' style=''>
+            	<img src="images/icons-svg/activity.svg" style="width: 100%; height: 100%; transform: rotate(270deg); -webkit-transform: rotate(270deg);">
+            </a>
+            <a href='#' class='deg45' style=''>
+            	<img src="images/icons-svg/sleep.svg" style="width: 100%; height: 100%; transform: rotate(315deg); -webkit-transform: rotate(315deg);">
+            </a>
+            <a href='#' class='deg0' style=''>
+            	<img src="images/icons-svg/weight.svg" style="width: 100%; height: 100%; transform: rotate(360deg); -webkit-transform: rotate(360deg);">
+            </a>
           </div>
 
           <a href='#' id='profileImage' class='center' style='background-image: url("img/avatar.jpg")'></a>  					
@@ -334,6 +355,13 @@
   			
   			</div>
   			
+        	  	
+        	  <div data-role="footer" data-position="fixed">	
+        	  	<center>
+               		<a href="#">Epic!</a>
+              	</center>
+            </div>
+        
         </div>   
         
         
@@ -346,14 +374,31 @@
           </div>
 
           <div data-role="main" class="ui-content">
+          	<div class='home-circle'>
+            <a href='#' class='deg270' style=''>
+               <img src="images/icons-svg/add.svg" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	
+            </a>            
+            <a href='#' class='deg180' style=''>
+            	<img src="images/icons-svg/insight.svg" style="width: 100%; height: 100%; transform: rotate(180deg); -webkit-transform: rotate(180deg);">	
+            </a>
+            <a href='#' class='deg90' style=''>
+            	<img src="images/icons-svg/find.svg" style="width: 100%; height: 100%; transform: rotate(270deg); -webkit-transform: rotate(270deg);">
+            </a>
+            <a href='#' class='deg0' style=''>
+            	<img src="images/icons-svg/calender.svg" style="width: 100%; height: 100%; transform: rotate(360deg); -webkit-transform: rotate(360deg);">
+            </a>
+          </div>
+
+          <a href='#' class='center' style='background-image: url("images/icons-svg/moods.svg")'></a>
 
           </div>
 
-          <div data-role="footer">
-            <center>
+		  <div data-role="footer" data-position="fixed">
+    		<center>
                <a href="#">Epic!</a>
             </center>
-          </div>          
+   		  </div>	
+                    
 
       </div>
     	
@@ -377,6 +422,14 @@
         
         
         <script type="text/javascript">
+        
+        	$('[data-role=footer]').each( function() {
+            	$(this).load("footer.html", function(data, status, xhr){
+            		//alert(status);
+            		$(this).children("[data-role=navbar]").first().navbar();
+            	});
+        	});
+        
             app.initialize();
         </script>
         
