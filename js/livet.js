@@ -17,6 +17,9 @@ var readingsArray = [];
 var pictureSource;   // picture source
 var destinationType; // sets the format of returned value
 var setupStep = 1;
+var snd = new Audio("sounds/click.wav"); // buffers automatically when created
+var clickCount = 0;
+var toggle = 1;
 
 //Catch "deviceready" event which is fired when PhoneGap is ready
 document.addEventListener("deviceReady", deviceReady, false);
@@ -38,8 +41,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(meeTime);
-//$.when(jqmReady).then(meeTime);
+//$.when(gapReady, jqmReady).then(meeTime);
+$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -51,16 +54,18 @@ function meeTime()
   		function() 
   		{
     		
-    		//pictureSource=navigator.camera.PictureSourceType;
-    		//destinationType=navigator.camera.DestinationType;  	
+    		pictureSource=navigator.camera.PictureSourceType;
+    		destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
 				var lines = data.split('\n');
     			$('#tour_text').html( lines[tourstep] );
     		});
+    		//$("#adding").popup();
+    		//$( "#adding" ).popup("open");
     		$( "#tour" ).popup();
-			  $( "#tour" ).popup( "open" );
+			$( "#tour" ).popup("open");
 			
 			  //initiate calendar widget
 		  	//$("#calendar").jqmCalendar({
@@ -141,14 +146,46 @@ function meeTime()
 	reading = { 'summary' : '<center><b>Tomorrow<b></center>', 'begin' : new Date(y, m, d + 1), 'end' : new Date(y, m, d + 1) };
 	readingsArray.push(reading);
 	
-	$(".swipe").on("swipe",function(){
+	$(".swipe").on("click", function(){
+		//alert('so true');
   		rotate();
 	});
+	
+	//$(".swipecenter").on("click", function(){
+	//	alert('so true');
+  		//rotate();
+	//});
 				
 }
 
 function rotate() {
-	$('.deg180').addClass('deg360');					    									  
+	//clicky();
+	if (toggle = 1) {
+						//('rotating');
+						$('.circle-container').addClass('circle180');
+						toggle = 0;
+	} else {
+						//alert('continuing rotating');
+						$('.circle-container').addClass('circle360');
+						toggle = 1;
+	}
+					
+	//for (i=1; i<=12; i++) {
+	//	if (i<=7) {
+	//		$('.deg' + (i * 30).toString()).addClass('deg' + ((i + 6) * 30).toString());
+	//	} else {
+	//		$('.deg' + (i * 30).toString()).addClass('deg' + ((i + 6) * 30).toString());
+	//	}					
+	//}					    									  
+}
+
+function clicky()
+{
+	if (clickCount < 3) {
+		snd.play(); 
+		setTimeout(clicky, 1000);
+		clickCount++;
+	}
 }
 
 function setProfilePic() {
@@ -253,7 +290,7 @@ function gotoGoals() {
 	$('#setup_main').load("goals.html", function(){
       $('#goals_overweight').html($('#overweight').html());
       $('#goals_water').html($('#water').html());
-      $(this).enhanceWithin();
+      $(this).enhanceWithin();      
 	});
 	
 	//if ($("#goals_overweight").length != 0) {
@@ -267,6 +304,7 @@ function gotoGoals() {
 
 function gotoCravings() {
 	 $( "#setup" ).popup( "close" );
+	 
 }
 
 function water(profile_weight, profile_activity) {
@@ -391,6 +429,21 @@ function kgs2lbs(kg) {
 	var pounds = Math.round(parseFloat('2.20462') * parseFloat(kg));
 	pounds += ' pounds';
 	return pounds;
+	
+}
+
+function addMood() {
+	
+	//('hurray!');
+	$( "#adding").popup();
+	$( "#adding").popup("open");
+	
+	//$('#adding').load("add_mood.html", function(){
+	  //alert('yipee!');
+	  
+	  //$(this).popup( "open" );
+      //$(this).enhanceWithin();      
+	//});
 	
 }
 

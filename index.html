@@ -30,249 +30,70 @@
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />        
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.external-png-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons-1.4.5.min.css" />
-        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-png-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-svg-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.5.min.css" />
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.4.5.min.css" />
         <link type="text/css" rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.css" />
         <link rel="stylesheet" type="text/css" href="css/jw-jqm-cal.css" />
+        <link rel="stylesheet" type="text/css" href="css/meetime.css">
         <style>
-        	body {
-        		text-transform: none;
-        	}
-        	
-        	#tour-popup {
-    			width: 80%;
-    			left: 10%;
-    			right: 10%;
-			}
-			
-			#setup-popup {
-    			width: 80%;
-    			left: 10%;
-    			right: 10%;
-			}
-			
-			.qtip-meetime {
-				font-size: 1em;
-				line-height: 1.5em;
-			}
-			
-			label.error { 
-				float: left; 
-				color: red; 
-				padding-top: .5em; 
-				vertical-align: top; 
-				font-weight:bold
-			}
-			
-			#scrollNav ul {
-				width: 500px;
-				overflow-x: scroll;
-				overflow-y: hidden;
-				
-			}
 
-      .home-circle {
-        position: relative;
-        width: 24em;
-        height: 24em;
-        padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
-        border-radius: 50%;
-        margin: 1.75em auto 0;
-      }
-
-      .home-circle:after {
-        position: absolute;
-        top: 2.8em; left: 2.8em;
-        width: 24em; height: 24em;
-        border: none;
-        border-radius: 50%;
-        opacity: .3;
-        pointer-events: none;
-        content: '';
-      }
-
-      .home-circle a {
-        display: block;
-        overflow: hidden;
-        position: absolute;
-        top: 41.666666667%; left: 41.666666667%;
-        width: 16.666666667%; height: 16.666666667%;
-        border-radius: 50%;
-        background:#fff;
-        background-size: 50% 50%;
-        background-position: center;
-        background-repeat: no-repeat;
-        z-index: 50;
-      }
-			
-			.circle-container {
-				position: relative;
-				width: 24em;
-				height: 24em;
-				padding: 2.8em; /*= 2em * 1.4 (2em = half the width of an img, 1.4 = sqrt(2))*/
-				border: dashed 1px;
-				border-top-right-radius: 50%;
-				border-top-left-radius: 50%; 
-				margin: 1.75em auto 0;
-			}
-			
-			/* this is for showing the circle on which the images are placed */
-			.circle-container:after {
-				position: absolute;
-				top: 2.8em; left: 2.8em;
-				width: 24em; height: 24em;
-				border: dashed 1px deeppink;
-				border-radius: 50%;
-				opacity: .3;
-				pointer-events: none;
-				content: '';
-			}
-			
-			.circle-container a {
-				display: block;
-				overflow: hidden;
-				position: absolute;
-				top: 41.666666667%; left: 41.666666667%;
-				width: 16.666666667%; height: 16.666666667%;
-				border-radius: 50%;
-			}
-			
-			.circle-container a.center {
-				display: block;
-				overflow: hidden;
-				position: absolute;
-				top: 35%; left: 35%;
-				width: 30%; height: 30%;
-				border-radius: 50%;
-				z-index: 15;
-				 /* 2em = 4em/2 */ /* half the width */
-			}
-			
-	.deg0 { 
-        transform: translate(12em);
-        -webkit-transform: translate(12em);
-        -webkit-transition: -webkit-transform 2s ease-in-out;
-       }
-      .deg45 { 
-        transform:  rotate(45deg) translate(12em);
-        -webkit-transform:  rotate(45deg) translate(12em);
-        -webkit-transition: -webkit-transform 2s ease-in-out;
-       }
-       .deg90 { 
-        transform: rotate(90deg) translate(12em);
-        -webkit-transform: rotate(90deg) translate(12em);
-        -webkit-transition: -webkit-transform 2s ease-in-out;
-       }
-       .deg135 { 
-        transform: rotate(135deg) translate(12em);
-        -webkit-transform: rotate(135deg) translate(12em);
-        -webkit-transition: -webkit-transform 2s ease-in-out;
-       }
-      .deg180 { 
-        transform: rotate(180deg) translate(12em);
-        -webkit-transform: rotate(180deg) translate(12em);
-        -webkit-transition: -webkit-transform 2s ease-in-out;
-       }
-      .deg225 { 
-        transform: rotate(225deg) translate(12em);
-        -webkit-transform: rotate(225deg) translate(12em);
-        -webkit-transition: -webkit-transform 2s ease-in-out;
-       }
-       .deg270 { 
-        transform: rotate(270deg) translate(12em);
-        -webkit-transform: rotate(270deg) translate(12em);
-        -webkit-transition: -webkit-transform 2s ease-in-out;
-       }
-       .deg315 { 
-        transform: rotate(315deg) translate(12em);
-        -webkit-transform: rotate(315deg) translate(12em);
-        -webkit-transition: -webkit-transform 2s ease-in-out;
-       }
-			 
-       a.center {
-        display: block;
-        overflow: hidden;
-        position: relative;
-        margin: -20em auto 52em auto;
-        width: 10em; height: 10em;
-        border-radius: 50%;
-        z-index: 33;
-        background:#fff;
-        background-size: 100% 100%;
-        background-position: center;
-        background-repeat: no-repeat;
-         /* 2em = 4em/2 */ /* half the width */
-      }
-
-	   a.swipe { 
-		 background: #ffffff;
-		 border-top: dashed 1px;
-		 width: 100%;
-		 top:59%;
-		 left: 0;
-		 height: 12em;
-		 position: absolute;
-		 border-radius: 0;
-		 z-index: 12; 
-	   } 
-        	
         </style>
         <title>MeeTime</title>
     </head>
-    <body>
+    <body class="mtbg">
 
         
     	
     	 
-        <div data-role="page"  id="home">
-	
-  			  <div data-role="header" data-position="fixed" data-fullscreen="false">
-  				  <img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
-  			  </div>
+      <div data-role="page"  id="home">
+      	
+      		 
   
-  			  <div data-role="main" class="ui-content">
-
-          
-  				
-  				
-
+  			  <div data-role="main" class="ui-content hcmain">
+				<div id="wholehome">
+				<img src="img/360.png" style="width: 30%;">
   				<div class='home-circle'>
-            <a href='#mood' class='deg315' style=''>
-               <img src="images/icons-svg/medical.svg" style="width: 100%; height: 100%; transform: rotate(45deg); -webkit-transform: rotate(45deg);">        	
-            </a>
-            <a href='#' class='deg270' style=''>
-               <img src="images/icons-svg/water.svg" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	
-            </a>            
-            <a href='#' class='deg225' style=''>
-            	<img src="images/icons-svg/food.svg" style="width: 100%; height: 100%; transform: rotate(135deg); -webkit-transform: rotate(135deg);">
-            </a>
-            <a href='#' class='deg180' style=''>
-            	<img src="images/icons-svg/insight.svg" style="width: 100%; height: 100%; transform: rotate(180deg); -webkit-transform: rotate(180deg);">	
-            </a>
-            <a href='#' class='deg135' style=''>
-            	<img src="images/icons-svg/moods.svg" style="width: 100%; height: 100%; transform: rotate(215deg); -webkit-transform: rotate(215deg);">	
-            </a>
-            <a href='#' class='deg90' style=''>
-            	<img src="images/icons-svg/activity.svg" style="width: 100%; height: 100%; transform: rotate(270deg); -webkit-transform: rotate(270deg);">
-            </a>
-            <a href='#' class='deg45' style=''>
-            	<img src="images/icons-svg/sleep.svg" style="width: 100%; height: 100%; transform: rotate(315deg); -webkit-transform: rotate(315deg);">
-            </a>
-            <a href='#' class='deg0' style=''>
-            	<img src="images/icons-svg/weight.svg" style="width: 100%; height: 100%; transform: rotate(360deg); -webkit-transform: rotate(360deg);">
-            </a>
-          </div>
-
-          <a href='#' id='profileImage' class='center' style='background-image: url("img/avatar.jpg")'></a>  					
-  				
-  				
+            		<a href='#mood' class='deg337' style=''>
+               			<img src="images/icons-png/medical.png" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">        	
+            		</a>
+            		<a href='#' class='deg293' style=''>
+               			<img src="images/icons-png/water.png" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">        	
+            		</a>            
+            		<a href='#' class='deg247' style=''>
+            			<img src="images/icons-png/food.png" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">
+            		</a>
+            		<a href='#' class='deg203' style=''>
+            			<img src="images/icons-png/insight.png" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">	
+            		</a>
+            		<a href='#' class='deg157' style=''>
+            			<img src="images/icons-png/moods.png" style="width: 100%; height: 100%; transform: rotate(203deg); -webkit-transform: rotate(203deg);">	
+            		</a>
+            		<a href='#' class='deg113' style=''>
+            			<img src="images/icons-png/activity.png" style="width: 100%; height: 100%; transform: rotate(247deg); -webkit-transform: rotate(247deg);">
+            		</a>
+            		<a href='#' class='deg67' style=''>
+            			<img src="images/icons-png/sleep.png" style="width: 100%; height: 100%; transform: rotate(293deg); -webkit-transform: rotate(293deg);">
+            		</a>
+            		<a href='#' class='deg23' style=''>
+            			<img src="images/icons-png/weight.png" style="width: 100%; height: 100%; transform: rotate(337deg); -webkit-transform: rotate(337deg);">
+            		</a>
+          		</div>
+				</div>
+          		<a href='#' id='profileImage' class='center' style='background-image: url("img/avatar.jpg")'></a>  					
+  			    			  
+  			  </div>
+  			  
+  			  <div data-role="footer" data-position="fixed" class="pageFooter">
+    			<center>
+               		<a href="#">Epic!</a>
+            	</center>
+   		  	   </div>  				
   				
   				<div data-role="popup" id="tour" data-overlay-theme="b" data-dismissible="false" data-history="false" >
 			      <div data-role="header">
-			        <h1>Welcome to MeeTime!</h1>
+			        <strong><h1>Welcome to MeeTime!</h1></strong>
 			      </div>
 
 			      <div data-role="main" class="ui-content" style="text-align: center;" >
@@ -283,11 +104,11 @@
 			      </div>
 			      
 			      <div data-role="footer">
-			      	<center>
+			      	  <center>
 			        	<a id="skip_tour" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Skip Tour</a>
 			        	<a id="previous_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
 			        	<a id="next_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
-						    <a id="get_started" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right" style="display: none;">Get Started</a>
+					    <a id="get_started" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right" style="display: none;">Get Started</a>
 			     	  </center>
 			      </div>
   				
@@ -295,8 +116,9 @@
   				
   				
   				<div data-role="popup" id="setup" data-overlay-theme="b" data-dismissible="false" data-history="false" >
+  					
 			      <div id="setup_header" data-role="header">
-			        <h1>Setup Profile</h1>
+			        <strong><h1>Setup Profile</h1></strong>
 			      </div>
 
 				  
@@ -350,32 +172,19 @@
 			      </div>
   				
   				</div>
-  				
-  				
-  			
-  			</div>
-  			
-        	  	
-        	  <div data-role="footer" data-position="fixed">	
-        	  	<center>
-               		<a href="#">Epic!</a>
-              	</center>
-            </div>
+  
         
-        </div>   
-        
-        
+        </div>
         
     	
 
       <div data-role="page" id="mood">
-          <div data-role="header" data-position="fixed" data-fullscreen="false">
-            <img src="icon2.png" style="width: 55px; float:left;display:inline"><p>&nbsp;&nbsp;MeeTime</p>
-          </div>
-
+          
+		  
           <div data-role="main" class="ui-content">
+          	<img src="img/360.png" style="width: 30%; margin-left: 35%; margin-bottom: 50px; margin-top: -50px;">
           	<div class='home-circle'>
-            <a href='#' class='deg270' style=''>
+            <a href='#' onclick='addMood();' class='deg270' style=''>
                <img src="images/icons-svg/add.svg" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	
             </a>            
             <a href='#' class='deg180' style=''>
@@ -392,17 +201,64 @@
           <a href='#' class='center' style='background-image: url("images/icons-svg/moods.svg")'></a>
 
           </div>
+          
+          <div data-role="popup" id="adding" data-overlay-theme="b" data-dismissible="false" data-history="false">
+  					<div id="" data-role="header">
+						<strong><h1>Adding Mood</h1></strong>
+					</div>
 
-		  <div data-role="footer" data-position="fixed">
-    		<center>
-               <a href="#">Epic!</a>
-            </center>
+					<div data-role="main" id="" class="ui-content" style="text-align: center;" >
+
+
+						<div href="#" class="swipe">
+					
+							<div class='circle-container'>
+							<a href='#' class='deg0' style=''>
+								<img src="img/emoticons/PNG/icontexto-emoticons-08-128x128.png" style="width: 100%; height: 100%; transform: rotate(360deg); -webkit-transform: rotate(360deg);">
+							</a>
+							<a href='#' class='deg45' style=''>
+								<img src="img/emoticons/PNG/icontexto-emoticons-07-128x128.png" style="width: 100%; height: 100%; transform: rotate(315deg); -webkit-transform: rotate(350deg);">
+							</a>
+							<a href='#' class='deg90' style=''>
+								<img src="img/emoticons/PNG/icontexto-emoticons-06-128x128.png" style="width: 100%; height: 100%; transform: rotate(270deg); -webkit-transform: rotate(270deg);">
+							</a>
+							<a href='#' class='deg135' style=''>
+								<img src="img/emoticons/PNG/icontexto-emoticons-05-128x128.png" style="width: 100%; height: 100%; transform: rotate(225deg); -webkit-transform: rotate(225deg);">
+							</a>
+							<a href='#' class='deg180' style=''>
+								<img src="img/emoticons/PNG/icontexto-emoticons-04-128x128.png" style="width: 100%; height: 100%; transform: rotate(180deg); -webkit-transform: rotate(180deg);">
+							</a>
+							<a href='#' class='deg225' style=''>
+								<img src="img/emoticons/PNG/icontexto-emoticons-03-128x128.png" style="width: 100%; height: 100%; transform: rotate(135deg); -webkit-transform: rotate(135deg);">
+							</a>
+							<a href='#' class='deg270' style=''>
+               					<img src="img/emoticons/PNG/icontexto-emoticons-02-128x128.png" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	            					
+            				</a>           				
+							<a href='#' class='deg315' style=''>
+								<img src="img/emoticons/PNG/icontexto-emoticons-01-128x128.png" style="width: 100%; height: 100%; transform: rotate(45deg); -webkit-transform: rotate(45deg);">
+							</a>
+																		
+							</div>
+
+					
+							<div class='hider'><img src="img/finger_swipe.png"></div>
+					
+							<a href='#' class='swipecenter' style='background-image: url("img/emoticons/PNG/icontexto-emoticons-01-128x128.png")'></a>
+	
+						</div>
+	
+					</div>
+		  </div>
+		  
+		  <div data-role="footer" data-position="fixed" class="pageFooter">
+    			<center>
+               		<a href="#">Epic!</a>
+            	</center>
    		  </div>	
                     
-
-      </div>
+      	</div>
     	
-    	
+       </div>	
                    
         
         <script type="text/javascript" src="cordova.js"></script>
@@ -423,7 +279,7 @@
         
         <script type="text/javascript">
         
-        	$('[data-role=footer]').each( function() {
+        	$('.pageFooter').each( function() {
             	$(this).load("footer.html", function(data, status, xhr){
             		//alert(status);
             		$(this).children("[data-role=navbar]").first().navbar();
