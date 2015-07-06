@@ -3,6 +3,8 @@
         		font-size: 16px;
         	}
         	
+        	
+        	
         	#tour-popup {
     			width: 80%;
     			left: 10%;
@@ -265,7 +267,8 @@
 			background: #86c440;
 			width: 100%;
 			text-align: center;
-			padding: 0;				
+			padding: 0;
+							
 		}
 		
 		.lifefooter li {
@@ -274,6 +277,27 @@
 			width: 25%;
 			padding-left: 6%;
 			padding-right: 6%;
+			font-size: 16px;
+		}
+		
+		@media screen and (max-width: 480px) {
+    			body {
+        			font-size: 12px;
+    			}
+    			
+    			.lifefooter li {
+    				font-size: 12px;
+    			}
+		}
+		
+		@media screen and (min-width: 1000px) {
+    			body {
+        			font-size: 25px;
+    			}
+    			
+    			.lifefooter li {
+    				font-size: 25px;
+    			}
 		}
 		
 		.ui-page-theme-a .ui-bar-inherit {
