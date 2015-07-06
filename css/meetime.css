@@ -277,7 +277,7 @@
 			width: 25%;
 			padding-left: 6%;
 			padding-right: 6%;
-			font-size: 16px;
+			
 		}
 		
 		@media screen and (max-width: 480px) {
@@ -285,18 +285,16 @@
         			font-size: 12px;
     			}
     			
-    			.lifefooter li {
-    				font-size: 12px;
-    			}
+    			
 		}
 		
-		@media screen and (min-width: 900px) {
+		@media screen and (min-width: 850px) {
     			body {
         			font-size: 25px;
     			}
     			
     			.lifefooter li {
-    				font-size: 100px;
+    				font-size: 45px;
     			}
 		}
 		
