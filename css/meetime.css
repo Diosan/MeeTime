@@ -79,6 +79,7 @@
 				border: dashed 1px;
 				border-radius: 50%;
 				margin: 1.75em auto 0;
+				-webkit-transition: -webkit-transform 2s ease-in-out;
 			}
 			
 			/* this is for showing the circle on which the images are placed */
@@ -195,15 +196,19 @@
 				-webkit-transform: rotate(315deg) translate(12em);
 				-webkit-transition: -webkit-transform 2s ease-in-out;
 			 }
+			 
+	   .circle0 {
+		 -webkit-transform: rotate(0deg);
+		 -webkit-transition: -webkit-transform 2s ease-in-out;		 
+		}
        
        .circle180 {
-		 -webkit-transform: rotate(180deg);
+		 -webkit-transform: rotate(540deg);
 		 -webkit-transition: -webkit-transform 2s ease-in-out;
-		}
+	   }
 		
 		.circle360 {
 		 -webkit-transform: rotate(360deg);
-		 -webkit-transition: -webkit-transform 2s ease-in-out;
 		}
 			 
        a.center {
@@ -225,7 +230,7 @@
         display: block;
         overflow: hidden;
         position: relative;
-        margin: -26em auto 52em auto;
+        margin: -30em auto 20em auto;
         width: 10em; height: 10em;
         border-radius: 50%;
         z-index: 33;
@@ -255,8 +260,10 @@
 			 	text-align: center;
 			 	background: #ffffff;
 			 	width: 30em;
+			 	height: 18em;
 			 	z-index: 30;
-			 	margin: -12em auto 0 auto;
+			 	margin: -15em auto 0 auto;
+			 	padding-top: 10em;
 		}
 		
 		.pageFooter {
@@ -293,9 +300,7 @@
         			font-size: 25px;
     			}
     			
-    			.lifefooter li {
-    				font-size: 45px;
-    			}
+    			
 		}
 		
 		.ui-page-theme-a .ui-bar-inherit {

@@ -20,6 +20,8 @@ var setupStep = 1;
 var snd = new Audio("sounds/click.wav"); // buffers automatically when created
 var clickCount = 0;
 var toggle = 1;
+var currentRotation = 0;
+var swipecount = 0;
 
 //Catch "deviceready" event which is fired when PhoneGap is ready
 document.addEventListener("deviceReady", deviceReady, false);
@@ -41,8 +43,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(meeTime);
-//$.when(jqmReady).then(meeTime);
+//$.when(gapReady, jqmReady).then(meeTime);
+$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -54,8 +56,8 @@ function meeTime()
   		function() 
   		{
     		
-    		pictureSource=navigator.camera.PictureSourceType;
-    		destinationType=navigator.camera.DestinationType;  	
+    		//pictureSource=navigator.camera.PictureSourceType;
+    		//destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
@@ -148,7 +150,12 @@ function meeTime()
 	
 	$(".swipe").on("click", function(){
 		//alert('so true');
-  		rotate();
+		swipecount++;
+  		rotate($(this));
+	});
+	
+	$("#adding").on("popupafterclose",function(){
+		//alert("Dialog closed");
 	});
 	
 	//$(".swipecenter").on("click", function(){
@@ -158,17 +165,57 @@ function meeTime()
 				
 }
 
-function rotate() {
+function rotate(swipe) {
+	
+	swipe.children('.circle-container').each(function( index ) {
+		//alert('successfully detected' );
+	});
+	
+	circle = swipe.children('.circle-container').first();
+	
+	var matrix = circle.css("-webkit-transform") ||
+    circle.css("-moz-transform")    ||
+    circle.css("-ms-transform")     ||
+    circle.css("-o-transform")      ||
+    circle.css("transform");
+    
+    if(matrix !== 'none') {
+    	//alert('Current angle sucessfully detected' + matrix);
+        var values = matrix.split('(')[1].split(')')[0].split(',');
+        var a = values[0];
+        var b = values[1];
+        var angle = Math.round(Math.atan2(b, a) * (180/Math.PI));
+    } else { 
+    	var angle = 0;
+    }
+    
+    //alert('The angle is ' + angle);
+    
+    //alert('Angle was ' + angle );
+    
+    angle = 180 * swipecount;
+    
+    //alert('Angle is ' + angle); 
+	
+	circle.css('-webkit-transform', 'rotate(' + angle.toString() + 'deg)');
+
 	//clicky();
-	if (toggle = 1) {
-						//('rotating');
-						$('.circle-container').addClass('circle180');
-						toggle = 0;
-	} else {
-						//alert('continuing rotating');
-						$('.circle-container').addClass('circle360');
-						toggle = 1;
-	}
+	//if (toggle == 1) {
+	//					//alert('rotating');
+	//					$('.deg0 > img').css('-webkit-transform', 'rotate(180deg)');
+	//					$('.deg180 > img').css('-webkit-transform', 'rotate(0deg)');
+	//					$('.circle-container').removeClass('circle360');
+	//					$('.circle-container').addClass('circle180');						
+	//					toggle = 0;
+	//} else {
+	//					//alert('continuing rotating');
+	//					$('.deg0 > img').css('-webkit-transform', 'rotate(0deg)');
+	//					$('.deg180 > img').css('-webkit-transform', 'rotate(180deg)');
+	//					$('.circle-container').removeClass('circle180');
+	//					$('.circle-container').addClass('circle360');
+	//					//$('.circle-container').addClass('circle0');
+	//					toggle = 1;
+	//}
 					
 	//for (i=1; i<=12; i++) {
 	//	if (i<=7) {
