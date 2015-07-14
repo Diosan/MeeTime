@@ -43,8 +43,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-//$.when(gapReady, jqmReady).then(meeTime);
-$.when(jqmReady).then(meeTime);
+$.when(gapReady, jqmReady).then(meeTime);
+//$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -56,14 +56,18 @@ function meeTime()
   		function() 
   		{
     		
-    		//pictureSource=navigator.camera.PictureSourceType;
-    		//destinationType=navigator.camera.DestinationType;  	
+    		pictureSource=navigator.camera.PictureSourceType;
+    		destinationType=navigator.camera.DestinationType;  	
     		
     		//Initialize and open tour
     		$.get( 'tour.csv', function( data ) {
 				var lines = data.split('\n');
     			$('#tour_text').html( lines[tourstep] );
     		});
+    		
+    		initialOptions('moodRotator');
+    	
+    		
     		//$("#adding").popup();
     		//$( "#adding" ).popup("open");
     		$( "#tour" ).popup();
@@ -148,7 +152,7 @@ function meeTime()
 	reading = { 'summary' : '<center><b>Tomorrow<b></center>', 'begin' : new Date(y, m, d + 1), 'end' : new Date(y, m, d + 1) };
 	readingsArray.push(reading);
 	
-	$(".swipe").on("click", function(){
+	$(".swipe").on("swipe", function(){
 		//alert('so true');
 		swipecount++;
   		rotate($(this));
@@ -350,8 +354,10 @@ function gotoGoals() {
 }
 
 function gotoCravings() {
-	 $( "#setup" ).popup( "close" );
-	 window.scrollTo(0, 0);	 
+	$( "#profile").popup();
+	$( "#setup" ).popup( "close" );
+	$( "#profile").popup("open");
+	 //window.scrollTo(0, 0);	 
 }
 
 function water(profile_weight, profile_activity) {
@@ -494,3 +500,18 @@ function addMood() {
 	
 }
 
+function initialOptions(id) {
+   	
+   var rotator = $('#' + id);
+   var optionAngle = 0;
+   
+   $.get( rotator.data('options'), function( data ) {
+				var lines = data.split('\n');
+				for (i = 0; i < 8; i++) { 
+    				line = lines[i].split(',');
+    				optionAngle = 23 + (i * 45);
+    				rotator.children('.deg' + optionAngle).first().children('img').first().attr('src', line[1]);
+    				//alert( '.deg' + optionAngle + ' count is ' + rotator.children('.deg' + optionAngle).first().children('img').length);
+				}
+   });
+}

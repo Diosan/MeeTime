@@ -17,6 +17,12 @@
     			right: 10%;
 			}
 			
+			#profile-popup {
+				width: 80%;
+				left: 10%;
+				right: 10%;
+			}
+			
 			.qtip-meetime {
 				font-size: 1em;
 				line-height: 1.5em;
@@ -120,7 +126,7 @@
         -webkit-transform:  rotate(23deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
        }
-       .deg67 { 
+       .deg68 { 
         transform: rotate(67deg) translate(12em);
         -webkit-transform: rotate(67deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
@@ -130,7 +136,7 @@
         -webkit-transform: rotate(113deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
        }
-      .deg157 { 
+      .deg158 { 
         transform: rotate(157deg) translate(12em);
         -webkit-transform: rotate(157deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
@@ -140,7 +146,7 @@
         -webkit-transform: rotate(203deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
        }
-       .deg247 { 
+       .deg248 { 
         transform: rotate(247deg) translate(12em);
         -webkit-transform: rotate(247deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
@@ -150,7 +156,7 @@
         -webkit-transform: rotate(293deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
        }
-       .deg337 { 
+       .deg338 { 
         transform: rotate(337deg) translate(12em);
         -webkit-transform: rotate(337deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;

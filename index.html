@@ -55,25 +55,25 @@
 				<div id="wholehome">
 				<img src="img/360.png" style="width: 30%;">
   				<div class='home-circle'>
-            		<a href='#mood' class='deg337' style=''>
+            		<a href='#mood' class='deg338' style=''>
                			<img src="images/icons-png/medical.png" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">        	
             		</a>
             		<a href='#' class='deg293' style=''>
                			<img src="images/icons-png/water.png" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">        	
             		</a>            
-            		<a href='#' class='deg247' style=''>
+            		<a href='#' class='deg248' style=''>
             			<img src="images/icons-png/food.png" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">
             		</a>
             		<a href='#' class='deg203' style=''>
             			<img src="images/icons-png/insight.png" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">	
             		</a>
-            		<a href='#' class='deg157' style=''>
+            		<a href='#' class='deg158' style=''>
             			<img src="images/icons-png/moods.png" style="width: 100%; height: 100%; transform: rotate(203deg); -webkit-transform: rotate(203deg);">	
             		</a>
             		<a href='#' class='deg113' style=''>
             			<img src="images/icons-png/activity.png" style="width: 100%; height: 100%; transform: rotate(247deg); -webkit-transform: rotate(247deg);">
             		</a>
-            		<a href='#' class='deg67' style=''>
+            		<a href='#' class='deg68' style=''>
             			<img src="images/icons-png/sleep.png" style="width: 100%; height: 100%; transform: rotate(293deg); -webkit-transform: rotate(293deg);">
             		</a>
             		<a href='#' class='deg23' style=''>
@@ -89,7 +89,40 @@
     			<center>
                		<a href="#">Epic!</a>
             	</center>
-   		  	   </div>  				
+   		  	   </div>
+   		  	   
+   		  	   <div data-role="popup" id="profile" data-overlay-theme="b" data-dismissible="false" data-history="false" >
+   		  	   	  <div data-role="header">
+			        <strong><h1>MeeTime Profile</h1></strong>
+			      </div>
+			      
+			      <div data-role="main" class="ui-content" style="text-align: center;" >
+			      
+			      <div data-role="tabs" id="tabs">
+  					<div data-role="navbar">
+    					<ul>
+      						<li><a href="#one" data-ajax="false">one</a></li>
+      						<li><a href="#two" data-ajax="false">two</a></li>
+      						<li><a href="ajax-content.html" data-ajax="false">three</a></li>
+    					</ul>
+  					</div>
+  					<div id="one" class="ui-body-d ui-content">
+    					<h1>First tab contents</h1>
+  					</div>
+  					<div id="two">
+    					<ul data-role="listview" data-inset="true">
+        					<li><a href="#">Acura</a></li>
+        					<li><a href="#">Audi</a></li>
+        					<li><a href="#">BMW</a></li>
+        					<li><a href="#">Cadillac</a></li>
+        					<li><a href="#">Ferrari</a></li>
+    					</ul>
+  					</div>
+				  </div>
+				  
+				  </div>
+				  
+   		  	   </div>				
   				
   				<div data-role="popup" id="tour" data-overlay-theme="b" data-dismissible="false" data-history="false" >
 			      <div data-role="header">
@@ -202,6 +235,8 @@
 
           </div>
           
+          
+          
           <div data-role="popup" id="adding" data-overlay-theme="b" data-dismissible="false" data-history="false">
   					<div id="" data-role="header">
 						<strong><h1>Adding Mood</h1></strong>
@@ -214,30 +249,30 @@
 							
 					
 					
-							<div class='circle-container circle0'>
-								<a href='#' id="zeroDegrees" class='deg337' style=''>
-									<img src="img/emoticons/PNG/icontexto-emoticons-08-128x128.png" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
+							<div id='moodRotator' class='circle-container circle0' data-options='moods.csv' >
+								<a href='#' id="zeroDegrees" class='deg338' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
 								</a>
 								<a href='#' class='deg293' style=''>
-									<img src="img/emoticons/PNG/icontexto-emoticons-07-128x128.png" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
 								</a>
-								<a href='#' class='deg247' style=''>
-									<img src="img/emoticons/PNG/icontexto-emoticons-06-128x128.png" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">
+								<a href='#' class='deg248' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">
 								</a>
 								<a href='#' class='deg203' style=''>
-									<img src="img/emoticons/PNG/icontexto-emoticons-05-128x128.png" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
 								</a>
-								<a href='#' class='deg157' style=''>
-									<img src="img/emoticons/PNG/icontexto-emoticons-04-128x128.png" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
+								<a href='#' class='deg158' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
 								</a>
 								<a href='#' class='deg113' style=''>
-									<img src="img/emoticons/PNG/icontexto-emoticons-03-128x128.png" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
 								</a>
-								<a href='#' class='deg67' style=''>
-               						<img src="img/emoticons/PNG/icontexto-emoticons-02-128x128.png" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">        	            					
+								<a href='#' class='deg68' style=''>
+               						<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">        	            					
             					</a>           				
 								<a href='#' class='deg23' style=''>
-									<img src="img/emoticons/PNG/icontexto-emoticons-01-128x128.png" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
 								</a>
 																		
 							</div>
