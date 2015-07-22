@@ -22,6 +22,18 @@ var clickCount = 0;
 var toggle = 1;
 var currentRotation = 0;
 var swipecount = 0;
+var profile = {};
+
+localStorage.removeItem('profile');
+
+
+
+
+String.prototype.capitalizeFirstLetter = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+};
+
+
 
 //Catch "deviceready" event which is fired when PhoneGap is ready
 document.addEventListener("deviceReady", deviceReady, false);
@@ -59,19 +71,29 @@ function meeTime()
     		pictureSource=navigator.camera.PictureSourceType;
     		destinationType=navigator.camera.DestinationType;  	
     		
-    		//Initialize and open tour
-    		$.get( 'tour.csv', function( data ) {
-				var lines = data.split('\n');
-    			$('#tour_text').html( lines[tourstep] );
-    		});
+    		if (localStorage.getItem('profile') === null) {
+				//alert('Profile does not exist...');
+				//Initialize and open tour
+    			$.get( 'tour.csv', function( data ) {
+					var lines = data.split('\n');
+    				$('#tour_text').html( lines[tourstep] );
+    			});
+    			$( "#tour" ).popup();
+				$( "#tour" ).popup("open");
+			} else {
+				//alert('Profile exists...');
+				profile = JSON.parse(localStorage.getItem('profile'));
+			}
+    		
+    		
     		
     		initialOptions('moodRotator');
+    		
     	
     		
     		//$("#adding").popup();
     		//$( "#adding" ).popup("open");
-    		$( "#tour" ).popup();
-			$( "#tour" ).popup("open");
+    		
 			
 			  //initiate calendar widget
 		  	//$("#calendar").jqmCalendar({
@@ -84,7 +106,8 @@ function meeTime()
 		    //$('#calendar').trigger('refresh');			
 			
   		}, 1000);
-  		
+  	
+  	setProfile();	
   		
   	//Change content of tour popup to content for next step	
   	$('#next_tourstep').click(function() {
@@ -334,15 +357,25 @@ function nextSetupStep() {
 
 function gotoGoals() {
 	
-	BMI($('#profile_weight').val(), $('#profile_height').val());
-	water($('#profile_weight').val(), $('#profile_activity').val());
 	$('#setup_header').html('<h1>Health Goals</h1>');
 	
 	$('#setup_main').load("goals.html", function(){
+	  initialOptions('activityRotator');
+	  $(".swipe").on("swipe", function(){
+		//alert('so true');
+		swipecount++;
+  		rotate($(this));
+	  });	
       $('#goals_overweight').html($('#overweight').html());
       $('#goals_water').html($('#water').html());
       $(this).enhanceWithin();      
 	});
+	
+	saveProfile();
+	//setProfile();
+	//BMI($('#profile_weight').val(), $('#profile_height').val());
+	//water($('#profile_weight').val(), $('#profile_activity').val());
+	
 	
 	//if ($("#goals_overweight").length != 0) {
   	//	alert('this record already exists');
@@ -362,29 +395,13 @@ function gotoProfile() {
 
 function closeProfile() {
 	$( "#profile").popup( "close" );
+	//saveProfile();
 	window.scrollTo(0, 0);
 }
 
-function water(profile_weight, profile_activity) {
-  water = Math.round(((parseFloat(profile_weight) * 2.20462) * (2/3)) + parseFloat(profile_activity));
-  //alert(profile_activity);
-  //water = Math.round(((profile_weight * 2.20462) * (2/3)) + profile_activity);
-  $('#water').html('Water Requirement: ' + water + ' Ounces');	
-}
 
-function BMI(profile_weight, profile_height) {
-		
-	var weight = parseFloat(profile_weight);
-	var height = parseFloat(profile_height) / 100;
-	var bmi = ( weight / ( height * height ) );
-	var bmiDifference = bmi - 25;
-	var overweight = Math.round(bmiDifference * (height * height));
-	//alert(bmi * height * height);
-	
-	$('#bmi').html('BMI: ' + Math.round(parseFloat(bmi)));
-	$('#overweight').html('Overweight By: ' + overweight + ' Kg / ' + Math.round(overweight * 2.20462) + ' Pounds');
-	
-}
+
+
 
 // Called when a photo is successfully retrieved
 //
@@ -449,7 +466,7 @@ function onFail(message) {
 // A button will call this function
 function capturePhoto() {
 	
-   alert('Capturing Photos');
+   //alert('Capturing Photos');
    // Take picture using device camera and retrieve image as base64-encoded string
    navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50, destinationType: destinationType.DATA_URL });
 }
@@ -466,8 +483,6 @@ function cm2inches(cm) {
 	var feetHeight = 0;
 	var inchesHeight = 0;
 	var height = '';
-	
-	//alert(cm);
 	
 	inches = parseFloat('0.393700787') * parseFloat(cm);
 	feetHeight = Math.floor(Math.round( inches )/12);
@@ -492,20 +507,14 @@ function kgs2lbs(kg) {
 
 function addMood() {
 	
-	//('hurray!');
 	$( "#adding").popup();
 	$( "#adding").popup("open");
-	
-	//$('#adding').load("add_mood.html", function(){
-	  //alert('yipee!');
-	  
-	  //$(this).popup( "open" );
-      //$(this).enhanceWithin();      
-	//});
 	
 }
 
 function initialOptions(id) {
+	
+  //alert('Count  for ' + id + ' is ' + $('#' + id).length);
    	
    var rotator = $('#' + id);
    var optionAngle = 0;
@@ -516,7 +525,6 @@ function initialOptions(id) {
     				line = lines[i].split(',');
     				optionAngle = 23 + (i * 45);
     				rotator.children('.deg' + optionAngle).first().children('img').first().attr('src', line[1]);
-    				//alert( '.deg' + optionAngle + ' count is ' + rotator.children('.deg' + optionAngle).first().children('img').length);
 				}
    });
 }

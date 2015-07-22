@@ -2,6 +2,7 @@
 			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 0 10%; ">
 
 			        	 <form id="goals_form" >
+			        	 	
 							<label for=profile_breakfast">Breakfast Time:</label>
 	  	  					<input type="text" name="profile_breakfast" id="profile_breakfast" data-role="datebox" data-options='{"mode":"timebox"}'>
 	  	  					<label for=profile_lunch">Lunch Time:</label>
@@ -9,20 +10,47 @@
 	  	  					<label for="profile_dinner">Dinner Time:</label>
 	  	  					<input type="text" name="profile_dinner" id="profile_dinner" data-role="datebox" data-options='{"mode":"timebox"}'>
       	  					<label for="profile_meetime">Mee Time:</label>
-      	  					<div data-role="navbar" id="scrollNav">
-                					<ul>
-                    					<li><a id="icPortfolio" data-icon="user">Profile</a></li>
-                    					<li><a id="icStatus" data-icon="save">Status</a></li>
-                    					<li><a id="icPortfolio" data-icon="user">Profile</a></li>
-                    					<li><a id="icStatus" data-icon="save">Status</a></li>
-                    					<li><a id="icPortfolio" data-icon="user">Profile</a></li>
-                    					<li><a id="icStatus" data-icon="save">Status</a></li>
-                    					<li><a id="icPortfolio" data-icon="user">Profile</a></li>
-                    					<li><a id="icStatus" data-icon="save">Status</a></li>
-                    					<li><a id="icPortfolio" data-icon="user">Profile</a></li>
-                    					<li><a id="icStatus" data-icon="save">Status</a></li>
-                					</ul>
-            				</div>			        	 	
+      	  					
+      	  					<div href="#" class="swipe">
+							
+					
+					
+							<div id='activityRotator' class='circle-container circle0' data-options='activities.csv' >
+								<a href='#' id="zeroDegrees" class='deg338' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
+								</a>
+								<a href='#' class='deg293' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
+								</a>
+								<a href='#' class='deg248' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">
+								</a>
+								<a href='#' class='deg203' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
+								</a>
+								<a href='#' class='deg158' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
+								</a>
+								<a href='#' class='deg113' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
+								</a>
+								<a href='#' class='deg68' style=''>
+               						<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">        	            					
+            					</a>           				
+								<a href='#' class='deg23' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
+								</a>
+																		
+							</div>
+
+					
+							<div class='hider'><img src="img/finger_swipe.png"></div>
+					
+							<a href='#' class='swipecenter' style='background-image: url("images/icons-png/activity.png")'></a><br><br>
+							<a href="#" data-rel="back">Close dialog</a>
+	
+						</div>
+      	  								        	 	
 			        	 </form>
 			        	 
 			        	 

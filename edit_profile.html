@@ -1,0 +1,44 @@
+
+<div data-role="main" id="setup_main" class="ui-content" style="text-align: center;" >
+			      	
+			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 10%; ">
+			           <form id="profile_form">
+						
+			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
+          				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
+          				 <label for="profile_gender">Profile Picture</label>
+          				 <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
+          				 <button onclick="capturePhoto();">Capture Photo</button>
+          				 <button onclick="getPhoto();">From Photo Library</button>
+          				 <label for="profile_gender">Gender</label>
+          				 <select name="profile_gender" id="profile_gender">
+          					<option value="male">Male</option>
+          					<option value="female">Female</option>
+          				 </select>
+          				 <label for="profile_age" title="How much excercise do you get ?">Age:</label>
+      	  				 <input type="range" name="profile_age" id="profile_age" value="50" min="0" max="100">
+      	  				 <label for="profile_activity">Activity Level (Excercise)</label>
+      	  				 <select name="profile_activity" id="profile_activity">
+          					<option value="0">None</option>
+          					<option value="13">Low (30 minutes 3 times a week)</option>
+          					<option value="26">Medium (1 hour 3 times a week)</option>
+          					<option value="42">High (1 hour 5 times a day)</option>
+          				 </select>
+      	  				 <label for="profile_height">Height(cm):</label>
+      	  				 <input type="text" name="profile_height" id="profile_height" value="170" min="100" max="250" data-popup-enabled="true" >
+      	  				 <p id="profile_height_inches">5 feet 7 inches</p>	  	  				 
+	  	  				 <label for="profile_weight">Weight(kg):</label>
+      	  				 <input type="text" name="profile_weight" id="profile_weight" value="82" min="40" max="150" data-popup-enabled="true" >
+      	  				 <p id="profile_weight_pounds">180 pounds</p>
+      	  				 
+      	  				 	
+									
+      	  				 
+      	  				 
+      	  			  </form>
+      	  			  
+			        </div>
+			        
+			      </div>
+			      
+			      

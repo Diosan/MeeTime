@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<!--
+    Copyright (c) 2012-2014 Adobe Systems Incorporated. All rights reserved.
+
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="msapplication-tap-highlight" content="no" />
+        <!-- WARNING: for iOS 7, remove the width=device-width and height=device-height attributes. See https://issues.apache.org/jira/browse/CB-4323 -->
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile-1.4.5.min.css" />        
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.external-png-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.icons-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-png-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.inline-svg-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.structure-1.4.5.min.css" />
+        <link rel="stylesheet" type="text/css" href="css/jquery.mobile.theme-1.4.5.min.css" />
+        <link type="text/css" rel="stylesheet" href="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.css" />
+        <link rel="stylesheet" type="text/css" href="css/jw-jqm-cal.css" />
+        <link rel="stylesheet" type="text/css" href="css/meetime.css">
+        <link rel="stylesheet" type="text/css" href="http://cdn.jtsage.com/datebox/latest/jqm-datebox.min.css">
+        <style>
+
+        </style>
+        <title>MeeTime</title>
+    </head>
+    <body class="mtbg">    	
+
+      <div data-role="page" id="mood">
+          
+		  
+          <div data-role="main" class="ui-content">
+          	<img src="img/360.png" style="width: 30%; margin-left: 35%; margin-bottom: 50px; margin-top: -50px;">
+          	<div class='home-circle'>
+            	<a href='#' onclick='addMood();' class='deg270' style=''>
+               		<img src="images/icons-svg/add.svg" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	
+            	</a>            
+            	<a href='#' class='deg180' style=''>
+            		<img src="images/icons-svg/insight.svg" style="width: 100%; height: 100%; transform: rotate(180deg); -webkit-transform: rotate(180deg);">	
+            	</a>
+            	<a href='#' class='deg90' style=''>
+            		<img src="images/icons-svg/find.svg" style="width: 100%; height: 100%; transform: rotate(270deg); -webkit-transform: rotate(270deg);">
+            	</a>
+            	<a href='#' class='deg0' style=''>
+            		<img src="images/icons-svg/calender.svg" style="width: 100%; height: 100%; transform: rotate(360deg); -webkit-transform: rotate(360deg);">
+            	</a>
+            </div>
+
+          	<a href='#' class='center' style='background-image: url("images/icons-svg/moods.svg")'></a>
+
+          </div>
+          
+          
+          
+          <div data-role="popup" id="adding" data-overlay-theme="b" data-dismissible="false" data-history="false">
+  					<div id="" data-role="header">
+						<strong><h1>Adding Mood</h1></strong>
+					</div>
+
+					<div data-role="main" id="" class="ui-content" style="text-align: center;" >
+
+
+						<div href="#" class="swipe">
+							
+					
+					
+							<div id='moodRotator' class='circle-container circle0' data-options='moods.csv' >
+								<a href='#' id="zeroDegrees" class='deg338' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
+								</a>
+								<a href='#' class='deg293' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
+								</a>
+								<a href='#' class='deg248' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">
+								</a>
+								<a href='#' class='deg203' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
+								</a>
+								<a href='#' class='deg158' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
+								</a>
+								<a href='#' class='deg113' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
+								</a>
+								<a href='#' class='deg68' style=''>
+               						<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">        	            					
+            					</a>           				
+								<a href='#' class='deg23' style=''>
+									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
+								</a>
+																		
+							</div>
+
+					
+							<div class='hider'><img src="img/finger_swipe.png"></div>
+					
+							<a href='#' class='swipecenter' style='background-image: url("img/emoticons/PNG/icontexto-emoticons-01-128x128.png")'></a><br><br>
+							<a href="#" data-rel="back">Close dialog</a>
+	
+						</div>
+	
+					</div>
+		  </div>
+		  
+		  <div data-role="footer" data-position="fixed" class="pageFooter">
+    			<center>
+               		<a href="#">Epic!</a>
+            	</center>
+   		  </div>	
+                    
+      	</div>
+    	
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+        <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+        <!-- Include either the minifed or production version, NOT both!! -->
+		    <script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
+		    <!-- Optional: imagesLoaded script to better support images inside your tooltips -->
+		    <script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.imagesloaded.pkg.min.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/data.js"></script>
+        <script type="text/javascript" src="js/livet.js"></script>
+        <script type="text/javascript" src="js/moods.js"></script>
+        <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
+        <script type="text/javascript" src="js/jw-jqm-cal.js"></script>
+        
+        
+        
+        
+        
+        <script type="text/javascript">
+        
+        	alert('in file javascript detected');
+        
+        	$('.pageFooter').each( function() {
+            	$(this).load("footer.html", function(data, status, xhr){
+            		//alert(status);
+            		$(this).children("[data-role=navbar]").first().navbar();
+            	});
+        	});
+        
+            
+        </script>
+        
+    </body>
+    
+</html>       	
+                   

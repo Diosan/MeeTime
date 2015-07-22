@@ -55,7 +55,7 @@
 				<div id="wholehome">
 				<img src="img/360.png" style="width: 30%;">
   				<div class='home-circle'>
-            		<a href='#mood' class='deg338' style=''>
+            		<a href='#' class='deg338' style=''>
                			<img src="images/icons-png/medical.png" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">        	
             		</a>
             		<a href='#' class='deg293' style=''>
@@ -67,7 +67,7 @@
             		<a href='#' class='deg203' style=''>
             			<img src="images/icons-png/insight.png" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">	
             		</a>
-            		<a href='#' class='deg158' style=''>
+            		<a href='#moods' class='deg158' style=''>
             			<img src="images/icons-png/moods.png" style="width: 100%; height: 100%; transform: rotate(203deg); -webkit-transform: rotate(203deg);">	
             		</a>
             		<a href='#' class='deg113' style=''>
@@ -81,7 +81,7 @@
             		</a>
           		</div>
 				</div>
-          		<a href='#' id='profileImage' class='center' style='background-image: url("img/avatar.jpg")'></a>  					
+          		<a href='#' id='profileImage' class='center profileImage' style='background-image: url("img/avatar.jpg")'></a>  					
   			    			  
   			  </div>
   			  
@@ -98,35 +98,45 @@
 			      
 			      <div data-role="main" class="ui-content" style="text-align: center;" >
 			      
-			      <div data-role="tabs" id="tabs">
-  					<div data-role="navbar">
-    					<ul>
-      						<li><a href="#one" data-ajax="false">one</a></li>
-      						<li><a href="#two" data-ajax="false">two</a></li>
-      						<li><a href="ajax-content.html" data-ajax="false">three</a></li>
-    					</ul>
-  					</div>
-  					<div id="one" class="ui-body-d ui-content">
-    					<h1>First tab contents</h1>
-  					</div>
-  					<div id="two">
-    					<ul data-role="listview" data-inset="true">
-        					<li><a href="#">Acura</a></li>
-        					<li><a href="#">Audi</a></li>
-        					<li><a href="#">BMW</a></li>
-        					<li><a href="#">Cadillac</a></li>
-        					<li><a href="#">Ferrari</a></li>
-    					</ul>
-  					</div>
-				  </div>
-				  
-				  </div>
-				  
-				  <div data-role="footer">
+			      	 <div data-role="tabs" id="profile_tabs">
+			      	 	<div data-role="navbar">
+    						<ul>
+      							<li><a href="#myprofile" data-ajax="false">Profile</a></li>
+      							<li><a href="#mygoals" data-ajax="false">Goals</a></li>
+      							<li><a href="#myday" data-ajax="false">My Day</a></li>
+    						</ul>
+  						</div>
+  						<div id="myprofile" class="ui-body-d ui-content" style="overflow-y: hidden;">
+  							 <div style="float:left; margin: 7.5%; width: 30%;">
+  							 	<img src='img/avatar.jpg' style="100%;">
+  							 </div>
+  							 <div style="float:left; margin: 7.5%; width: 40%; text-align: left;">
+  							 	<p class="profileName" style="clear:none;"></p>
+  							 	<p class="profileBMI" style="clear:none;"></p>
+	    						<p class="overweight" style="clear:none;"></p>
+								<p class="water" style="clear:none;"></p>
+  							 </div>
+  						</div>
+  						<div id="mygoals" class="ui-body-d ui-content">
+    						<ul data-role="listview" data-inset="true">
+        						<li><a href="#">Acura</a></li>
+        						<li><a href="#">Audi</a></li>
+        						<li><a href="#">BMW</a></li>
+        						<li><a href="#">Cadillac</a></li>
+        						<li><a href="#">Ferrari</a></li>
+    						</ul>
+  						</div>
+  						<div id="myday" class="ui-body-d ui-content">
+  						</div>
+			      	 </div>
+  					
+				   </div>
+				   
+				   <div data-role="footer">
 			      	  <center>
-			        	<a id="close_profile" onclick="closeProfile();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Close</a>
-			     	  </center>
-			      </div>
+			        	<a onclick="closeProfile();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Close</a>
+			          </center>
+			       </div>	
 				  
    		  	   </div>				
   				
@@ -169,6 +179,7 @@
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
           				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
           				 <label for="profile_gender">Profile Picture</label>
+          				 <input type="date" name="profile_dob" id="profile_dob" >
           				 <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
           				 <button onclick="capturePhoto();">Capture Photo</button>
           				 <button onclick="getPhoto();">From Photo Library</button>
@@ -215,29 +226,28 @@
         
         </div>
         
-    	
-
-      <div data-role="page" id="mood">
+        
+      <div data-role="page" id="moods">
           
 		  
           <div data-role="main" class="ui-content">
           	<img src="img/360.png" style="width: 30%; margin-left: 35%; margin-bottom: 50px; margin-top: -50px;">
           	<div class='home-circle'>
-            <a href='#' onclick='addMood();' class='deg270' style=''>
-               <img src="images/icons-svg/add.svg" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	
-            </a>            
-            <a href='#' class='deg180' style=''>
-            	<img src="images/icons-svg/insight.svg" style="width: 100%; height: 100%; transform: rotate(180deg); -webkit-transform: rotate(180deg);">	
-            </a>
-            <a href='#' class='deg90' style=''>
-            	<img src="images/icons-svg/find.svg" style="width: 100%; height: 100%; transform: rotate(270deg); -webkit-transform: rotate(270deg);">
-            </a>
-            <a href='#' class='deg0' style=''>
-            	<img src="images/icons-svg/calender.svg" style="width: 100%; height: 100%; transform: rotate(360deg); -webkit-transform: rotate(360deg);">
-            </a>
-          </div>
+            	<a href='#' onclick='addMood();' class='deg270' style=''>
+               		<img src="images/icons-svg/add.svg" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	
+            	</a>            
+            	<a href='#' class='deg180' style=''>
+            		<img src="images/icons-svg/insight.svg" style="width: 100%; height: 100%; transform: rotate(180deg); -webkit-transform: rotate(180deg);">	
+            	</a>
+            	<a href='#' class='deg90' style=''>
+            		<img src="images/icons-svg/find.svg" style="width: 100%; height: 100%; transform: rotate(270deg); -webkit-transform: rotate(270deg);">
+            	</a>
+            	<a href='#' class='deg0' style=''>
+            		<img src="images/icons-svg/calender.svg" style="width: 100%; height: 100%; transform: rotate(360deg); -webkit-transform: rotate(360deg);">
+            	</a>
+            </div>
 
-          <a href='#' class='center' style='background-image: url("images/icons-svg/moods.svg")'></a>
+          	<a href='#' class='center' style='background-image: url("images/icons-svg/moods.svg")'></a>
 
           </div>
           
@@ -302,8 +312,9 @@
                     
       	</div>
     	
-       </div>	
-                   
+
+        
+        
         
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
@@ -313,9 +324,11 @@
 		    <!-- Optional: imagesLoaded script to better support images inside your tooltips -->
 		    <script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.imagesloaded.pkg.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript" src="js/data.js"></script>
         <script type="text/javascript" src="js/livet.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="js/jw-jqm-cal.js"></script>
+        
         
         
         
