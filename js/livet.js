@@ -23,6 +23,10 @@ var toggle = 1;
 var currentRotation = 0;
 var swipecount = 0;
 var profile = {};
+var options = {
+    date: new Date(),
+    mode: 'date'
+};
 
 localStorage.removeItem('profile');
 
@@ -37,6 +41,16 @@ String.prototype.capitalizeFirstLetter = function() {
 
 //Catch "deviceready" event which is fired when PhoneGap is ready
 document.addEventListener("deviceReady", deviceReady, false);
+
+
+function onDateSuccess(date) {
+    alert('Selected date: ' + date);
+}
+
+function onDateError(error) { // Android only
+    alert('Error: ' + error);
+}
+
 
 //Resolve gapReady in reponse to deviceReady event
 function deviceReady()
