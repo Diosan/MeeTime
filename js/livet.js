@@ -23,10 +23,10 @@ var toggle = 1;
 var currentRotation = 0;
 var swipecount = 0;
 var profile = {};
-var options = {
-    date: new Date(),
-    mode: 'date'
-};
+//var options = {
+//    date: new Date(),
+//    mode: 'date'
+//};
 
 localStorage.removeItem('profile');
 
@@ -103,7 +103,7 @@ function meeTime()
     		
     		initialOptions('moodRotator');
     		
-    	
+    		
     		
     		//$("#adding").popup();
     		//$( "#adding" ).popup("open");
@@ -203,6 +203,8 @@ function meeTime()
 	//	alert('so true');
   		//rotate();
 	//});
+	
+
 				
 }
 
@@ -308,6 +310,8 @@ function openSetup() {
 	$( "#tour" ).popup( "close" );
 	$( "#setup" ).popup();
 	$( "#setup" ).popup( "open" );
+	$('.ydob').on( 'change', function(event) {	setDaysByYear($(this)); } );
+	$('.mdob').on( 'change', function(event) {	setDaysByMonth($(this)); } );	
 }
 
 //Change content of tour popup to content for next step and adjust buttons as necessary
@@ -375,7 +379,7 @@ function gotoGoals() {
 	
 	$('#setup_main').load("goals.html", function(){
 	  initialOptions('activityRotator');
-	  $(".swipe").on("swipe", function(){
+	  $(".swipe").on("swiperight", function(){
 		//alert('so true');
 		swipecount++;
   		rotate($(this));
@@ -542,3 +546,26 @@ function initialOptions(id) {
 				}
    });
 }
+
+function setDaysByMonth() {
+	//alert('Setting days by month');
+}
+
+function setDaysByYear(year) {
+	//alert('Setting days by year');
+	alert(year.parent().siblings().length);
+	//each(function () {
+    //	alert($(this).attr('id')); // "this" is the current element in the loop
+	//});
+	//alert('Month is ' + year.parent().children().first);
+	//daysInMonth(year.siblings('.mdob').first().val(), year.val());
+	//);
+}
+
+
+
+function daysInMonth(month,year) {
+	var dd = new Date(year, month, 0);
+	return dd.getDate();
+}
+

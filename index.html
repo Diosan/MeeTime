@@ -180,18 +180,50 @@
           				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
           				 <label for="profile_gender">Profile Picture</label>
           				 <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
+          				 <!--
           				 <button onclick="datePicker.show(options, onDateSuccess, onDateError);">Capture Photo</button>
+          				 -->
           				 <button onclick="capturePhoto();">Capture Photo</button>
           				 <button onclick="getPhoto();">From Photo Library</button>
-          				 <label for="profile_dob">Date Of Birth</label>
-          				 <input type="date" name="profile_dob" id="profile_dob" >
+          				 
+          				 <br>
+          				 <div style="border: 1px solid #aaa; padding: 30px; border-radius: 10px;">
+          				 	
+          				 	<label for="profile_dob" id="profile_ldob" >Date Of Birth</label>
+          				 	
+          				 	<input type="range" name="profile_ydob" id="profile_ydob" value="1979" min="1900" max="2010" class="ydob">
+          				 	
+          				 	<select name="profile_mdob" id="profile_mdob" class="mdob" >
+          							<option value="01">January</option>
+          							<option value="02">February</option>
+          							<option value="03">March</option>
+          							<option value="04">April</option>
+          							<option value="05">May</option>
+          							<option value="06">June</option>
+          							<option value="07">July</option>
+          							<option value="08">August</option>
+          							<option value="09">September</option>
+          							<option value="10">October</option>
+          							<option value="11">November</option>
+          							<option value="12">December</option>
+          				 	</select>
+          				 
+          				 	<input type="range" name="profile_ddob" id="profile_ddob" value="35" min="9" max="110" class="ddob" >
+          				 	<input type="range" name="profile_test" id="profile_test" value="35" min="9" max="110" class="tdob" >
+          				 
+          				 </div>
+          				 <br>
+          				 
           				 <label for="profile_gender">Gender</label>
           				 <select name="profile_gender" id="profile_gender">
           					<option value="male">Male</option>
           					<option value="female">Female</option>
           				 </select>
-          				 <label for="profile_age" title="How much excercise do you get ?">Age:</label>
-      	  				 <input type="range" name="profile_age" id="profile_age" value="50" min="0" max="100">
+          				 
+      	  				 
+      	  				 	
+      	  				 
+      	  				 
       	  				 <label for="profile_activity">Activity Level (Excercise)</label>
       	  				 <select name="profile_activity" id="profile_activity">
           					<option value="0">None</option>
@@ -322,14 +354,15 @@
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
         <!-- Include either the minifed or production version, NOT both!! -->
-		    <script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
-		    <!-- Optional: imagesLoaded script to better support images inside your tooltips -->
-		    <script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.imagesloaded.pkg.min.js"></script>
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.qtip.min.js"></script>
+		<!-- Optional: imagesLoaded script to better support images inside your tooltips -->
+		<script type="text/javascript" src="http://cdn.jsdelivr.net/qtip2/2.2.1/jquery.imagesloaded.pkg.min.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/data.js"></script>
         <script type="text/javascript" src="js/livet.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="js/jw-jqm-cal.js"></script>
+        
         
         
         
