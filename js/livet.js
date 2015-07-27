@@ -189,9 +189,15 @@ function meeTime()
 	reading = { 'summary' : '<center><b>Tomorrow<b></center>', 'begin' : new Date(y, m, d + 1), 'end' : new Date(y, m, d + 1) };
 	readingsArray.push(reading);
 	
-	$(".swipe").on("swipe", function(){
+	$(".swipe").on("swiperight", function(){
 		//alert('so true');
 		swipecount++;
+  		rotate($(this));
+	});
+	
+	$(".swipe").on("swipeleft", function(){
+		//alert('so true');
+		swipecount--;
   		rotate($(this));
 	});
 	
@@ -243,31 +249,10 @@ function rotate(swipe) {
 	circle.css('-webkit-transform', 'rotate(' + angle.toString() + 'deg)');
 
 	//clicky();
-	//if (toggle == 1) {
-	//					//alert('rotating');
-	//					$('.deg0 > img').css('-webkit-transform', 'rotate(180deg)');
-	//					$('.deg180 > img').css('-webkit-transform', 'rotate(0deg)');
-	//					$('.circle-container').removeClass('circle360');
-	//					$('.circle-container').addClass('circle180');						
-	//					toggle = 0;
-	//} else {
-	//					//alert('continuing rotating');
-	//					$('.deg0 > img').css('-webkit-transform', 'rotate(0deg)');
-	//					$('.deg180 > img').css('-webkit-transform', 'rotate(180deg)');
-	//					$('.circle-container').removeClass('circle180');
-	//					$('.circle-container').addClass('circle360');
-	//					//$('.circle-container').addClass('circle0');
-	//					toggle = 1;
-	//}
-					
-	//for (i=1; i<=12; i++) {
-	//	if (i<=7) {
-	//		$('.deg' + (i * 30).toString()).addClass('deg' + ((i + 6) * 30).toString());
-	//	} else {
-	//		$('.deg' + (i * 30).toString()).addClass('deg' + ((i + 6) * 30).toString());
-	//	}					
-	//}					    									  
+						    									  
 }
+
+
 
 function clicky()
 {
@@ -382,6 +367,11 @@ function gotoGoals() {
 	  $(".swipe").on("swiperight", function(){
 		//alert('so true');
 		swipecount++;
+  		rotate($(this));
+	  });
+	  $(".swipe").on("swipeleft", function(){
+		//alert('so true');
+		swipecount--;
   		rotate($(this));
 	  });	
       $('#goals_overweight').html($('#overweight').html());
