@@ -414,10 +414,14 @@ function gotoGoals() {
 	  });	
       $('#goals_overweight').html($('#overweight').html());
       $('#goals_water').html($('#water').html());
-      $(this).enhanceWithin();      
+      $(this).enhanceWithin();
+      window.scrollTo(0, 0);      
 	});
 	
 	saveProfile();
+	
+	
+	
 	//setProfile();
 	//BMI($('#profile_weight').val(), $('#profile_height').val());
 	//water($('#profile_weight').val(), $('#profile_activity').val());
