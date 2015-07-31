@@ -82,13 +82,13 @@ function meeTime()
   		function() 
   		{
     		
-    		alert('MeeTime init');
+    		//alert('MeeTime init');
     		
     		pictureSource=navigator.camera.PictureSourceType;
     		destinationType=navigator.camera.DestinationType;  	
     		
     		if (localStorage.getItem('profile') === null) {
-				//alert('Profile does not exist...');
+				alert('Profile does not exist...');
 				//Initialize and open tour
     			$.get( 'tour.csv', function( data ) {
 					var lines = data.split('\n');
@@ -97,7 +97,7 @@ function meeTime()
     			$( "#tour" ).popup();
 				$( "#tour" ).popup("open");
 			} else {
-				//alert('Profile exists...');
+				alert('Profile exists...');
 				profile = JSON.parse(localStorage.getItem('profile'));
 			}
     		
@@ -529,9 +529,9 @@ function capturePhoto() {
 }
 function getPhoto() {
     // Retrieve image file location from specified source
-    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-    destinationType: destinationType.FILE_URI,
-    sourceType: pictureSource.PHOTOLIBRARY});
+    //navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+    //destinationType: destinationType.FILE_URI,
+    //sourceType: pictureSource.PHOTOLIBRARY});
 }
 
 function cm2inches(cm) {
