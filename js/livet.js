@@ -529,9 +529,9 @@ function capturePhoto() {
 }
 function getPhoto() {
     // Retrieve image file location from specified source
-    //navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-    //destinationType: destinationType.FILE_URI,
-    //sourceType: pictureSource.PHOTOLIBRARY});
+    navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
+    destinationType: destinationType.FILE_URI,
+    sourceType: pictureSource.PHOTOLIBRARY});
 }
 
 function cm2inches(cm) {
