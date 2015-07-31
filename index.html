@@ -51,12 +51,13 @@
       	
       		 
   
-  			  <div data-role="main" class="ui-content hcmain">
+  			  <div data-role="main" class="ui-content hcmain" style="text-align: center;">
+  			  	<img src="img/360.png" style="width: 30%;">
 				<div id="wholehome">
-				<img src="img/360.png" style="width: 30%;">
-  				<div class='home-circle'>
+				<div class='home-circle'>
             		<a href='#' class='deg338' style=''>
-               			<img src="images/icons-png/medical.png" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">        	
+               			<img src="images/icons-png/medical.png" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
+               			<p style="z-index: 5000; margin-top: -20px; transform: rotate(23deg); -webkit-transform: rotate(23deg);" >Medical</p>        	
             		</a>
             		<a href='#' class='deg293' style=''>
                			<img src="images/icons-png/water.png" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">        	
@@ -114,7 +115,7 @@
   							 	<p class="profileName" style="clear:none;"></p>
   							 	<p class="profileBMI" style="clear:none;"></p>
 	    						<p class="overweight" style="clear:none;"></p>
-								<p class="water" style="clear:none;"></p>
+								<p class="profileWater" style="clear:none;"></p>
   							 </div>
   						</div>
   						<div id="mygoals" class="ui-body-d ui-content">
@@ -179,7 +180,7 @@
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
           				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
           				 <label for="profile_gender">Profile Picture</label>
-          				 <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
+          				 <div style="display:none;width:100px;height:100px;" class="smallProfileImage"></div>
           				 <!--
           				 <button onclick="datePicker.show(options, onDateSuccess, onDateError);">Capture Photo</button>
           				 -->
@@ -250,7 +251,7 @@
 			      
 			      <div data-role="footer">
 			      	<center>
-			        	<a id="previous_setupstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
+			        	<a id="previous_setupstep" onclick="previousSetupStep();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
 			        	<a href="#" onclick="nextSetupStep();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
 			     	</center>
 			      </div>

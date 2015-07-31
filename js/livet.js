@@ -82,8 +82,8 @@ function meeTime()
   		function() 
   		{
     		
-    		//pictureSource=navigator.camera.PictureSourceType;
-    		//destinationType=navigator.camera.DestinationType;  	
+    		pictureSource=navigator.camera.PictureSourceType;
+    		destinationType=navigator.camera.DestinationType;  	
     		
     		if (localStorage.getItem('profile') === null) {
 				//alert('Profile does not exist...');
@@ -266,9 +266,9 @@ function clicky()
 function setProfilePic() {
 	  // Get image handle
       //
-      var smallImage = document.getElementById('smallImage');
-      var profileImage = document.getElementById('profileImage');
-      var imageURI = '';
+      //var smallImage = document.getElementById('smallImage');
+      //var profileImage = document.getElementById('profileImage');
+      //var imageURI = '';
       
       if (localStorage.getItem('profilePhoto') == null) {
       		imageURI = 'img/avatar.jpg';
@@ -278,14 +278,18 @@ function setProfilePic() {
       
       // Unhide image elements
       //
-      smallImage.style.display = 'block';
-      profileImage.style.display = 'block';
+      //smallImage.style.display = 'block';
+      //profileImage.style.display = 'block';
 
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
-      smallImage.src = imageURI;
-      profileImage.src = imageURI;
+      //smallImage.src = imageURI;
+      //profileImage.src = imageURI;
+      
+      $('.smallProfileImage').show();
+      $('.smallProfileImage').css('background-image', 'url(' + imageURI + ')');
+      $('.profileImage').css('background-image', 'url(' + imageURI + ')');            
 	
 }
 
@@ -294,9 +298,11 @@ function setProfilePic() {
 function openSetup() {
 	$( "#tour" ).popup( "close" );
 	$( "#setup" ).popup();
+	$('#setup_main').load("edit_profile.html", function() { $(this).enhanceWithin(); } );
 	$( "#setup" ).popup( "open" );
-	$('.ydob').on( 'change', function(event) {	setDaysByYear($(this)); } );
-	$('.mdob').on( 'change', function(event) {	setDaysByMonth($(this)); } );	
+	$('.dDOB').on( 'change', function(event) {  setDOBByDay($(this)); });
+	$('.yDOB').on( 'change', function(event) {	setDaysByYear($(this)); } );
+	$('.mDOB').on( 'change', function(event) {	setDaysByMonth($(this)); } );	
 }
 
 //Change content of tour popup to content for next step and adjust buttons as necessary
@@ -341,28 +347,52 @@ function nextSetupStep() {
 
 	switch (setupStep) {
 		case 1:
-      //alert('case 1');
+      		//alert('case 1');
 			if ($("#profile_form").valid()) {
 			  //$("#profile_form").validate();
-		    //if($("#profile_form").validate()) {
-		    gotoGoals();	
-		  }			
+		      //if($("#profile_form").validate()) {	
+		      gotoGoals();
+		      setupStep++;	
+		    }			
 		break;
 		case 2:
-        //alert('case 2');
+        	//alert('case 2');
+        	
 			gotoProfile();
+			setupStep++;
 		break;
 	}
 
-  setupStep++;
+  //setupStep++;
 		
 }
+
+
+function previousSetupStep() {
+
+	switch (setupStep) {
+		case 2:
+			//alert('Case 2');        	
+			gotoSetupProfile();
+			setupStep--;
+		break;
+	}
+
+  //setupStep++;
+		
+}
+
+
+
 
 function gotoGoals() {
 	
 	$('#setup_header').html('<h1>Health Goals</h1>');
 	
 	$('#setup_main').load("goals.html", function(){
+		
+	  $('#previous_setupstep').show();
+		
 	  initialOptions('activityRotator');
 	  $(".swipe").on("swiperight", function(){
 		//alert('so true');
@@ -396,9 +426,18 @@ function gotoGoals() {
 
 function gotoProfile() {
 	$( "#profile").popup();
+	
 	$( "#setup" ).popup( "close" );
 	$( "#profile").popup("open");
 	 	 
+}
+
+function gotoSetupProfile() {
+	//alert('Setting up profile');
+	$('#setup_main').load("edit_profile.html", function() {
+		$('#setup_header').html('Setup Profile');
+		$(this).enhanceWithin();
+	});
 }
 
 function closeProfile() {
@@ -432,8 +471,13 @@ function onPhotoDataSuccess(imageData) {
       //
       //smallImage.src = "data:image/jpeg;base64," + imageData;
       //profileImage.src = "data:image/jpeg;base64," + imageData;
-      $('profileImage').css('background-image', 'url(data:image/jpeg;base64,' + imageData + ')');
+      
+      $('.smallProfileImage').show();
+      
+      $('.smallProfileImage').css('background-image', 'url(data:image/jpeg;base64,' + imageData + ')');
+      $('.profileImage').css('background-image', 'url(data:image/jpeg;base64,' + imageData + ')');
 	  localStorage.setItem('profilePhoto', "data:image/jpeg;base64," + imageData);
+	  
 }
 
 // Called when a photo is successfully retrieved
@@ -444,19 +488,22 @@ function onPhotoURISuccess(imageURI) {
 
       // Get image handle
       //
-      var smallImage = document.getElementById('smallImage');
-      var profileImage = document.getElementById('profileImage');
+      //var smallImage = document.getElementById('smallImage');
+      //var profileImage = document.getElementById('profileImage');
       
       // Unhide image elements
       //
-      smallImage.style.display = 'block';
-      profileImage.style.display = 'block';
+      //smallImage.style.display = 'block';
+      //profileImage.style.display = 'block';
 
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
-      smallImage.src = imageURI;
-      profileImage.src = imageURI;
+      //smallImage.src = imageURI;
+      //profileImage.src = imageURI;
+      $('.smallProfileImage').show();
+      $('.smallProfileImage').css('background-image', 'url(' + imageURI + ')');
+      $('.profileImage').css('background-image', 'url(' + imageURI + ')');
       localStorage.setItem('profilePhoto', imageURI);
 	  
 }
@@ -537,19 +584,18 @@ function initialOptions(id) {
    });
 }
 
-function setDaysByMonth() {
-	//alert('Setting days by month');
+function setDOBByDay(day) {
+	day.closest('.DOB').val(day.closest('.yDOB').val() + '/' + day.closest('.mDOB').val() + '/' + day.val());	
+}
+
+function setDaysByMonth(month) {	
+	year.closest('.DOB').val(month.closest('.yDOB').val() + '/' + month.val() + '/' + month.closest('.dDOB').val());
+	year.closest('.dDOB').attr({ "max" : daysInMonth(month.val(), month.closest('.').first().val()) });
 }
 
 function setDaysByYear(year) {
-	//alert('Setting days by year');
-	alert(year.parent().siblings().length);
-	//each(function () {
-    //	alert($(this).attr('id')); // "this" is the current element in the loop
-	//});
-	//alert('Month is ' + year.parent().children().first);
-	//daysInMonth(year.siblings('.mdob').first().val(), year.val());
-	//);
+	year.closest('.DOB').val(year.val() + '/' + year.closest('.mDOB').val() + '/' + year.closest('.dDOB').val());
+	year.closest('.dDOB').attr({ "max" : daysInMonth(year.closest('.mDOB').first().val(), year.val()) });
 }
 
 

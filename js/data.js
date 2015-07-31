@@ -14,10 +14,18 @@ function saveProfile() {
 	//alert('User set MeeActivity to ' + $('#profile_meeactivity').val());
 	//alert( 'BMI is ' + BMI($('#profile_weight').val(), $('#profile_height').val()).toString() );
 	profile.BMI = BMI($('#profile_weight').val(), $('#profile_height').val()).toString();
+	profile.water = water($('#profile_weight').val(), $('#profile_activity').val());
+	profile.DOB = $('#profile_DOB').val();
 	//water($('#profile_weight').val(), $('#profile_activity').val());
 	localStorage.setItem("profile", JSON.stringify(profile));
+	
+	//if (localStorage.getItem('profile') === null) {
+	//	alert('Profile not saved....');	
+	//} else {
+	//	alert('Profile Saved');
+	//}
+	
 	setProfile();
-	//water($('#profile_weight').val(), $('#profile_activity').val());		
 	//calendar_events();
 	
 }
@@ -42,10 +50,10 @@ function BMI(profile_weight, profile_height) {
 
 function water(profile_weight, profile_activity) {
   //alert('Setting Water');
-  water = Math.round(((parseFloat(profile_weight) * 2.20462) * (2/3)) + parseFloat(profile_activity));
+  var water = Math.round(((parseFloat(profile_weight) * 2.20462) * (2/3)) + parseFloat(profile_activity));
   //alert(profile_activity);
   //water = Math.round(((profile_weight * 2.20462) * (2/3)) + profile_activity);
-  $('.water').html('Water Requirement: ' + water + ' Ounces');	
+  return water;	
 }
 
 function setProfile() {
@@ -53,7 +61,7 @@ function setProfile() {
 	//alert('Setting profile');
 	
 	setProfilefield('name');
-	//setProfilefield('age');
+	setProfilefield('DOB');
 	//setProfilefield('gender');
 	//setProfilefield('breakfast');
 	//setProfilefield('lunch');
@@ -65,6 +73,7 @@ function setProfile() {
 	//setProfilefield('sugar');
 	//setProfilefield('sugar_fasting');
 	setProfilefield('BMI');
+	setProfilefield('water');
 	//BMI($('#profile_weight').val(), $('#profile_height').val());
 	//water($('#profile_weight').val(), $('#profile_activity').val());
 	
