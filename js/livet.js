@@ -100,8 +100,14 @@ function meeTime()
 				alert('Profile exists...');
 				profile = JSON.parse(localStorage.getItem('profile'));
 			}
+			
+			$("#tour").on("popupafterclose",function(){
+				alert("Tour closed");
+			});
     		
-    		
+    		$("#setup").on("popupafterclose",function(){
+				alert("Setup closed");
+			});
     		
     		initialOptions('moodRotator');
     		
