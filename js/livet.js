@@ -76,17 +76,19 @@ $.when(gapReady, jqmReady).then(meeTime);
 function meeTime()
 {
 	
-	//alert('huh');
+	
 	
 	setTimeout(
   		function() 
   		{
     		
+    		alert('MeeTime init');
+    		
     		pictureSource=navigator.camera.PictureSourceType;
     		destinationType=navigator.camera.DestinationType;  	
     		
     		if (localStorage.getItem('profile') === null) {
-				alert('Profile does not exist...');
+				//alert('Profile does not exist...');
 				//Initialize and open tour
     			$.get( 'tour.csv', function( data ) {
 					var lines = data.split('\n');
@@ -95,7 +97,7 @@ function meeTime()
     			$( "#tour" ).popup();
 				$( "#tour" ).popup("open");
 			} else {
-				alert('Profile exists...');
+				//alert('Profile exists...');
 				profile = JSON.parse(localStorage.getItem('profile'));
 			}
     		
