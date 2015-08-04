@@ -5,7 +5,7 @@
 			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
           				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
           				 <label for="profile_picture">Profile Picture</label>
-          				 <img style="display:none;width:100px;height:100px;" id="smallImage" src="" />
+          				 <img style="width:100px;height:100px;" id="smallImage" src="img/avatar.jpg" />
           				 <!--
           				 <button onclick="datePicker.show(options, onDateSuccess, onDateError);">Capture Photo</button>
           				 -->
@@ -13,29 +13,29 @@
           				 <button onclick="getPhoto();">From Photo Library</button>
           				 
           				 <br>
-          				 <div style="border: 1px solid #aaa; padding: 30px; border-radius: 10px;">
+          				 <div id="edit_profileform" style="border: 1px solid #aaa; padding: 30px; border-radius: 10px;">
           				 	
-          				 	<label for="profile_DOB" id="profile_DOB" >Date Of Birth</label>
+          				 	<label for="profile_DOB" >Date Of Birth</label>
           				 	
           				 	<input type="range" name="profile_yDOB" id="profile_yDOB" value="1979" min="1900" max="2010" class="yDOB">
           				 	
           				 	<select name="profile_mDOB" id="profile_mDOB" class="mDOB" >
-          							<option value="01">January</option>
-          							<option value="02">February</option>
-          							<option value="03">March</option>
-          							<option value="04">April</option>
-          							<option value="05">May</option>
-          							<option value="06">June</option>
-          							<option value="07">July</option>
-          							<option value="08">August</option>
-          							<option value="09">September</option>
+          							<option value="1">January</option>
+          							<option value="2">February</option>
+          							<option value="3">March</option>
+          							<option value="4">April</option>
+          							<option value="5">May</option>
+          							<option value="6">June</option>
+          							<option value="7">July</option>
+          							<option value="8">August</option>
+          							<option value="9">September</option>
           							<option value="10">October</option>
           							<option value="11">November</option>
           							<option value="12">December</option>
           				 	</select>
           				 
           				 	<input type="range" name="profile_dDOB" id="profile_dDOB" value="1" min="1" max="31" class="dDOB" >
-          				 	<input type="hidden" name="profile_DOB" id="profile_DOB" class="DOB" >
+          				 	<input type="text" name="profile_DOB" id="profile_DOB" class="DOB" value="nada" >
           				 
           				 </div>
           				 <br>
@@ -71,10 +71,10 @@
           					<option value="42">High (1 hour 5 times a day)</option>
           				 </select>
       	  				 <label for="profile_height">Height(cm):</label>
-      	  				 <input type="text" name="profile_height" id="profile_height" value="170" min="100" max="250" data-popup-enabled="true" >
+      	  				 <input type="range" name="profile_height" id="profile_height" value="170" min="100" max="250" data-popup-enabled="true" >
       	  				 <p id="profile_height_inches">5 feet 7 inches</p>	  	  				 
 	  	  				 <label for="profile_weight">Weight(kg):</label>
-      	  				 <input type="text" name="profile_weight" id="profile_weight" value="82" min="40" max="150" data-popup-enabled="true" >
+      	  				 <input type="range" name="profile_weight" id="profile_weight" value="82" min="40" max="150" data-popup-enabled="true" >
       	  				 <p id="profile_weight_pounds">180 pounds</p>
       	  				 
       	  				 	

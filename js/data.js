@@ -1,3 +1,10 @@
+function saveGoals() {
+	
+
+
+}
+
+
 function saveProfile() {
 	
 	//alert($('#profile_breakfast').val());
@@ -13,9 +20,14 @@ function saveProfile() {
 	//localStorage.setItem("meeactivity", $('.profileMeeactivity').val());
 	//alert('User set MeeActivity to ' + $('#profile_meeactivity').val());
 	//alert( 'BMI is ' + BMI($('#profile_weight').val(), $('#profile_height').val()).toString() );
+	profile.gender = $('#profile_gender').val();
+	//alert('Profile_DOB value is ' + $('#profile_DOB').val())
+	profile.DOB = $('#profile_DOB').val();
+	profile.weight = $('#profile_weight').val();
+	profile.height = $('#profile_height').val(); 
 	profile.BMI = BMI($('#profile_weight').val(), $('#profile_height').val()).toString();
 	profile.water = water($('#profile_weight').val(), $('#profile_activity').val());
-	profile.DOB = $('#profile_DOB').val();
+	profile.overweight = overweight(profile.BMI, profile.height);
 	//water($('#profile_weight').val(), $('#profile_activity').val());
 	localStorage.setItem("profile", JSON.stringify(profile));
 	
@@ -37,8 +49,8 @@ function BMI(profile_weight, profile_height) {
 	var weight = parseFloat(profile_weight);
 	var height = parseFloat(profile_height) / 100;
 	var bmi = ( weight / ( height * height ) );
-	var bmiDifference = bmi - 25;
-	var overweight = Math.round(bmiDifference * (height * height));
+	//var bmiDifference = bmi - 25;
+	//var overweight = Math.round(bmiDifference * (height * height));
 	//alert(bmi * height * height);
 	
 	//alert('BMI is ' + bmi.toString());
@@ -50,10 +62,15 @@ function BMI(profile_weight, profile_height) {
 
 function water(profile_weight, profile_activity) {
   //alert('Setting Water');
-  var water = Math.round(((parseFloat(profile_weight) * 2.20462) * (2/3)) + parseFloat(profile_activity));
+  var water = Math.round(((parseFloat(profile_weight) * 2.20462) * (2/3)) + parseFloat(profile_activity))/100;
   //alert(profile_activity);
   //water = Math.round(((profile_weight * 2.20462) * (2/3)) + profile_activity);
   return water;	
+}
+
+function overweight(BMI, height) {
+	var bmiDifference = BMI - 25;
+	return overweight = Math.round((bmiDifference * (height * height)) / 10000);
 }
 
 function setProfile() {
@@ -62,17 +79,19 @@ function setProfile() {
 	
 	setProfilefield('name');
 	setProfilefield('DOB');
-	//setProfilefield('gender');
+	setProfilefield('gender');
 	//setProfilefield('breakfast');
 	//setProfilefield('lunch');
 	//setProfilefield('dinner');
 	//setProfilefield('meetime');
 	//setProfilefield('meeactivity');
 	//alert(localStorage.getItem('meeactivity'));
-	//setProfilefield('weight');
+	setProfilefield('weight');
+	setProfilefield('height');
 	//setProfilefield('sugar');
 	//setProfilefield('sugar_fasting');
 	setProfilefield('BMI');
+	setProfilefield('overweight');
 	setProfilefield('water');
 	//BMI($('#profile_weight').val(), $('#profile_height').val());
 	//water($('#profile_weight').val(), $('#profile_activity').val());

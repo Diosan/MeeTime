@@ -28,7 +28,7 @@ var profile = {};
 //    mode: 'date'
 //};
 
-localStorage.removeItem('profile');
+//localStorage.removeItem('profile');
 
 
 
@@ -69,23 +69,73 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(meeTime);
-//$.when(jqmReady).then(meeTime);
+//$.when(gapReady, jqmReady).then(meeTime);
+$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
 {
 	
+	$(document).on('pagecreate', '#home', function(){
+		
+		$(document).on('slidestop', '.yDOB', function(){ 
+        	alert('Year Changed....');
+    	});
+    	
+    	$(document).on('change', '.mDOB', function(){ 
+        	alert('Month Changed....');	
+    	});
+    	
+    	$(document).on('change', '.dDOB', function(){ 
+        	setDOBByDay($(this));	
+    	});
+    	
+    	$(document).on('slidestop', '#profile_height', function(){ 
+        	//alert($( '#profile_height' ).val());
+			$('#profile_height_inches').html( cm2inches( $(this).val() ) );	
+    	});
+    	
+    	$(document).on('slidestop', '#profile_weight', function(){ 
+        	//alert($( '#profile_weight' ).val());
+			$('#profile_weight_pounds').html( kgs2lbs( $(this).val() ) );	
+    	});
+    	
+    	
+    	
+    	//$( '#profile_height' ).slider({
+    	//	create: function (event, ui) {
+        //		$(this).bind( 'change', function () {
+        //			alert($( '#profile_height' ).val());
+		//			$('#profile_height_inches').html( cm2inches( $( '#profile_height' ).val() ) );
+        //		});
+    	//	}
+		//});
 	
+		//$( '#profile_weight' ).slider({
+    	//	create: function (event, ui) {
+        //		$(this).bind( 'change', function () {
+        //			alert($( '#profile_weight' ).val());
+		//			$('#profile_weight_pounds').html( kgs2lbs( $( '#profile_weight' ).val() ) );
+        //		});
+    	//	}
+		//});	
+    	
+    	//setDOBByDay($(this));
+    	//setDaysByYear($(this));
+		//alert('page create event');
+			
+	});
 	
 	setTimeout(
   		function() 
   		{
     		
+    		
+    		
     		//alert('MeeTime init');
     		
-    		pictureSource=navigator.camera.PictureSourceType;
-    		destinationType=navigator.camera.DestinationType;  	
+    		//pictureSource=navigator.camera.PictureSourceType;
+    		//destinationType=navigator.camera.DestinationType;  	
     		
     		if (localStorage.getItem('profile') === null) {
 				//alert('Profile does not exist...');
@@ -215,10 +265,11 @@ function meeTime()
 	
 	//$(".swipecenter").on("click", function(){
 	//	alert('so true');
-  		//rotate();
+  	//	rotate();
 	//});
 	
-
+	
+	
 				
 }
 
@@ -279,7 +330,7 @@ function setProfilePic() {
       //var imageURI = '';
       
       if (localStorage.getItem('profilePhoto') == null) {
-      		imageURI = 'img/avatar.jpg';
+      		imageURI = '';
       } else {
       		imageURI = localStorage.getItem('profilePhoto');
       }
@@ -304,13 +355,29 @@ function setProfilePic() {
 
 //open setup modal
 function openSetup() {
+	
+	
 	$( "#tour" ).popup( "close" );
 	$( "#setup" ).popup();
 	$('#setup_main').load("edit_profile.html", function() { $(this).enhanceWithin(); } );
 	$( "#setup" ).popup( "open" );
-	$('.dDOB').on( 'change', function(event) {  setDOBByDay($(this)); });
-	$('.yDOB').on( 'change', function(event) {	setDaysByYear($(this)); } );
-	$('.mDOB').on( 'change', function(event) {	setDaysByMonth($(this)); } );	
+	
+	
+	
+	//$("#edit_profileform").on("slidestop", "#profile_yDOB", function(e){
+    //	alert("It duz wuk!");    
+	//});
+	
+	
+	//$('.yDOB').on( 'slidestop', function() { alert('sigh'); } );
+	//$('.mDOB').change( alert('sigh')  );
+	
+	//$('.dDOB').change( function(event) {  setDOBByDay($(this));    }  );
+	//$('.yDOB').change( function(event) {  setDaysByYear($(this));  }  );
+	//$('.mDOB').change( function(event) {  setDaysByMonth($(this)); }  );
+	//$('#profile_yDOB').bind('change', function(event) { alert('it duz wuk!'); }  );
+	//$('#profile_mDOB').change( function(event) { alert('alert!'); }  );
+	//alert('events set');	
 }
 
 //Change content of tour popup to content for next step and adjust buttons as necessary
@@ -365,7 +432,7 @@ function nextSetupStep() {
 		break;
 		case 2:
         	//alert('case 2');
-        	
+        	saveGoals();
 			gotoProfile();
 			setupStep++;
 		break;
@@ -546,6 +613,8 @@ function getPhoto() {
 
 function cm2inches(cm) {
 	
+	//alert('');
+	
 	var inches = 0;
 	var feetHeight = 0;
 	var inchesHeight = 0;
@@ -597,15 +666,24 @@ function initialOptions(id) {
 }
 
 function setDOBByDay(day) {
-	day.closest('.DOB').val(day.closest('.yDOB').val() + '/' + day.closest('.mDOB').val() + '/' + day.val());	
+	//alert('There are ' + day.parent().parent().find('.DOB').length + ' DOBs');
+	DOB = day.parent().parent().find('.DOB').first(); 
+	DOM = day.parent().parent().find('.dDOB').first();
+	Month = day.parent().parent().find('.mDOB').last();
+	Year = day.parent().parent().find('.yDOB').first();
+	DOB.val(Year.val() + '-' + Month.val() + '-' + DOM.val());
+	//alert(DOB.val());	
 }
 
-function setDaysByMonth(month) {	
+function setDaysByMonth(month) {
+	alert('adjusting days in month');	
 	year.closest('.DOB').val(month.closest('.yDOB').val() + '/' + month.val() + '/' + month.closest('.dDOB').val());
 	year.closest('.dDOB').attr({ "max" : daysInMonth(month.val(), month.closest('.').first().val()) });
+	//alert(year.closest('.dDOB').attr('min'));
 }
 
 function setDaysByYear(year) {
+	alert('adjusting days in month for year');
 	year.closest('.DOB').val(year.val() + '/' + year.closest('.mDOB').val() + '/' + year.closest('.dDOB').val());
 	year.closest('.dDOB').attr({ "max" : daysInMonth(year.closest('.mDOB').first().val(), year.val()) });
 }

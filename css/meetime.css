@@ -217,19 +217,22 @@
 		 -webkit-transform: rotate(360deg);
 		}
 			 
-       a.center {
+       a.center, #d_elements {
         display: block;
         overflow: hidden;
         position: relative;
-        margin: -20em auto 52em auto;
+        margin: 12.5em auto 52em auto;
         width: 10em; height: 10em;
         border-radius: 50%;
         z-index: 33;
-        background:#fff;
         background-size: 100% 100%;
         background-position: center;
         background-repeat: no-repeat;
          /* 2em = 4em/2 */ /* half the width */
+      }
+      
+      #d_elements {
+      	margin-top: -32.5em;
       }
       
       a.swipecenter {
@@ -331,7 +334,7 @@
 			width: 100%;
 			height: 100%;
 			background: url(../img/treecircle.png);
-			margin-top: 20%;
+			margin-top: 7.5%;
 			background-size: 125% 100%;
         	background-position: center center;
         	background-repeat: no-repeat;
