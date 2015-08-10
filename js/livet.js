@@ -142,7 +142,7 @@ function meeTime()
     		//destinationType=navigator.camera.DestinationType;  	
     		
     		if (localStorage.getItem('profile') === null) {
-				alert('Profile does not exist...');
+				//alert('Profile does not exist...');
 				//Initialize and open tour
 				 //alert('Aha');
 				
@@ -157,7 +157,7 @@ function meeTime()
 				
 			} else {
 				
-				alert('Profile exists...');				
+				//alert('Profile exists...');				
 				//profile = JSON.parse(localStorage.getItem('profile'));
 			}
 			
