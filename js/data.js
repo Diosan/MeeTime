@@ -27,7 +27,7 @@ function saveProfile() {
 	profile.height = $('#profile_height').val(); 
 	profile.BMI = BMI($('#profile_weight').val(), $('#profile_height').val()).toString();
 	profile.water = water($('#profile_weight').val(), $('#profile_activity').val());
-	profile.overweight = overweight(profile.BMI, profile.height);
+	//profile.overweight = overweight(profile.BMI, profile.height);
 	//water($('#profile_weight').val(), $('#profile_activity').val());
 	localStorage.setItem("profile", JSON.stringify(profile));
 	

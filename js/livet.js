@@ -23,12 +23,13 @@ var toggle = 1;
 var currentRotation = 0;
 var swipecount = 0;
 var profile = {};
+var goals = {};
 //var options = {
 //    date: new Date(),
 //    mode: 'date'
 //};
 
-localStorage.removeItem('profile');
+//localStorage.removeItem('profile');
 
 
 
@@ -76,7 +77,7 @@ $.when(gapReady, jqmReady).then(meeTime);
 function meeTime()
 {
 	
-	$(document).on('pagecreate', '#home', function(){
+	$(document).on('pagecreate', '#setup', function(){
 		
 		$(document).on('slidestop', '.yDOB', function(){ 
         	alert('Year Changed....');
@@ -130,6 +131,9 @@ function meeTime()
   		function() 
   		{
     		
+    		$('#edit_profile_main').load("edit_profile.html", function() { $(this).enhanceWithin(); } );
+    		
+    		$('#edit_goals_main').load("edit_goals.html", function() { $(this).enhanceWithin(); } );
     		
     		
     		//alert('MeeTime init');
@@ -138,17 +142,23 @@ function meeTime()
     		//destinationType=navigator.camera.DestinationType;  	
     		
     		if (localStorage.getItem('profile') === null) {
-				//alert('Profile does not exist...');
+				alert('Profile does not exist...');
 				//Initialize and open tour
-    			$.get( 'tour.csv', function( data ) {
-					var lines = data.split('\n');
-    				$('#tour_text').html( lines[tourstep] );
-    			});
-    			$( "#tour" ).popup();
-				$( "#tour" ).popup("open");
+				 //alert('Aha');
+				
+				$(':mobile-pagecontainer').pagecontainer('change', '#tour');
+				
+    			//$.get( 'tour.csv', function( data ) {
+				//	var lines = data.split('\n');
+    			//	$('#tour_text').html( lines[tourstep] );
+    			//});
+    			//$( "#tour" ).popup();
+				//$( "#tour" ).popup("open");
+				
 			} else {
-				//alert('Profile exists...');
-				profile = JSON.parse(localStorage.getItem('profile'));
+				
+				alert('Profile exists...');				
+				//profile = JSON.parse(localStorage.getItem('profile'));
 			}
 			
 			$("#tour").on("popupafterclose",function(){
@@ -160,7 +170,9 @@ function meeTime()
 			});
     		
     		initialOptions('moodRotator');
-    		
+    		//alert($('#moodRotator').length);
+    		//initialOptions('activityRotator');
+    		//initialOptions('BushkaBingeh');
     		
     		
     		//$("#adding").popup();
@@ -462,11 +474,11 @@ function previousSetupStep() {
 
 function gotoGoals() {
 	
-	$('#setup_header').html('<h1>Health Goals</h1>');
+	//$('#setup_header').html('<h1>Health Goals</h1>');
 	
-	$('#setup_main').load("goals.html", function(){
+	//$('#setup_main').load("goals.html", function(){
 		
-	  $('#previous_setupstep').show();
+	  //$('#previous_setupstep').show();
 		
 	  initialOptions('activityRotator');
 	  $(".swipe").on("swiperight", function(){
@@ -478,14 +490,17 @@ function gotoGoals() {
 		//alert('so true');
 		swipecount--;
   		rotate($(this));
-	  });	
-      $('#goals_overweight').html($('#overweight').html());
-      $('#goals_water').html($('#water').html());
-      $(this).enhanceWithin();
-      window.scrollTo(0, 0);      
-	});
+	  });
+	  
+	  $.mobile.changePage($("#edit_goals"), "none");
+	  	
+      //$('#goals_overweight').html($('#overweight').html());
+      //$('#goals_water').html($('#water').html());
+      //$(this).enhanceWithin();
+      //window.scrollTo(0, 0);      
+	//});
 	
-	saveProfile();
+	//saveProfile();
 	
 	
 	
@@ -515,7 +530,7 @@ function gotoSetupProfile() {
 	//alert('Setting up profile');
 	$('#setup_main').load("edit_profile.html", function() {
 		$('#setup_header').html('Setup Profile');
-		$(this).enhanceWithin();
+		$('#setup').enhanceWithin();
 	});
 }
 
@@ -650,16 +665,19 @@ function addMood() {
 
 function initialOptions(id) {
 	
+//alert('populating rotator ' + id);
+	
   //alert('Count  for ' + id + ' is ' + $('#' + id).length);
    	
    var rotator = $('#' + id);
    var optionAngle = 0;
    
-   $.get( rotator.data('options'), function( data ) {
-				var lines = data.split('\n');
-				for (i = 0; i < 8; i++) { 
-    				line = lines[i].split(',');
+   $.get( rotator.data('options'), function( data ) {	
+   				var lines = data.split('\n');
+				for (i = 0; i < 8; i++) {
+					line = lines[i].split(',');
     				optionAngle = 23 + (i * 45);
+    				//alert(rotator.children('.deg' + optionAngle).length);
     				rotator.children('.deg' + optionAngle).first().children('img').first().attr('src', line[1]);
 				}
    });
