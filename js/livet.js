@@ -161,13 +161,13 @@ function meeTime()
 				//profile = JSON.parse(localStorage.getItem('profile'));
 			}
 			
-			$("#tour").on("popupafterclose",function(){
+			//$("#tour").on("popupafterclose",function(){
 				//alert("Tour closed");
-			});
+			//});
     		
-    		$("#setup").on("popupafterclose",function(){
+    		//$("#setup").on("popupafterclose",function(){
 				//alert("Setup closed");
-			});
+			//});
     		
     		initialOptions('moodRotator');
     		//alert($('#moodRotator').length);
@@ -189,7 +189,7 @@ function meeTime()
     
 		    //$('#calendar').trigger('refresh');			
 			
-  		}, 1000);
+  		}, 500);
   	
   	setProfile();	
   		
