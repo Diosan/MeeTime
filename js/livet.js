@@ -189,7 +189,7 @@ function meeTime()
     
 		    //$('#calendar').trigger('refresh');			
 			
-  		}, 2500);
+  		}, 1000);
   	
   	setProfile();	
   		
