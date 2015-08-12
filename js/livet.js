@@ -138,8 +138,8 @@ function meeTime()
     		
     		//alert('MeeTime init');
     		
-    		//pictureSource=navigator.camera.PictureSourceType;
-    		//destinationType=navigator.camera.DestinationType;  	
+    		pictureSource=navigator.camera.PictureSourceType;
+    		destinationType=navigator.camera.DestinationType;  	
     		
     		if (localStorage.getItem('profile') === null) {
 				//alert('Profile does not exist...');
@@ -159,6 +159,7 @@ function meeTime()
 				
 				//alert('Profile exists...');				
 				//profile = JSON.parse(localStorage.getItem('profile'));
+				//$(':mobile-pagecontainer').pagecontainer('change', '#home');
 			}
 			
 			//$("#tour").on("popupafterclose",function(){

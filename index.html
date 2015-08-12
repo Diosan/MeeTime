@@ -83,7 +83,7 @@
 				</div>
 				
 				<div id="d_elements" style="width: 35em; height: 35em; background-image: url('img/elements.png'); border: 1px solid #aaa;">
-          			<a href='#' id='profileImage' class='center profileImage' style='border: 1px solid #555;'></a>
+          			<a href='#profile' id='profileImage' class='center profileImage' style='border: 1px solid #555;'></a>
           		</div>  					
   			    			  
   			  </div>
@@ -94,75 +94,7 @@
             	</center>
    		  	   </div>
    		  	   
-   		  	   <div data-role="popup" id="profile" data-overlay-theme="b" data-dismissible="false" data-history="false" >
-   		  	   	  <div data-role="header">
-			        <strong><h1>MeeTime Profile</h1></strong>
-			      </div>
-			      
-			      <div data-role="main" class="ui-content" style="text-align: center;" >
-			      
-			      	 <div data-role="tabs" id="profile_tabs">
-			      	 	<div data-role="navbar">
-    						<ul>
-      							<li><a href="#myprofile" data-ajax="false">Profile</a></li>
-      							<li><a href="#mygoals" data-ajax="false">Goals</a></li>
-      							<li><a href="#myday" data-ajax="false">My Day</a></li>
-    						</ul>
-  						</div>
-  						<div id="myprofile" class="ui-body-d ui-content" style="overflow-y: hidden;">
-  							 <div style="float:left; margin: 7.5%; width: 30%; text-align: left;">
-  							 	<img src="img/avatar.jpg" style="width: 100%;" />
-  							 </div> 
-  							 <div style="float:left; margin: 7.5%; width: 40%; text-align: left;">
-  							 	<span style="font-weight: bold;">Name:</span><span class="profileName"></span><br><br>
-  							 	<span style="font-weight: bold;">Gender:</span><span class="profileGender"></span><br><br>
-  							 	<span style="font-weight: bold;">Date of Birth:</span><span class="profileDOB"></span><br><br>
-  							 	<span style="font-weight: bold;">BMI:</span><span class="profileBMI"></span><br><br>
-  							 	<span style="font-weight: bold;">Height:</span><span class="profileHeight"></span> CM<br><br>
-  							 	<span style="font-weight: bold;">Weight:</span><span class="profileWeight"></span> KG<br><br>
-	    						<span style="font-weight: bold;">Overweight:</span><span class="profileOverweight"></span> KG<br><br>
-								<span style="font-weight: bold;">Water Requirement:</span><span class="profileWater"></span> L
-  							 </div>
-  						</div>
-  						<div id="mygoals" class="ui-body-d ui-content">
-  							
-  							<div data-role="collapsible-set">
-
-								<div data-role="collapsible" data-collapsed="true" data-iconpos="right" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-									<h3>Mee Time</h3>
-									<ul data-role="listview" data-icon="none" class="ui-nodisc-icon">
-										<li>Acura</li>
-										<li>Audi</li>
-										<li>BMW</li>
-									</ul>
-								</div>
-	
-								<div data-role="collapsible"  data-collapsed="true" data-iconpos="right" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
-									<h3>Meal Times</h3>
-									<ul data-role="listview" data-icon="none" class="ui-nodisc-icon">
-										<li class="goalBreakfasttime">6 AM</li>
-										<li class="goalLunchtime">12 AM</li>
-										<li class="goalDinnertime">6 AM</li>
-									</ul>
-								</div>
-	
-							</div>
-  							
-    						
-  						</div>
-  						<div id="myday" class="ui-body-d ui-content">
-  						</div>
-			      	 </div>
-  					
-				   </div>
-				   
-				   <div data-role="footer">
-			      	  <center>
-			        	<a onclick="closeProfile();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Close</a>
-			          </center>
-			       </div>	
-				  
-   		  	   </div>				
+				
   				
   				
   				
@@ -193,7 +125,7 @@
             	</a>
             </div>
 
-          	<a href='#' class='center' style='background-image: url("images/icons-svg/moods.svg")'></a>
+          	
 
           </div>
           
@@ -301,9 +233,9 @@
 			      </div>
 			      
 			      <div data-role="footer" data-position="fixed">
-			      	<center>
-			        	<a id="previous_setupstep" onclick="previousSetupStep();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
-			        	<a onclick="gotoGoals();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
+			      	<center>			        
+			        	<a id="goto_goals" onclick="gotoGoals();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right"  style="display: none;">Next</a>
+			            <a id="save_profile" onclick="gotoGoals();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Save</a>
 			     	</center>
 			      </div>
 			      
@@ -335,12 +267,79 @@
 			        	<a href="#home" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
 			     	</center>
 			      </div>
-			      
-			      
-			      				      	
-			      
-  				
+			        				
   	  </div>  
+  	  
+  	  
+  	  <div data-role="page" id="profile" >
+   		  	   	  <div data-role="header">
+			        <strong><h1>MeeTime Profile</h1></strong>
+			      </div>
+			      
+			      <div data-role="main" class="ui-content" style="text-align: center;" >
+			      
+			      	 <div data-role="tabs" id="profile_tabs">
+			      	 	<div data-role="navbar">
+    						<ul>
+      							<li><a href="#myprofile" data-ajax="false">Profile</a></li>
+      							<li><a href="#mygoals" data-ajax="false">Goals</a></li>
+      							<li><a href="#myday" data-ajax="false">My Day</a></li>
+    						</ul>
+  						</div>
+  						<div id="myprofile" class="ui-body-d ui-content" style="overflow-y: hidden;">
+  							 <div style="float:left; margin: 7.5%; width: 30%; text-align: left;">
+  							 	<img src="img/avatar.jpg" style="width: 100%;" />
+  							 </div> 
+  							 <div style="float:left; margin: 7.5%; width: 40%; text-align: left;">
+  							 	<span style="font-weight: bold;">Name:</span><span class="profileName"></span><br><br>
+  							 	<span style="font-weight: bold;">Gender:</span><span class="profileGender"></span><br><br>
+  							 	<span style="font-weight: bold;">Date of Birth:</span><span class="profileDOB"></span><br><br>
+  							 	<span style="font-weight: bold;">BMI:</span><span class="profileBMI"></span><br><br>
+  							 	<span style="font-weight: bold;">Height:</span><span class="profileHeight"></span> CM<br><br>
+  							 	<span style="font-weight: bold;">Weight:</span><span class="profileWeight"></span> KG<br><br>
+	    						<span style="font-weight: bold;">Overweight:</span><span class="profileOverweight"></span> KG<br><br>
+								<span style="font-weight: bold;">Water Requirement:</span><span class="profileWater"></span> L
+  							 </div>
+  						</div>
+  						<div id="mygoals" class="ui-body-d ui-content">
+  							
+  							<div data-role="collapsible-set">
+
+								<div data-role="collapsible" data-collapsed="true" data-iconpos="right" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+									<h3>Mee Time</h3>
+									<ul data-role="listview" data-icon="none" class="ui-nodisc-icon">
+										<li>Acura</li>
+										<li>Audi</li>
+										<li>BMW</li>
+									</ul>
+								</div>
+	
+								<div data-role="collapsible"  data-collapsed="true" data-iconpos="right" data-collapsed-icon="carat-d" data-expanded-icon="carat-u">
+									<h3>Meal Times</h3>
+									<ul data-role="listview" data-icon="none" class="ui-nodisc-icon">
+										<li class="goalBreakfasttime">6 AM</li>
+										<li class="goalLunchtime">12 AM</li>
+										<li class="goalDinnertime">6 AM</li>
+									</ul>
+								</div>
+	
+							</div>
+  							
+    						
+  						</div>
+  						<div id="myday" class="ui-body-d ui-content">
+  						</div>
+			      	 </div>
+  					
+				   </div>
+				   
+				   <div data-role="footer" data-position="fixed">
+			      	  <center>
+			        	<a href="#home" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Close</a>
+			          </center>
+			       </div>	
+				  
+   		  	   </div>
     	
         
         
