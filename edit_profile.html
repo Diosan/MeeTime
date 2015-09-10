@@ -1,11 +1,23 @@
 	
 			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 10%; ">
 			           <form id="profile_form">
-						
-			        	 <label for="name" class="ui-hidden-accessible">Name:</label>
-          				 <input type="text" name="profile_name" id="profile_name" placeholder="Name" minlength="2" required >
+			           	
+						 <label for="profile_email" class="ui-hidden-accessible">Email:</label>
+          				 <input type="text" name="profile_email" id="profile_email" placeholder="email" minlength="2" required >
+			        	 
+          				 <label for="profile_password" class="ui-hidden-accessible">Password:</label>
+          				 <input type="password" name="profile_password" id="profile_password" placeholder="password" minlength="2" required >
+          				 
+          				 <label for="profile_confirmation" class="ui-hidden-accessible">Password Confirmation:</label>
+          				 <input type="password" name="profile_confirmation" id="profile_confirmation" placeholder="password" minlength="2" required >
+          				 
+          				 <label for="profile_name" class="ui-hidden-accessible">Name:</label>
+          				 <input type="text" name="profile_name" id="profile_name" placeholder="name" minlength="2" required >         				 
+          				 
           				 <label for="profile_picture">Profile Picture</label>
           				 <img style="width:100px;height:100px;" id="smallImage" src="img/avatar.jpg" />
+          				 
+          				 
           				 <!--
           				 <button onclick="datePicker.show(options, onDateSuccess, onDateError);">Capture Photo</button>
           				 -->

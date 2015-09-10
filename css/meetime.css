@@ -122,7 +122,7 @@
 			
 	   
       .deg23 { 
-        transform:  rotate(deg23) translate(12em);
+        transform:  rotate(23deg) translate(12em);
         -webkit-transform:  rotate(23deg) translate(12em);
         -webkit-transition: -webkit-transform 2s ease-in-out;
        }

@@ -29,7 +29,7 @@ var goals = {};
 //    mode: 'date'
 //};
 
-//localStorage.removeItem('profile');
+localStorage.removeItem('profile');
 
 
 
@@ -70,8 +70,8 @@ $(document).one("mobileinit", function(){
 /**
 * Run your App Logic only when both frameworks have loaded
 */
-$.when(gapReady, jqmReady).then(meeTime);
-//$.when(jqmReady).then(meeTime);
+//$.when(gapReady, jqmReady).then(meeTime);
+$.when(jqmReady).then(meeTime);
 
 // App Logic
 function meeTime()
@@ -136,10 +136,11 @@ function meeTime()
     		$('#edit_goals_main').load("edit_goals.html", function() { $(this).enhanceWithin(); } );
     		
     		
+    		
     		//alert('MeeTime init');
     		
-    		pictureSource=navigator.camera.PictureSourceType;
-    		destinationType=navigator.camera.DestinationType;  	
+    		//pictureSource=navigator.camera.PictureSourceType;
+    		//destinationType=navigator.camera.DestinationType;  	
     		
     		if (localStorage.getItem('profile') === null) {
 				//alert('Profile does not exist...');
@@ -160,6 +161,7 @@ function meeTime()
 				//alert('Profile exists...');				
 				//profile = JSON.parse(localStorage.getItem('profile'));
 				//$(':mobile-pagecontainer').pagecontainer('change', '#home');
+				
 			}
 			
 			//$("#tour").on("popupafterclose",function(){
@@ -180,7 +182,7 @@ function meeTime()
     		//$( "#adding" ).popup("open");
     		
 			
-			  //initiate calendar widget
+			//initiate calendar widget
 		  	//$("#calendar").jqmCalendar({
 		    //    events: readingsArray,
 		    //    months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
@@ -288,11 +290,26 @@ function meeTime()
 
 function rotate(swipe) {
 	
-	swipe.children('.circle-container').each(function( index ) {
-		//alert('successfully detected' );
-	});
-	
 	circle = swipe.children('.circle-container').first();
+	
+	//if(swipecount > 1) {
+		
+	//	var optionAngle = 0;
+   	//	var optionStart = (swipecount * 4) + 1;
+   	//	var lines = data.split('\n');
+   		
+     	
+   	//	$.get( circle.data('options'), function( data ) {
+				
+	//			for (i = optionsStart; i < (optionsStart + 3); i++) {
+	//				line = lines[i].split(',');
+    //				optionAngle = 23 + (i * 45);
+    //				rotator.children('.deg' + optionAngle).first().children('img').first().attr('src', line[1]);
+	//			}
+				
+   	//	});
+	//}
+	
 	
 	var matrix = circle.css("-webkit-transform") ||
     circle.css("-moz-transform")    ||
@@ -395,6 +412,7 @@ function openSetup() {
 
 //Change content of tour popup to content for next step and adjust buttons as necessary
 function nextTourStep() {
+	
 	$.get( 'tour.csv', function( data ) {
 			var lines = data.split('\n');
 			$('#previous_tourstep').show();
@@ -666,14 +684,21 @@ function addMood() {
 
 function initialOptions(id) {
 	
-//alert('populating rotator ' + id);
+
 	
   //alert('Count  for ' + id + ' is ' + $('#' + id).length);
    	
    var rotator = $('#' + id);
    var optionAngle = 0;
    
-   $.get( rotator.data('options'), function( data ) {	
+   //rotator.load( rotator.data('options'), function(data, status, xhr){
+   
+   //alert( rotator.data('options') );	
+   	
+   $.get( rotator.data('options'), function( data ) {
+   	
+   				//alert('populating rotator ' + id);
+   		
    				var lines = data.split('\n');
 				for (i = 0; i < 8; i++) {
 					line = lines[i].split(',');

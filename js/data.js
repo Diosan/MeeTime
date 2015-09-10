@@ -7,38 +7,64 @@ function saveGoals() {
 
 function saveProfile() {
 	
-	//alert($('#profile_breakfast').val());
-	//alert('saving profile');
-	profile.name = $('#profile_name').val();
-	//localStorage.setItem("name", $('#profile_name').val());
-	//localStorage.setItem("age", $('.profileAge').val() + " years");
-	//localStorage.setItem("gender", $('.profileGender').val());
-	//localStorage.setItem("breakfast", $('.profileBreakfast').val());
-	//localStorage.setItem("lunch", $('.profileLunch').val());
-	//localStorage.setItem("dinner", $('.profileDinner').val());
-	//localStorage.setItem("meetime", $('.profileMeetime').val());
-	//localStorage.setItem("meeactivity", $('.profileMeeactivity').val());
-	//alert('User set MeeActivity to ' + $('#profile_meeactivity').val());
-	//alert( 'BMI is ' + BMI($('#profile_weight').val(), $('#profile_height').val()).toString() );
-	profile.gender = $('#profile_gender').val();
-	//alert('Profile_DOB value is ' + $('#profile_DOB').val())
-	profile.DOB = $('#profile_DOB').val();
-	profile.weight = $('#profile_weight').val();
-	profile.height = $('#profile_height').val(); 
-	profile.BMI = BMI($('#profile_weight').val(), $('#profile_height').val()).toString();
-	profile.water = water($('#profile_weight').val(), $('#profile_activity').val());
-	//profile.overweight = overweight(profile.BMI, profile.height);
-	//water($('#profile_weight').val(), $('#profile_activity').val());
-	localStorage.setItem("profile", JSON.stringify(profile));
+	if ($("#profile_form").valid()) {
+		
+		$.post( "http://www.livetgourmet.com:3000/users/sign_in.json",
+			{user: {
+        		email: "dion.santana@gmail.com",
+        		password: "ruthlessness9!",
+        		remember_me: 1
+    		}},
+			function( data ) {
+  				alert(JSON.stringify(data));
+  			//$( ".result" ).html( data );
+			}).done(function() {
+    			alert( "success" );
+  			})
+  			.fail(function(xhr, textStatus, errorThrown) {
+    			alert( xhr.responseText );
+  			});
+		
+		//alert('it is valid');
+	    
+		//alert($('#profile_breakfast').val());
+		//alert('saving profile');
+		profile.name = $('#profile_name').val();
+		//localStorage.setItem("name", $('#profile_name').val());
+		//localStorage.setItem("age", $('.profileAge').val() + " years");
+		//localStorage.setItem("gender", $('.profileGender').val());
+		//localStorage.setItem("breakfast", $('.profileBreakfast').val());
+		//localStorage.setItem("lunch", $('.profileLunch').val());
+		//localStorage.setItem("dinner", $('.profileDinner').val());
+		//localStorage.setItem("meetime", $('.profileMeetime').val());
+		//localStorage.setItem("meeactivity", $('.profileMeeactivity').val());
+		//alert('User set MeeActivity to ' + $('#profile_meeactivity').val());
+		//alert( 'BMI is ' + BMI($('#profile_weight').val(), $('#profile_height').val()).toString() );
+		profile.gender = $('#profile_gender').val();
+		//alert('Profile_DOB value is ' + $('#profile_DOB').val())
+		profile.DOB = $('#profile_DOB').val();
+		profile.weight = $('#profile_weight').val();
+		profile.height = $('#profile_height').val(); 
+		profile.BMI = BMI($('#profile_weight').val(), $('#profile_height').val()).toString();
+		profile.water = water($('#profile_weight').val(), $('#profile_activity').val());
+		//profile.overweight = overweight(profile.BMI, profile.height);
+		//water($('#profile_weight').val(), $('#profile_activity').val());
+		localStorage.setItem("profile", JSON.stringify(profile));
 	
-	//if (localStorage.getItem('profile') === null) {
-	//	alert('Profile not saved....');	
-	//} else {
-	//	alert('Profile Saved');
-	//}
+		//if (localStorage.getItem('profile') === null) {
+		//	alert('Profile not saved....');	
+		//} else {
+		//	alert('Profile Saved');
+		//}
 	
-	setProfile();
-	//calendar_events();
+		setProfile();
+		//calendar_events();
+	
+	} else {
+		
+		//alert('it is not valid');
+	
+	}
 	
 }
 
