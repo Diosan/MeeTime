@@ -14,21 +14,27 @@ function saveProfile() {
         		email: "dion.santana@gmail.com",
         		password: "ruthlessness9!",
         		remember_me: 1
-    		}},
-			function( data ) {
-  				alert(JSON.stringify(data));
-  			//$( ".result" ).html( data );
-			}).done(function() {
-    			alert( "success" );
+    		}})
+			.done(function(data) {
+    			//alert( "success" );
+    			user = data;
+    			//alert(JSON.stringify(data));
+    			//$.ajax({
+    			//	url: 'http://www.livetgourmet.com:3000/users/sign_out.json',
+    			//	type: 'DELETE',
+    			//	complete: function(result) {
+        				// Do something with the result
+        		//		alert(JSON.stringify(result));
+    			//	}
+				//});
   			})
   			.fail(function(xhr, textStatus, errorThrown) {
     			alert( xhr.responseText );
   			});
-		
-		//alert('it is valid');
-	    
-		//alert($('#profile_breakfast').val());
-		//alert('saving profile');
+  			
+  		
+
+
 		profile.name = $('#profile_name').val();
 		//localStorage.setItem("name", $('#profile_name').val());
 		//localStorage.setItem("age", $('.profileAge').val() + " years");
@@ -59,6 +65,8 @@ function saveProfile() {
 	
 		setProfile();
 		//calendar_events();
+		
+		$.mobile.changePage($("#profile"), "none");
 	
 	} else {
 		

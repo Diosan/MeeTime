@@ -24,6 +24,7 @@ var currentRotation = 0;
 var swipecount = 0;
 var profile = {};
 var goals = {};
+var user = {};
 //var options = {
 //    date: new Date(),
 //    mode: 'date'
