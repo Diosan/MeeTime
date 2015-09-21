@@ -7,7 +7,7 @@
 */
 var gapReady = $.Deferred();
 var jqmReady = $.Deferred();
-var tourstep = 0;
+var tourstep = 1;
 var date = new Date();
 var d = date.getDate();
 var m = date.getMonth();
@@ -134,9 +134,16 @@ function meeTime()
     		
     		$('#edit_profile_main').load("edit_profile.html", function() { $(this).enhanceWithin(); } );
     		
+    		$('#signup_main').load("signup.html", function() { $(this).enhanceWithin(); } );
+    		
     		$('#edit_goals_main').load("edit_goals.html", function() { $(this).enhanceWithin(); } );
     		
-    		
+    		//$("#signup_form").bind("ajax:beforeSend", function() {
+         		// tasks to do
+         	//	alert('Before ajax send'); 
+   			//});
+   			
+   			
     		
     		//alert('MeeTime init');
     		
@@ -414,10 +421,16 @@ function openSetup() {
 //Change content of tour popup to content for next step and adjust buttons as necessary
 function nextTourStep() {
 	
+	var stagetext = '';
+	
 	$.get( 'tour.csv', function( data ) {
 			var lines = data.split('\n');
 			$('#previous_tourstep').show();
-  			$('#tour_text').html( lines[tourstep + 1] );
+			stagetext = lines[tourstep + 1];
+			$.get( 'tour_html/' + (tourstep + 1).toString() + '.html', function( data ) {
+				$('#tour_text').html( data );
+			});
+  			//$('#tour_text').html( lines[tourstep + 1] );
   			if (tourstep == (lines.length -2)) {
   				$('#skip_tour').hide();
   				$('#next_tourstep').hide();
@@ -435,6 +448,8 @@ function nextTourStep() {
 
 //Change content of tour popup to content for previous step and adjust buttons as necessary
 function previousTourStep() {
+	
+	var stagetext = '';
 
 	$.get( 'tour.csv', function( data ) {
 			var lines = data.split('\n');
@@ -442,10 +457,13 @@ function previousTourStep() {
 			if (tourstep == 1) {
   				$('#previous_tourstep').hide();
   			}
-  			if (tourstep != 0) {
-  				$('#tour_text').html( lines[tourstep - 1] );
+  			//if (tourstep != 0) {
+  				$.get( 'tour_html/' + (tourstep - 1).toString() + '.html', function( data ) {
+					$('#tour_text').html( data );
+				});
+  				//$('#tour_text').html( lines[tourstep - 1] );
   				tourstep--;
-  			}  					
+  			//}  					
 		}, "text");
 		
 }

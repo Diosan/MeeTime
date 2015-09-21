@@ -1,0 +1,30 @@
+	
+			        <div style="text-transform: none; text-align:justify; min-height: 400px; width: 80%; margin: 10%; ">
+			           <form id="signup_form">
+			           				           	
+						 	<label for="user[email]" class="">Email:</label>
+          				 	<input type="text" name="user[email]" id="signup_email" placeholder="email" minlength="2" required >
+			        	 
+          				 	<label for="user[password]" class="">Password:</label>
+          				 	<input type="password" name="user[password]" id="signup_password" placeholder="password" minlength="2" required >
+          				 
+          				 	<label for="user[password_confirmation]" class="">Password Confirmation:</label>
+          				 	<input type="password" name="user[password_confirmation]" id="signup_confirmation" placeholder="password" minlength="2" required >
+          				  			        				  	
+          				 	<button onclick="signUp();">Sign Up</button>
+      	  				 
+      	  			  </form>
+      	  			  
+			        </div>
+			      
+					<div data-role="popup" id="myPopupDialog" style="background: #fff;">
+      					<div data-role="header">
+        					<h1>Error</h1>
+      					</div>
+
+      					<div data-role="main" class="ui-content">
+        						<p id="signup_error">jQuery Mobile is FUN!</p>
+        						<a href="#signup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Go Back</a>
+      					</div>
+
+    				</div>

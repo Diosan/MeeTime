@@ -198,22 +198,49 @@
 			      </div>
 
 			      <div data-role="main" class="ui-content" style="text-align: center;" >
-			        <img id="tour_image" src="img/livet1.jpg" align="left" style="max-height: 400px; width: 30%;">
-			        <div id="tour_text" style="text-transform: none; text-align:justify; min-height: 400px; ">
-			        	Livet MEE Time was inspired and designed by wellness professionals and a scientist with over 40 years of collective research and experience. The App features tools to inspire employees to plan, track, chart and perfect a healthier lifestyle. Users can track Stress levels vs. Food cravings and relate it graphically via a chart to Weight, Blood sugar, Blood pressure, and get recommendations and tips to make better choices and find alternative solutions to achieve their health goals. Users will be empowered with Health tips, natural proven herbal remedies, optimal water consumptions, daily reminders, stress reduction techniques along with many other key insights on achieving optimal health.
-			        </div>			        
+			        <div id="tour_text" style="text-transform: none; text-align:justify; min-height: 400px; width: 55%; float: left; margin-right: 5%;">
+			        	<h3>Master Emotions & Experiences</h3>
+			        	<h4 style="color: blue;">Master Readings</h4>
+			        	
+			        	<p>Chronic Lifestyle Diseases such as High Blood Pressure, Obesity and Diabetes are among the leading cause of death and concern globally. These diseases can be prevented and or avoided once detected early. MEE Time gives users the opportunity to monitor their medical and health conditions regularly so that the effects of these diseases can be controlled. For the first time, users will be able to analyze key medical readings and their responses to lifestyle habits. These insights will be an invaluable tool for your wellness goals and can be emailed to your medical practitioner, enabling him to see a true holistic picture of your readings over time.</p>
+			        	
+			        </div>
+			        <div style="width:40%; float: left;" >
+			           <img id="tour_image" src="img/screen.png" align="left" style="max-height: 400px; width: 100%;">	
+			        </div>
+			        			        
 			      </div>
 			      
 			      <div data-role="footer" data-position="fixed">
 			      	  <center>
-			        	<a href="#edit_profile" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Skip Tour</a>
+			        	<a href="#signup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-back ui-btn-icon-left">Skip Tour</a>
 			        	<a id="previous_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-l ui-btn-icon-left" style="display: none;">Previous</a>			        
 			        	<a id="next_tourstep" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Next</a>
-					    <a id="get_started" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right" style="display: none;">Get Started</a>
+					    <a id="get_started" href="#signup" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right" style="display: none;">Get Started</a>
 			     	  </center>
 			      </div>
   				
   	   </div>
+  	   
+  	   <div data-role="page" id="signup" >
+  					
+			      <div id="setup_header" data-role="header">
+			      	<strong><h1>Sign Up</h1></strong>
+			      </div>
+			      
+			      <div data-role="main" id="signup_main" class="ui-content" style="text-align: center;" >
+			      	
+			      </div>
+			      
+			      <!--
+			      <div data-role="footer" data-position="fixed">
+			      	<center>			        
+			        	<a id="signup_user" onclick="signUp();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Sign Up</a>
+			     	</center>
+			      </div>
+			      -->
+			      
+	   </div>
   	   
   	   
   	    <div data-role="page" id="edit_profile" >
@@ -238,12 +265,11 @@
 			            <a id="save_profile" onclick="saveProfile();" class="ui-btn ui-corner-all ui-shadow ui-btn-inline ui-btn-b ui-icon-arrow-r ui-btn-icon-right">Save</a>
 			     	</center>
 			      </div>
-			      
-			      
-			      				      	
-			      
-  				
+			        				
   	  </div>
+  	  
+  	  
+  	  
   	  
   	  <div data-role="page" id="edit_goals" >
   					

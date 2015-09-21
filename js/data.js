@@ -4,20 +4,18 @@ function saveGoals() {
 
 }
 
-
-function saveProfile() {
+function signUp() {
 	
-	if ($("#profile_form").valid()) {
-		
-		$.post( "http://www.livetgourmet.com:3000/users/sign_in.json",
-			{user: {
-        		email: "dion.santana@gmail.com",
-        		password: "ruthlessness9!",
-        		remember_me: 1
-    		}})
+	var errors = '';
+	var result = {};
+        
+	$.post( "http://www.livetgourmet.com:3000/users.json", $('#signup_form').serialize())
 			.done(function(data) {
-    			//alert( "success" );
+    			alert( "Success" );
     			user = data;
+    			
+    			$.mobile.changePage($("#profile"), "slide");
+    			
     			//alert(JSON.stringify(data));
     			//$.ajax({
     			//	url: 'http://www.livetgourmet.com:3000/users/sign_out.json',
@@ -29,12 +27,31 @@ function saveProfile() {
 				//});
   			})
   			.fail(function(xhr, textStatus, errorThrown) {
-    			alert( xhr.responseText );
+  				//alert('Error');
+  				//$.mobile.changePage($("#signup"), "slide");
+  				//$( "#myPopupDialog" ).popup( "open" );
+  				
+  				result = JSON.parse(xhr.responseText);			
+  				
+  				$.each(result.errors, function(k, v) {
+  					
+	        			//display the key and value pair
+            			errors = errors + '<strong>' + k + ':</strong> ' + v + ' <br><br> ';
+            
+        			});
+  				  
+  				$('#signup_error').html(errors);
+  				$('#myPopupDialog').popup();
+                $('#myPopupDialog').popup("open");
+                //$.mobile.changePage($("#signup"), "slide");
+    			//alert( xhr.responseText );    			
   			});
-  			
-  		
+}
 
-
+function saveProfile() {
+	
+	if ($("#profile_form").valid()) {
+		
 		profile.name = $('#profile_name').val();
 		//localStorage.setItem("name", $('#profile_name').val());
 		//localStorage.setItem("age", $('.profileAge').val() + " years");
