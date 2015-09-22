@@ -11,10 +11,10 @@ function signUp() {
         
 	$.post( "http://www.livetgourmet.com:3000/users.json", $('#signup_form').serialize())
 			.done(function(data) {
-    			alert( "Success" );
+    			//alert( "Success" );
     			user = data;
     			
-    			$.mobile.changePage($("#profile"), "slide");
+    			$.mobile.changePage($("#edit_profile"), "slide");
     			
     			//alert(JSON.stringify(data));
     			//$.ajax({
@@ -50,9 +50,12 @@ function signUp() {
 
 function saveProfile() {
 	
+	var result = '';
+	var errors = '';
+	
 	if ($("#profile_form").valid()) {
 		
-		profile.name = $('#profile_name').val();
+		//profile.name = $('#profile_name').val();
 		//localStorage.setItem("name", $('#profile_name').val());
 		//localStorage.setItem("age", $('.profileAge').val() + " years");
 		//localStorage.setItem("gender", $('.profileGender').val());
@@ -63,27 +66,51 @@ function saveProfile() {
 		//localStorage.setItem("meeactivity", $('.profileMeeactivity').val());
 		//alert('User set MeeActivity to ' + $('#profile_meeactivity').val());
 		//alert( 'BMI is ' + BMI($('#profile_weight').val(), $('#profile_height').val()).toString() );
-		profile.gender = $('#profile_gender').val();
+		//profile.gender = $('#profile_gender').val();
 		//alert('Profile_DOB value is ' + $('#profile_DOB').val())
-		profile.DOB = $('#profile_DOB').val();
-		profile.weight = $('#profile_weight').val();
-		profile.height = $('#profile_height').val(); 
-		profile.BMI = BMI($('#profile_weight').val(), $('#profile_height').val()).toString();
-		profile.water = water($('#profile_weight').val(), $('#profile_activity').val());
+		//profile.DOB = $('#profile_DOB').val();
+		//profile.weight = $('#profile_weight').val();
+		//profile.height = $('#profile_height').val(); 
+		//profile.BMI = BMI($('#profile_weight').val(), $('#profile_height').val()).toString();
+		//profile.water = water($('#profile_weight').val(), $('#profile_activity').val());
 		//profile.overweight = overweight(profile.BMI, profile.height);
 		//water($('#profile_weight').val(), $('#profile_activity').val());
-		localStorage.setItem("profile", JSON.stringify(profile));
+		//localStorage.setItem("profile", JSON.stringify(profile));
 	
 		//if (localStorage.getItem('profile') === null) {
 		//	alert('Profile not saved....');	
 		//} else {
 		//	alert('Profile Saved');
 		//}
+		
+		$.ajax({
+    		type: 'PATCH',
+    		url: 'http://www.livetgourmet.com:3000/users',
+    		data: $('#profile_form').serialize(),
+    		success: function(data, textStatus, jqXHR) {
+    			setProfile();
+    			$.mobile.changePage($("#profile"), "none");
+    		},
+    		error: function(jqXHR, textStatus, errorThrown) {
+    			result = JSON.parse(xhr.responseText);
+    			
+    			$.each(result.errors, function(k, v) {
+  					
+	        			//display the key and value pair
+            			errors = errors + '<strong>' + k + ':</strong> ' + v + ' <br><br> ';
+            
+        			});
+        			
+        		$('#profile_error_text').html(errors);
+  				$('#profile_errors').popup();
+                $('#profile_errors').popup("open");
+    		}
+		});
 	
-		setProfile();
+		
 		//calendar_events();
 		
-		$.mobile.changePage($("#profile"), "none");
+		
 	
 	} else {
 		
