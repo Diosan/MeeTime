@@ -71,11 +71,11 @@
     <!--
         <gap:plugin name="com.phonegap.plugins.barcodescanner" />
     -->
-    <gap:plugin name="nl.x-services.plugins.calendar" />
-    <gap:plugin name="nl.x-services.plugins.launchmyapp">
+    <gap:plugin name="nl.x-services.plugins.calendar" source="npm" />
+    <gap:plugin name="nl.x-services.plugins.launchmyapp" source="npm" >
         <param name="URL_SCHEME" value="meetime" />
     </gap:plugin>
-    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.4.0">
+    <gap:plugin name="com.phonegap.plugins.facebookconnect" version="0.4.0"  source="npm" >
     	<param name="APP_ID" value="1432764753699829" />
     	<param name="APP_NAME" value="5e8833e847be1cfa24c009b093e9ef5a" />
 	</gap:plugin>
