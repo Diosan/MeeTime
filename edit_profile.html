@@ -14,6 +14,7 @@
           				 <!--
           				 <button onclick="datePicker.show(options, onDateSuccess, onDateError);">Capture Photo</button>
           				 -->
+          				 
           				 <button onclick="capturePhoto();">Capture Photo</button>
           				 <button onclick="getPhoto();">From Photo Library</button>
           				 
@@ -24,10 +25,8 @@
           				 <div id="edit_profileform" style="border: 1px solid #aaa; padding: 30px; border-radius: 10px;">
           				 	
           				 	<label for="html_DOB" >Date Of Birth</label>
-          				 	<input type="date" name="user[DOB]" >
-          				 	
-          				 	
-          				 
+          				 	<input type="date" name="user[DOB]" id="profile_DOB" >
+          				 	         				 	          				 
           				 </div>
           				 <br>
           				 
@@ -45,10 +44,7 @@
           					<option value="Caucasion">Caucasion</option>
           					<option value="Other">Mixed/Other (Dougla, Mulatto, "West Indian" )</option>
           				 </select>
-          				 
-      	  				 
-      	  				 	
-      	  				 
+          				      	  				      	  				 	
       	  				 
       	  				 <label for="profile_activity">Activity Level (Excercise)</label>
       	  				 <select name="profile_activity" id="profile_activity">
@@ -57,9 +53,11 @@
           					<option value="26">Medium (1 hour 3 times a week)</option>
           					<option value="42">High (1 hour 5 times a day)</option>
           				 </select>
+          				 
       	  				 <label for="profile_height">Height(cm):</label>
       	  				 <input type="range" name="profile_height" id="profile_height" value="170" min="100" max="250" data-popup-enabled="true" >
-      	  				 <p id="profile_height_inches">5 feet 7 inches</p>	  	  				 
+      	  				 <p id="profile_height_inches">5 feet 7 inches</p>
+      	  				 	  	  				 
 	  	  				 <label for="profile_weight">Weight(kg):</label>
       	  				 <input type="range" name="profile_weight" id="profile_weight" value="82" min="40" max="150" data-popup-enabled="true" >
       	  				 <p id="profile_weight_pounds">180 pounds</p>

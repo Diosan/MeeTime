@@ -30,7 +30,7 @@ var user = {};
 //    mode: 'date'
 //};
 
-localStorage.removeItem('profile');
+//localStorage.removeItem('user');
 
 
 
@@ -92,15 +92,7 @@ function meeTime()
         	setDOBByDay($(this));	
     	});
     	
-    	$(document).on('slidestop', '#profile_height', function(){ 
-        	//alert($( '#profile_height' ).val());
-			$('#profile_height_inches').html( cm2inches( $(this).val() ) );	
-    	});
-    	
-    	$(document).on('slidestop', '#profile_weight', function(){ 
-        	//alert($( '#profile_weight' ).val());
-			$('#profile_weight_pounds').html( kgs2lbs( $(this).val() ) );	
-    	});
+
     	
     	
     	
@@ -136,7 +128,20 @@ function meeTime()
     		
     		$('#signup_main').load("signup.html", function() { $(this).enhanceWithin(); } );
     		
+    		$('#signin_main').load("signin.html", function() { $(this).enhanceWithin(); } );
+    		
     		$('#edit_goals_main').load("edit_goals.html", function() { $(this).enhanceWithin(); } );
+    		
+    		$(document).on('slidestop', '#profile_height', function(){ 
+        		//alert($( '#profile_height' ).val());
+				$('#profile_height_inches').html( cm2inches( $(this).val() ) );	
+    		});
+    	
+    		$(document).on('slidestop', '#profile_weight', function(){ 
+        		//alert($( '#profile_weight' ).val());
+				$('#profile_weight_pounds').html( kgs2lbs( $(this).val() ) );	
+    		});
+    		
     		
     		//$("#signup_form").bind("ajax:beforeSend", function() {
          		// tasks to do
@@ -150,8 +155,8 @@ function meeTime()
     		//pictureSource=navigator.camera.PictureSourceType;
     		//destinationType=navigator.camera.DestinationType;  	
     		
-    		if (localStorage.getItem('profile') === null) {
-				//alert('Profile does not exist...');
+    		if (localStorage.getItem('user') === null) {
+				//alert('User does not exist...');
 				//Initialize and open tour
 				 //alert('Aha');
 				
@@ -166,9 +171,9 @@ function meeTime()
 				
 			} else {
 				
-				//alert('Profile exists...');				
+				//alert('User exists...');				
 				//profile = JSON.parse(localStorage.getItem('profile'));
-				//$(':mobile-pagecontainer').pagecontainer('change', '#home');
+				$(':mobile-pagecontainer').pagecontainer('change', '#home');
 				
 			}
 			
@@ -180,7 +185,7 @@ function meeTime()
 				//alert("Setup closed");
 			//});
     		
-    		initialOptions('moodRotator');
+    		//initialOptions('moodRotator');
     		//alert($('#moodRotator').length);
     		//initialOptions('activityRotator');
     		//initialOptions('BushkaBingeh');
@@ -723,6 +728,7 @@ function initialOptions(id) {
 					line = lines[i].split(',');
     				optionAngle = 23 + (i * 45);
     				//alert(rotator.children('.deg' + optionAngle).length);
+    				rotator.children('.deg' + optionAngle).first().data('image', line[1]);
     				rotator.children('.deg' + optionAngle).first().children('img').first().attr('src', line[1]);
 				}
    });

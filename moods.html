@@ -65,7 +65,7 @@
             	</a>
             </div>
 
-          	<a href='#' class='center' style='background-image: url("images/icons-svg/moods.svg")'></a>
+          	
 
           </div>
           
@@ -84,37 +84,37 @@
 					
 					
 							<div id='moodRotator' class='circle-container circle0' data-options='moods.csv' >
-								<a href='#' id="zeroDegrees" class='deg338' style=''>
+								<a href='#' id="zeroDegrees" class='deg338' style='' data-option="hurray">
 									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
 								</a>
-								<a href='#' class='deg293' style=''>
+								<a href='#' class='deg293' style='' data-option="hurray" data-image="">
 									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
 								</a>
-								<a href='#' class='deg248' style=''>
+								<a href='#' class='deg248' style='' data-option="hurray" data-image="">
 									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">
 								</a>
-								<a href='#' class='deg203' style=''>
+								<a href='#' class='deg203' style='' data-option="hurray" data-image="">
 									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
 								</a>
-								<a href='#' class='deg158' style=''>
+								<a href='#' class='deg158' style='' data-option="hurray" data-image="">
 									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(23deg); -webkit-transform: rotate(23deg);">
 								</a>
-								<a href='#' class='deg113' style=''>
+								<a href='#' class='deg113' style='' data-option="hurray" data-image="">
 									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(67deg); -webkit-transform: rotate(67deg);">
 								</a>
-								<a href='#' class='deg68' style=''>
+								<a href='#' class='deg68' style='' data-option="hurray" data-image="">
                						<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(113deg); -webkit-transform: rotate(113deg);">        	            					
             					</a>           				
-								<a href='#' class='deg23' style=''>
+								<a href='#' class='deg23' style='' data-option="hurray" data-image="">
 									<img src="img/option.jpg" style="width: 100%; height: 100%; transform: rotate(157deg); -webkit-transform: rotate(157deg);">
 								</a>
 																		
 							</div>
 
 					
-							<div class='hider'><img src="img/finger_swipe.png"></div>
+							<div class='hider'></div>
 					
-							<a href='#' class='swipecenter' style='background-image: url("img/emoticons/PNG/icontexto-emoticons-01-128x128.png")'></a><br><br>
+							<a href='#' class='swipecenter' id="swipe_center" style='background-image: url("img/emoticons/PNG/icontexto-emoticons-01-128x128.png")'></a><br><br>
 							<a href="#" data-rel="back">Close dialog</a>
 	
 						</div>
@@ -123,9 +123,12 @@
 		  </div>
 		  
 		  <div data-role="footer" data-position="fixed" class="pageFooter">
-    			<center>
-               		<a href="#">Epic!</a>
-            	</center>
+    			<ul class="lifefooter">
+					<li><a href="index.html" style=""><img src="img/avatars.png" style="width:1.5em"></a></li>
+					<li><a href="#"><img src="img/battery.png" style="width:3em"></a></li>
+					<li><a href="#"><img src="img/treasure.png" style="width:3em"></a></li>
+					<li><a href="#settings"><img src="img/settings.png" style="width:3em"></a></li>
+				</ul>
    		  </div>	
                     
       	</div>
@@ -140,9 +143,11 @@
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/data.js"></script>
         <script type="text/javascript" src="js/livet.js"></script>
-        <script type="text/javascript" src="js/moods.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="js/jw-jqm-cal.js"></script>
+        <script type="text/javascript" src="js/moods.js"></script>
+        
+        
         
         
         
@@ -150,14 +155,12 @@
         
         <script type="text/javascript">
         
-        	alert('in file javascript detected');
-        
-        	$('.pageFooter').each( function() {
-            	$(this).load("footer.html", function(data, status, xhr){
+        	//$('.pageFooter').each( function() {
+            //	$(this).load("footer.html", function(data, status, xhr){
             		//alert(status);
-            		$(this).children("[data-role=navbar]").first().navbar();
-            	});
-        	});
+            //		$(this).children("[data-role=navbar]").first().navbar();
+            //	});
+        	//});
         
             
         </script>
