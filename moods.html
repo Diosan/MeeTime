@@ -54,16 +54,19 @@
             	<a href='#' onclick='addMood();' class='deg270' style=''>
                		<img src="images/icons-svg/add.svg" style="width: 100%; height: 100%; transform: rotate(90deg); -webkit-transform: rotate(90deg);">        	
             	</a>            
-            	<a href='#' class='deg180' style=''>
+            	<a href='#moods_charts' class='deg180' style=''>
             		<img src="images/icons-svg/insight.svg" style="width: 100%; height: 100%; transform: rotate(180deg); -webkit-transform: rotate(180deg);">	
             	</a>
             	<a href='#' class='deg90' style=''>
             		<img src="images/icons-svg/find.svg" style="width: 100%; height: 100%; transform: rotate(270deg); -webkit-transform: rotate(270deg);">
             	</a>
-            	<a href='#' class='deg0' style=''>
+            	<a href='#moods_calendar' class='deg0' style=''>
             		<img src="images/icons-svg/calender.svg" style="width: 100%; height: 100%; transform: rotate(360deg); -webkit-transform: rotate(360deg);">
             	</a>
             </div>
+            <div id="d_elements" style="width: 35em; height: 35em; background-image: url('img/elements.png'); border: 1px solid #aaa;">
+          		<a class='center' style="border: 1px solid #555; background-image: url('images/icons-png/moods.png');"></a>
+          	</div>
 
           	
 
@@ -110,6 +113,8 @@
 								</a>
 																		
 							</div>
+							
+							<button>Add Mood</button>
 
 					
 							<div class='hider'></div>
@@ -133,6 +138,48 @@
                     
       	</div>
     	
+	  
+	  <div data-role="page" id="moods_calendar">
+	  	<div id="" data-role="header">
+						<strong><h1>Moods Calendar</h1></strong>
+		</div>	
+	  	<div data-role="main" class="ui-content">
+	  		<br><br> 	  		 	
+	  		<div id="calendar_moods" >	  		
+	  		</div>
+	  	</div>
+	  	 <div data-role="footer" data-position="fixed" class="pageFooter">
+    			<ul class="lifefooter">
+					<li><a href="index.html" style=""><img src="img/avatars.png" style="width:1.5em"></a></li>
+					<li><a href="#"><img src="img/battery.png" style="width:3em"></a></li>
+					<li><a href="#"><img src="img/treasure.png" style="width:3em"></a></li>
+					<li><a href="#settings"><img src="img/settings.png" style="width:3em"></a></li>
+				</ul>
+   		  </div>
+	  		  	
+	  </div>
+	  
+	  <div data-role="page" id="moods_charts">
+	  	<div id="" data-role="header">
+						<strong><h1>Moods Charts</h1></strong>
+		</div>	
+	  	<div data-role="main" class="ui-content">
+	  		<br><br>	  		 	
+	  		<!--Div that will hold the pie chart-->
+    		<div id="chart_div" style="width: 100%;"></div>
+	  	</div>
+	  	 <div data-role="footer" data-position="fixed" class="pageFooter">
+    			<ul class="lifefooter">
+					<li><a href="index.html" style=""><img src="img/avatars.png" style="width:1.5em"></a></li>
+					<li><a href="#"><img src="img/battery.png" style="width:3em"></a></li>
+					<li><a href="#"><img src="img/treasure.png" style="width:3em"></a></li>
+					<li><a href="#settings"><img src="img/settings.png" style="width:3em"></a></li>
+				</ul>
+   		  </div>
+	  		  	
+	  </div>
+
+
         <script type="text/javascript" src="cordova.js"></script>
         <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
         <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
@@ -145,6 +192,8 @@
         <script type="text/javascript" src="js/livet.js"></script>
         <script type="text/javascript" src="js/jquery.mobile-1.4.5.min.js"></script>
         <script type="text/javascript" src="js/jw-jqm-cal.js"></script>
+        <!--Load the AJAX API. Do this only once per web page! -->
+    	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
         <script type="text/javascript" src="js/moods.js"></script>
         
         
