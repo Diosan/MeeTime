@@ -3,8 +3,6 @@
         		font-size: 16px;
         	}
         	
-        	
-        	
         	#tour-popup {
     			width: 80%;
     			left: 10%;
@@ -300,19 +298,23 @@
 		
 		@media screen and (min-width: 850px) {
     			body {
-        			font-size: 25px;
-    			}
-    			
+        			font-size: 20px;
+    			}    			
     			
 		}
 		
-		@media screen and (min-width: 480px) {
-			
-    			body {
-        			font-size: 10px;
+		@media screen and (max-width: 585px) {
+    			#d_elements {
+        			font-size: 12px;
     			}
-    			    			
+    			
+    			.home-circle {
+        			font-size: 12px;
+    			}    			
+    			
 		}
+		
+		
 		
 		.ui-page-theme-a .ui-bar-inherit {
 			background: #86c440;
